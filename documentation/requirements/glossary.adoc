@@ -1,0 +1,23 @@
+= Glossar
+
+== Begriffe
+[%header]
+|===
+| Begriff |	Definition und Erläuterung|	Synonyme
+| Suchkriterien | Kriterien über die die Suche eingeschränkt werden kann. Eingeschränkt kann die Suche nach folgenden Kriterien: Name, Straße, PLZ und Straße| Filterkriterien
+|===
+
+== Abkürzungen und Akronyme
+[%header]
+|===
+|Abkürzung |Bedeutung| Erläuterung
+| PLZ | Postleitzahl |
+|===
+
+== Datenstrukturen 
+[%header]
+|===
+| Bezeichnung | Definition
+| Kundendaten | Name, Ort, PLZ, Straße
+| Mitarbeiterdaten | Name, Vorname, Geburtstdatum, Job, Stundensatz, Niederlassungsnummer
+|===

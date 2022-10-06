@@ -1,0 +1,24 @@
+== Use-Case 02: Verwaltung von Mitarbeitern
+=== Kurzbeschreibung
+Das System ermöglicht es Mitarbeiter neu anzulegen, zu suchen, zu bearbeiten oder zu löschen.
+
+=== Mitarbeiter neu anlegen
+. der Use-Case beginnt, wenn der Mitarbeitertab ausgewählt wurde
+. dem System wird mitgeteilt, dass ein neuer Mitarbeiter angelegt werden soll
+. die Mitarbeiterdaten werden dem system übergeben
+. der Use-Case ist abgeschlossen, sobald die Eingaben gespeichert wurden
+
+=== Mitarbeiter suchen
+. der Use-Case beginnt, wenn der Mitarbeitertab ausgewählt wurde
+. dem System können verschiedene Suchkriterien übergeben werden
+. anschließend wird die Suche gestartet
+. der Use-Case ist abgeschlossen, sobald die Suche beendet wurde
+
+=== Mitarbeiter bearbeiten
+. der Use-Case beginnt, wenn die Bearbeitungsfunktion eines Mitarbeiter ausgewählt wurde
+. die Mitarbeiterdaten können nun beliebig bearbeitet werden
+. der Use-Case ist abgeschlossen, sobald die Änderungen gespeichert wurden
+
+=== Mitarbeiter löschen
+. der Use-Case beginnt, wenn die Lösch-Funktion eines Mitarbeiter ausgewählt wurde
+. der Use-Case ist abgeschlossen, sobald dem system das Vorhaben bestätigt wurde

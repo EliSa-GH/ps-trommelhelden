@@ -1,0 +1,47 @@
+= Projektseminar
+
+:doctype: book
+:toc:
+:toclevels: 2
+:toc-title: Inhaltsverzeichnis
+
+= Use-Case Model
+
+<<<
+include::requirements/use_case_kunden.adoc[]
+
+<<<
+include::requirements/use_case_mitarbeiter.adoc[]
+
+<<<
+include::requirements/use_case_auftrag.adoc[]
+
+//<<<
+//include::requirements/use_case_archiv.adoc[]
+
+//== Funktionalität
+//
+//=== Kundenverwaltung
+//* Kunden suchen
+//* Kunden bearbeiten
+//* Kunden löschen
+//
+//=== Mitarbeiterverwaltung
+//* Mitarbeiter neu anlegen
+//* Mitarbeiter suchen
+//* Mitarbeiter bearbeiten
+//* Mitarbeiter löschen
+//
+//=== Auftragsverwaltung in 3 Schritten
+//* Kunde gibt Auftrag auf
+//** Neukunde/ Identifikation über KunNr/ KunName + KunOrt + KunPLZ → KunNr
+//** Problembeschreibung → Beschreibung
+//** automatische Angabe von AufNr, AufDat
+//* offene Anträge anzeigen
+//** Mitarbeiter zuordnen → MitID
+//** offene Aufträge je Mitarbeiter anzeigen und bearbeiten
+//** Angabe ErlDat, Dauer, Anfahrt
+//** Rechnung wird automatisch erzeugt
+
+<<<
+include::requirements/glossary.adoc[]
