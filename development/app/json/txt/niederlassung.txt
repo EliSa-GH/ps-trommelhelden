@@ -1,0 +1,1 @@
+[{"NLNr":1,"Ort":"Dresden"},{"NLNr":2,"Ort":"Chemnitz"},{"NLNr":3,"Ort":"Radebeul"}]

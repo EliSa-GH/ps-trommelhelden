@@ -1,0 +1,35 @@
+/* Logo items flex in center and space bettween item */
+.logo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 10rem;
+}
+
+/* Company's name - Image format */
+img {
+  height: 9vh;
+  margin: 0 20px;
+}
+
+/* Company's name - Text format */
+h2 {
+  display: inline-block;
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 3vh;
+  font-style: italic;
+  text-decoration: none;
+  color: #75c7fb;
+}
+
+span {
+  font-size: 3.5vh;
+}
+
+.belowText {
+  color: #ff3847;
+}
+
+.logoText {
+  display: inline-block;
+}

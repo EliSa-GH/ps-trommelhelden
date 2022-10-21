@@ -1,0 +1,28 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body {
+  background-color: #cdfcf6;
+}
+
+.anlegen,
+.archiv,
+.neue,
+.offen,
+.auftraege,
+.bericht,
+.home,
+.kunden,
+.mitarbeiter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 90vh;
+  font-size: 4rem;
+  background-position: center;
+  background-repeat: none;
+  background-size: cover;
+  text-shadow: 4px 4px 4px #fff;
+}
