@@ -1,6 +1,8 @@
-from flask import Flask
-from flask_restful import Api, Resource, reqparse, abort, fields, marshal_with
+from flask import Flask, json, jsonify
 from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy.ext.automap import automap_base
+import datetime
+
 
 SERVER = '141.56.2.45'
 DATABASE = 'ii20s82050'
@@ -8,47 +10,34 @@ DRIVER = 'ODBC Driver 17 for SQL Server'
 USERNAME = 's82050'
 PASSWORD = 's82050'
 
-app = Flask(__name__)
-api = Api(app)
+class DTEncoder(json.JSONEncoder):
+    def default(self, obj):
+        # 👇️ if passed in object is datetime object
+        # convert it to a string
+        if isinstance(obj, datetime):
+            return str(obj)
+        # 👇️ otherwise use the default behavior
+        return json.JSONEncoder.default(self, obj)
 
+        if isinstance(obj, Decimal):
+            return float(obj)
+        return json.JSONEncoder.default(self, obj)
+
+app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI']=f'mssql://{USERNAME}:{PASSWORD}@{SERVER}/{DATABASE}?driver={DRIVER}'
 db = SQLAlchemy(app)
 
-class NameModel(db.Model):
-    name = db.Column(db.String(100), primary_key=True)
-    age = db.Column(db.Integer, nullable=False)
-    gender = db.Column(db.String(10), nullable=False)
-
-    def __repr__(self):
-        return f"Video( age = {age}, gender = {gender})"
+kunde = db.Table('kunde',db.metadata, autoload=True, autoload_with=db.engine)
+auftrag = db.Table('auftrag',db.metadata, autoload=True, autoload_with=db.engine)
+name_model = db.Table('name_model',db.metadata, autoload=True, autoload_with=db.engine)
 
 
-video_put_args = reqparse.RequestParser()
-video_put_args.add_argument("age", type=int, help="Enter your age pleasa", required=True)
-video_put_args.add_argument("gender", type=str, help="Enter your gender please", required=True) 
+@app.route("/kunden")
+def get():
+    results = db.session.query(kunde).limit(5).all()
 
-resource_fields = {
-    'name' : fields.String,
-    'age' : fields.Integer,
-    'gender' : fields.String
-}
+    return {"response" : [r._asdict() for r in results]}
 
-class HelloWorld(Resource):
-    @marshal_with(resource_fields)
-    def get(self, name):
-        result = NameModel.query.filter_by(name=name).first()
-        return result
-
-    @marshal_with(resource_fields)
-    def put(self, name):
-        args = video_put_args.parse_args()
-        name = NameModel(name=name, age=args['age'], gender=args['gender'])
-        db.session.add(name)
-        db.session.commit()
-        return name, 201
-
-
-api.add_resource(HelloWorld, "/<string:name>")
 
 if __name__ == "__main__" :
     app.run(debug=True)

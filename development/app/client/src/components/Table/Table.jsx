@@ -1,6 +1,7 @@
 import React from "react";
 
 const Table = ({ tableHeadings, tableData }) => {
+  console.log(tableHeadings, tableData);
   return (
     <table>
       <thead>
