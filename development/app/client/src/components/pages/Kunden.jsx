@@ -8,6 +8,7 @@ const Kunden = () => {
     return Object.keys(data.response[0]);
   };
   useEffect(() => {
+    
     fetch("/kunden")
       .then((res) => res.json())
       .then((data) => {
