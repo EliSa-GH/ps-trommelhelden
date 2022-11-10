@@ -29,13 +29,11 @@ db = SQLAlchemy(app)
 
 kunde = db.Table('kunde',db.metadata, autoload=True, autoload_with=db.engine)
 auftrag = db.Table('auftrag',db.metadata, autoload=True, autoload_with=db.engine)
-name_model = db.Table('name_model',db.metadata, autoload=True, autoload_with=db.engine)
 
 
 @app.route("/kunden")
 def get():
-    results = db.session.query(kunde).limit(5).all()
-
+    results = db.session.query(kunde).all()
     return {"response" : [r._asdict() for r in results]}
 
 

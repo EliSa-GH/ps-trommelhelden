@@ -1,28 +1,23 @@
-import React from "react";
+import * as React from "react";
+import Box from "@mui/material/Box";
+import { DataGrid } from "@mui/x-data-grid";
 
-const Table = ({ tableHeadings, tableData }) => {
-  console.log(tableHeadings, tableData);
+const Table = ({ tableHeadings, tableData, id }) => {
+  const columns = tableHeadings.map((heading) => {
+    return { field: heading, headerName: heading, width: 200 };
+  });
+
   return (
-    <table>
-      <thead>
-        <tr>
-          {tableHeadings.map((heading) => {
-            return <th key={heading}>{heading}</th>;
-          })}
-        </tr>
-      </thead>
-      <tbody>
-        {tableData.map((row, index) => {
-          return (
-            <tr key={index}>
-              {tableHeadings.map((key, index) => {
-                return <td key={index}>{row[key]}</td>;
-              })}
-            </tr>
-          );
-        })}
-      </tbody>
-    </table>
+    <div style={{ height: 400, width: "100%" }}>
+      <DataGrid
+        rows={tableData}
+        columns={columns}
+        pageSize={5}
+        rowsPerPageOptions={[5]}
+        checkboxSelection
+        getRowId={(row) => row`${id}`}
+      />
+    </div>
   );
 };
 
