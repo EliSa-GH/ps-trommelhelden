@@ -6,7 +6,7 @@ import logoImg from "../../../images/logo.png";
 const Logo = () => {
   return (
     <Link to="/" className="logo">
-      <img src={logoImg}></img>
+      <img src={logoImg} alt="logo"></img>
       <div className="logoText">
         <h2>
           <span>T</span>

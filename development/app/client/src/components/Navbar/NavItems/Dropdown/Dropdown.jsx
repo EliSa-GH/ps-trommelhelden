@@ -1,35 +1,61 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
+import { Menu, MenuItem, Button, Fade } from "@mui/material";
 
-import { auftragDropdown } from "./DropdownList";
 import "./Dropdown.css";
 
 const Dropdown = () => {
-  const [dropdown, setDropdown] = useState(false);
+  const [anchorEl, setAnchorEl] = React.useState(null);
+  const open = Boolean(anchorEl);
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
   return (
     <div>
-      <ul
-        className={dropdown ? "submenu clicked" : "submenu"}
-        onClick={() => {
-          setDropdown(!dropdown);
+      <Button
+        id="fade-button"
+        aria-controls={open ? "fade-menu" : undefined}
+        aria-haspopup="true"
+        aria-expanded={open ? "true" : undefined}
+        onClick={handleClick}
+        sx={{
+          marginRight: "30px",
+          cursor: "pointer",
+          color: "#616161",
+          fontSize: "20px",
+          fontWeight: "bold",
+          textTransform: "none",
         }}
       >
-        {auftragDropdown.map((item) => {
-          return (
-            <li key={item.id}>
-              <Link
-                to={item.path}
-                onClick={() => {
-                  setDropdown(!dropdown);
-                }}
-                className={item.className}
-              >
-                {item.title}
-              </Link>
-            </li>
-          );
-        })}
-      </ul>
+        Aufträge
+      </Button>
+      <Menu
+        id="fade-menu"
+        MenuListProps={{
+          "aria-labelledby": "fade-button",
+        }}
+        anchorEl={anchorEl}
+        open={open}
+        onClose={handleClose}
+        TransitionComponent={Fade}
+      >
+        <MenuItem onClick={handleClose} component={Link} to="/auftraege">
+          Deine Aufträge
+        </MenuItem>
+        <MenuItem onClick={handleClose} component={Link} to="/offen">
+          Offene Aufträge
+        </MenuItem>
+        <MenuItem onClick={handleClose} component={Link} to="/anlegen">
+          Auftrag anlegen
+        </MenuItem>
+        <MenuItem onClick={handleClose} component={Link} to="/archiv">
+          Archiv
+        </MenuItem>
+      </Menu>
     </div>
   );
 };

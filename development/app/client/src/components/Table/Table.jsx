@@ -1,23 +1,42 @@
 import * as React from "react";
-import Box from "@mui/material/Box";
 import { DataGrid } from "@mui/x-data-grid";
+import { Box } from "@mui/system";
 
 const Table = ({ tableHeadings, tableData, id }) => {
   const columns = tableHeadings.map((heading) => {
-    return { field: heading, headerName: heading, width: 200 };
+    if (heading === "Beschreibung") {
+      return {
+        field: heading,
+        headerName: heading,
+        width: 500,
+      };
+    } else {
+      return {
+        field: heading,
+        headerName: heading,
+        flex: 1,
+        minWidth: 100,
+      };
+    }
   });
 
   return (
-    <div style={{ height: 400, width: "100%" }}>
+    <Box
+      sx={{
+        height: 400,
+        width: "90%",
+        margin: "auto",
+      }}
+    >
       <DataGrid
         rows={tableData}
         columns={columns}
         pageSize={5}
         rowsPerPageOptions={[5]}
         checkboxSelection
-        getRowId={(row) => row`${id}`}
+        getRowId={(row) => (id === "AufNr" ? row.Aufnr : row.KunNr)}
       />
-    </div>
+    </Box>
   );
 };
 

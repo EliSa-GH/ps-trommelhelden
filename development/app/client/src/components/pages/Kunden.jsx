@@ -5,10 +5,9 @@ const Kunden = () => {
   const [data, setData] = useState();
 
   const getHeadings = (data) => {
-    return Object.keys(data.response[0]);
+    return Object.keys(data[0]);
   };
   useEffect(() => {
-    
     fetch("/kunden")
       .then((res) => res.json())
       .then((data) => {
@@ -18,7 +17,7 @@ const Kunden = () => {
   }, []);
   if (data)
     return (
-      <Table tableHeadings={getHeadings(data)} tableData={data.response} />
+      <Table tableHeadings={getHeadings(data)} tableData={data} id="KunNr" />
     );
 };
 

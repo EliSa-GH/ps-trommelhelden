@@ -1,37 +1,72 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
+import { Typography } from "@mui/material";
+import { Box } from "@mui/system";
 
-import { navItemsList } from "./navItemsList";
 import Dropdown from "./Dropdown/Dropdown";
 import "./NavItems.css";
 
 const NavItems = () => {
-  const [dropdown, setDropdown] = useState(false);
   return (
-    <div>
-      <ul className="nav-list">
-        {navItemsList.map((item) => {
-          if (item.title === "Auftraege") {
-            return (
-              <li
-                key={item.id}
-                onMouseEnter={() => setDropdown(!dropdown)}
-                onMouseLeave={() => setDropdown(!dropdown)}
-                className={item.className}
-              >
-                {dropdown && <Dropdown />}
-                <Link to={item.path}>{item.title} </Link>
-              </li>
-            );
-          }
-          return (
-            <li key={item.id} className={item.className}>
-              <Link to={item.path}>{item.title} </Link>
-            </li>
-          );
-        })}
-      </ul>
-    </div>
+    <Box sx={{ display: "flex", alignItems: "center" }}>
+      {/* <Typography
+        sx={{
+          marginRight: "30px",
+          cursor: "pointer",
+          color: "#616161",
+          fontSize: "20px",
+          fontWeight: "bold",
+        }}
+      >
+        Aufträge
+      </Typography> */}
+      <Dropdown />
+      <Typography
+        sx={{
+          marginRight: "30px",
+          cursor: "pointer",
+          color: "#616161",
+          fontSize: "20px",
+          fontWeight: "bold",
+          textDecoration: "none",
+          boxShadow: "none",
+        }}
+        component={Link}
+        to="/kunden"
+      >
+        Kunden
+      </Typography>
+      <Typography
+        sx={{
+          marginRight: "30px",
+          cursor: "pointer",
+          color: "#616161",
+          fontSize: "20px",
+          fontWeight: "bold",
+          textDecoration: "none",
+          boxShadow: "none",
+        }}
+        component={Link}
+        to="/mitarbeiter"
+      >
+        Mitarbeiter
+      </Typography>
+      <Typography
+        sx={{
+          marginRight: "30px",
+          cursor: "pointer",
+          color: "#616161",
+          fontSize: "20px",
+          fontWeight: "bold",
+          textDecoration: "none",
+          boxShadow: "none",
+        }}
+        component={Link}
+        to="/bericht"
+      >
+        Bericht
+      </Typography>
+    </Box>
   );
 };
 
