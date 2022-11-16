@@ -1,5 +1,5 @@
-const Sequelize = require("sequelize");
-const db = require("../config/database");
+import { Sequelize } from "sequelize";
+import db from "../config/database.js";
 
 const Auftrag = db.define(
   "Auftrag",
@@ -61,4 +61,4 @@ const Auftrag = db.define(
   }
 );
 
-module.exports = Auftrag;
+export default Auftrag;

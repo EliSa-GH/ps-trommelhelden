@@ -1,5 +1,5 @@
-const Sequelize = require("sequelize");
-const db = require("../config/database");
+import { Sequelize } from "sequelize";
+import db from "../config/database.js";
 
 const Niederlassung = db.define(
   "Niederlassung",
@@ -28,4 +28,4 @@ const Niederlassung = db.define(
     ],
   }
 );
-module.exports = Niederlassung;
+export default Niederlassung;

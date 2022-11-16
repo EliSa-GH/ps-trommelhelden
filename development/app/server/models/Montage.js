@@ -1,5 +1,5 @@
-const Sequelize = require("sequelize");
-const db = require("./config/database.js");
+import { Sequelize } from "sequelize";
+import db from "../config/database.js";
 
 const Montage = db.define(
   "Montage",
@@ -42,4 +42,4 @@ const Montage = db.define(
   }
 );
 
-module.exports = Montage;
+export default Montage;

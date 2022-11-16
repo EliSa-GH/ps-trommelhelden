@@ -1,8 +1,10 @@
 import * as React from "react";
+
 import { DataGrid } from "@mui/x-data-grid";
 import { Box } from "@mui/system";
+import { nanoid } from "@reduxjs/toolkit";
 
-const Table = ({ tableHeadings, tableData, id }) => {
+const Table = ({ tableHeadings, tableData }) => {
   const columns = tableHeadings.map((heading) => {
     if (heading === "Beschreibung") {
       return {
@@ -34,7 +36,7 @@ const Table = ({ tableHeadings, tableData, id }) => {
         pageSize={5}
         rowsPerPageOptions={[5]}
         checkboxSelection
-        getRowId={(row) => (id === "AufNr" ? row.Aufnr : row.KunNr)}
+        getRowId={(row) => nanoid()}
       />
     </Box>
   );

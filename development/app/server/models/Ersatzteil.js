@@ -1,5 +1,5 @@
-const Sequelize = require("sequelize");
-const db = require("./config/database.js");
+import { Sequelize } from "sequelize";
+import db from "../config/database.js";
 
 const Ersatzteil = db.define(
   "Ersatzteil",
@@ -41,4 +41,4 @@ const Ersatzteil = db.define(
   }
 );
 
-module.exports = Ersatzteil;
+export default Ersatzteil;

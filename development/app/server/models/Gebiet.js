@@ -1,5 +1,5 @@
-const Sequelize = require("sequelize");
-const db = require("./config/database.js");
+import { Sequelize } from "sequelize";
+import db from "../config/database.js";
 
 const Gebiet = db.define(
   "Gebiet",
@@ -32,4 +32,4 @@ const Gebiet = db.define(
     ],
   }
 );
-module.exports = Gebiet;
+export default Gebiet;

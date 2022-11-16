@@ -1,21 +1,45 @@
-import React from "react";
+import React, { useEffect } from "react";
 
+import { Typography } from "@mui/material";
+import { useSelector, useDispatch } from "react-redux";
 import Table from "../../../Table/Table";
-import auftraege from "../../../../json/auftrag.json";
+import { getAuftraege } from "../../../../actions/auftraege";
 
 const Offen = () => {
-  //const sliceArray = auftraege.slice(0, 500);
-  const getHeadings = () => {
-    return Object.keys(auftraege[0]);
+  const getHeadings = (data) => {
+    return Object.keys(data[0]);
   };
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getAuftraege());
+  }, [dispatch]);
+
+  const auftraege = useSelector((state) => state.auftraege);
+
   return (
-    <Table
-      tableHeadings={getHeadings()}
-      tableData={auftraege.filter(
-        (filterArray) => filterArray.ErlDat == null && filterArray.MitID == null
+    <>
+      {auftraege.length > 0 ? (
+        <Table
+          tableHeadings={getHeadings(auftraege)}
+          tableData={auftraege.filter(
+            (filterArray) => filterArray.MitID === null
+          )}
+        />
+      ) : (
+        <Typography
+          variant="h3"
+          sx={{
+            display: "flex",
+            justifyContent: "center",
+            fontWeight: "bold",
+          }}
+        >
+          Loading...
+        </Typography>
       )}
-      id={"AufNr"}
-    />
+    </>
   );
 };
 

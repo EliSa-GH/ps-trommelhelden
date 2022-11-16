@@ -1,59 +1,73 @@
 import React, { useState, useEffect } from "react";
 
+import { Typography } from "@mui/material";
+import { useDispatch, useSelector } from "react-redux";
 import Table from "../../Table/Table";
-import { Button, TextField, Box } from "@mui/material";
+import { TextField, Box } from "@mui/material";
+
+import { getAuftraege } from "../../../actions/auftraege";
 
 const Auftraege = () => {
   const getHeadings = (data) => {
     return Object.keys(data[0]);
   };
 
-  const [employeeID, setEmployeeID] = useState(100);
-  const [data, setData] = useState();
+  const dispatch = useDispatch();
+  const [employeeID, setEmployeeID] = useState("");
 
   useEffect(() => {
-    fetch("/auftraege")
-      .then((res) => res.json())
-      .then((data) => {
-        //wait for data from server
-        console.log(data);
-        setData(data);
-      });
-  }, []);
-  if (data)
-    return (
-      <Box>
-        <Box
+    dispatch(getAuftraege());
+  }, [dispatch]);
+
+  const auftraege = useSelector((state) => state.auftraege);
+
+  return (
+    <Box>
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+          marginTop: "20px",
+        }}
+      >
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
+          }}
+        >
+          <TextField
+            onChange={(e) => {
+              setEmployeeID(e.target.value);
+            }}
+            value={employeeID}
+            fullWidth
+            required
+            label="Employee's ID"
+            sx={{ marginBottom: "20px" }}
+          />
+        </form>
+      </Box>
+      {auftraege.length > 0 ? (
+        <Table
+          tableHeadings={getHeadings(auftraege)}
+          tableData={auftraege.filter(
+            (filterArray) => filterArray.MitID === employeeID
+          )}
+        />
+      ) : (
+        <Typography
+          variant="h3"
           sx={{
             display: "flex",
             justifyContent: "center",
-            marginTop: "20px",
+            fontWeight: "bold",
           }}
         >
-          <form
-            onSubmit={(e) => {
-              e.preventDefault();
-              setEmployeeID(e.target[0].value);
-            }}
-          >
-            <TextField fullWidth required label="Employee's ID" />
-            <Button fullWidth variant="contained">
-              Submit
-            </Button>
-          </form>
-        </Box>
-
-        {
-          <Table
-            tableHeadings={getHeadings(data)}
-            tableData={data.filter(
-              (filterArray) => filterArray.MitID === employeeID
-            )}
-            id={"AufNr"}
-          />
-        }
-      </Box>
-    );
+          Loading...
+        </Typography>
+      )}
+    </Box>
+  );
 };
 
 export default Auftraege;

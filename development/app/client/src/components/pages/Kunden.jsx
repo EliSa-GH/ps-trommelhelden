@@ -1,24 +1,40 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { Typography } from "@mui/material";
+
+import { getKunden } from "../../actions/kunden";
 import Table from "../Table/Table";
 
 const Kunden = () => {
-  const [data, setData] = useState();
-
   const getHeadings = (data) => {
     return Object.keys(data[0]);
   };
+
+  const dispatch = useDispatch();
+
   useEffect(() => {
-    fetch("/kunden")
-      .then((res) => res.json())
-      .then((data) => {
-        //wait for data from server
-        setData(data);
-      });
-  }, []);
-  if (data)
-    return (
-      <Table tableHeadings={getHeadings(data)} tableData={data} id="KunNr" />
-    );
+    dispatch(getKunden());
+  }, [dispatch]);
+
+  const kunden = useSelector((state) => state.kunden);
+  return (
+    <>
+      {kunden.length > 0 ? (
+        <Table tableHeadings={getHeadings(kunden)} tableData={kunden} />
+      ) : (
+        <Typography
+          variant="h3"
+          sx={{
+            display: "flex",
+            justifyContent: "center",
+            fontWeight: "bold",
+          }}
+        >
+          Loading...
+        </Typography>
+      )}
+    </>
+  );
 };
 
 export default Kunden;
