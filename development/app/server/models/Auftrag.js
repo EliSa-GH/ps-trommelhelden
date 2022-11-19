@@ -1,4 +1,6 @@
 import { Sequelize } from "sequelize";
+export const { gt, lte, ne } = Sequelize.Op;
+
 import db from "../config/database.js";
 
 const Auftrag = db.define(

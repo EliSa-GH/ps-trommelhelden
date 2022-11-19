@@ -2,9 +2,8 @@ import * as React from "react";
 
 import { DataGrid } from "@mui/x-data-grid";
 import { Box } from "@mui/system";
-import { nanoid } from "@reduxjs/toolkit";
 
-const Table = ({ tableHeadings, tableData }) => {
+const Table = ({ tableHeadings, tableData, rowID }) => {
   const columns = tableHeadings.map((heading) => {
     if (heading === "Beschreibung") {
       return {
@@ -21,6 +20,7 @@ const Table = ({ tableHeadings, tableData }) => {
       };
     }
   });
+  const rows = tableData;
 
   return (
     <Box
@@ -30,14 +30,55 @@ const Table = ({ tableHeadings, tableData }) => {
         margin: "auto",
       }}
     >
-      <DataGrid
-        rows={tableData}
-        columns={columns}
-        pageSize={5}
-        rowsPerPageOptions={[5]}
-        checkboxSelection
-        getRowId={(row) => nanoid()}
-      />
+      {rowID === "Aufnr" ? (
+        <DataGrid
+          rows={rows}
+          columns={columns}
+          pageSize={5}
+          rowsPerPageOptions={[5]}
+          checkboxSelection
+          getRowId={(row) => row.Aufnr}
+          onSelectionModelChange={(ids) => {
+            const selectedIDs = new Set(ids);
+            const selectedRowData = rows.filter((row) =>
+              selectedIDs.has(row.Aufnr)
+            );
+            console.log(selectedRowData);
+          }}
+        />
+      ) : rowID === "KunNr" ? (
+        <DataGrid
+          rows={rows}
+          columns={columns}
+          pageSize={5}
+          rowsPerPageOptions={[5]}
+          checkboxSelection
+          getRowId={(row) => row.KunNr}
+          onSelectionModelChange={(ids) => {
+            const selectedIDs = new Set(ids);
+            const selectedRowData = rows.filter((row) =>
+              selectedIDs.has(row.KunNr)
+            );
+            console.log(selectedRowData);
+          }}
+        />
+      ) : (
+        <DataGrid
+          rows={rows}
+          columns={columns}
+          pageSize={5}
+          rowsPerPageOptions={[5]}
+          checkboxSelection
+          getRowId={(row) => row.MitID}
+          onSelectionModelChange={(ids) => {
+            const selectedIDs = new Set(ids);
+            const selectedRowData = rows.filter((row) =>
+              selectedIDs.has(row.MitID)
+            );
+            console.log(selectedRowData);
+          }}
+        />
+      )}
     </Box>
   );
 };

@@ -1,46 +1,129 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 
-import { Typography } from "@mui/material";
+import {
+  Box,
+  Typography,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  Button,
+  FormControl,
+  InputLabel,
+  Select,
+  OutlinedInput,
+  MenuItem,
+  CircularProgress,
+} from "@mui/material";
 import { useSelector, useDispatch } from "react-redux";
 import Table from "../../../Table/Table";
-import { getAuftraege } from "../../../../actions/auftraege";
+import { getOffenAuftraege } from "../../../../actions/auftraege";
+import { getMitarbeiter } from "../../../../actions/mitarbeiter";
 
 const Offen = () => {
+  const [open, setOpen] = useState(false);
+  const [mitID, setMitID] = useState("");
+
+  const dispatch = useDispatch();
+
   const getHeadings = (data) => {
     return Object.keys(data[0]);
   };
 
-  const dispatch = useDispatch();
+  const handleChange = (event) => {
+    setMitID(Number(event.target.value) || "");
+    handleClickOpen();
+  };
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = (event, reason) => {
+    if (reason !== "backdropClick") {
+      setOpen(false);
+    }
+  };
 
   useEffect(() => {
-    dispatch(getAuftraege());
+    dispatch(getOffenAuftraege());
+    dispatch(getMitarbeiter());
   }, [dispatch]);
 
-  const auftraege = useSelector((state) => state.auftraege);
-
+  const offenAuftraege = useSelector((state) => state.auftraege);
+  const mitarbeiter = useSelector((state) => state.mitarbeiter);
   return (
-    <>
-      {auftraege.length > 0 ? (
-        <Table
-          tableHeadings={getHeadings(auftraege)}
-          tableData={auftraege.filter(
-            (filterArray) => filterArray.MitID === null
-          )}
-        />
-      ) : (
-        <Typography
-          variant="h3"
-          sx={{
-            display: "flex",
-            justifyContent: "center",
-            fontWeight: "bold",
-          }}
-        >
-          Loading...
-        </Typography>
-      )}
-    </>
+    <Box>
+      <Box>
+        {offenAuftraege.length > 0 ? (
+          <Table
+            tableHeadings={getHeadings(offenAuftraege)}
+            tableData={offenAuftraege}
+            rowID="Aufnr"
+          />
+        ) : (
+          <Box
+            height="100px"
+            display="flex"
+            justifyContent="center"
+            alignItems="center"
+          >
+            <CircularProgress size="75px" thickness={5} />
+          </Box>
+        )}
+      </Box>
+      <Dialog disableEscapeKeyDown open={open} onClose={handleClose}>
+        <DialogContent>
+          <Typography variant="h6">
+            Are you sure to select employee with ID - {mitID} for this job?
+          </Typography>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleClose}>Cancel</Button>
+          <Button onClick={handleClose}>Ok</Button>
+        </DialogActions>
+      </Dialog>
+      <Box
+        display="flex"
+        justifyContent="right"
+        alignItems="center"
+        marginRight={12}
+      >
+        <Box component="form" sx={{ display: "flex", flexWrap: "wrap" }}>
+          <FormControl onClick={handleClickOpen} sx={{ m: 1, minWidth: 120 }}>
+            <InputLabel id="demo-dialog-select-label">Mitarbeiter</InputLabel>
+            <Select
+              labelId="demo-dialog-select-label"
+              id="demo-dialog-select"
+              value={mitID}
+              onChange={handleChange}
+              input={<OutlinedInput label="Mitarbeiter" />}
+              sx={{ height: "60px", width: "200px" }}
+            >
+              <MenuItem value={null}>
+                <em>None</em>
+              </MenuItem>
+              {mitarbeiter.map(({ MitID, MitName, MitVorname }) => (
+                <MenuItem value={MitID} key={MitID}>
+                  {MitID} - {MitName} {MitVorname}
+                </MenuItem>
+              ))}
+            </Select>
+          </FormControl>
+        </Box>
+        <Box display="flex" justifyContent="center">
+          <Button sx={{ height: "60px", width: "200px" }} variant="contained">
+            <h3>Delete</h3>
+          </Button>
+        </Box>
+      </Box>
+    </Box>
   );
 };
 
 export default Offen;
+
+/* 
+ 
+  
+
+ */

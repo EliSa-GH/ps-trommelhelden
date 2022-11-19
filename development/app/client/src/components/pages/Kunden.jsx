@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Typography } from "@mui/material";
+import { Box, CircularProgress } from "@mui/material";
 
 import { getKunden } from "../../actions/kunden";
 import Table from "../Table/Table";
@@ -20,18 +20,20 @@ const Kunden = () => {
   return (
     <>
       {kunden.length > 0 ? (
-        <Table tableHeadings={getHeadings(kunden)} tableData={kunden} />
+        <Table
+          tableHeadings={getHeadings(kunden)}
+          tableData={kunden}
+          rowID="KunNr"
+        />
       ) : (
-        <Typography
-          variant="h3"
-          sx={{
-            display: "flex",
-            justifyContent: "center",
-            fontWeight: "bold",
-          }}
+        <Box
+          height="100px"
+          display="flex"
+          justifyContent="center"
+          alignItems="center"
         >
-          Loading...
-        </Typography>
+          <CircularProgress size="75px" thickness={5} />
+        </Box>
       )}
     </>
   );
