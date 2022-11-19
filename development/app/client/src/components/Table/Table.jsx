@@ -3,7 +3,7 @@ import * as React from "react";
 import { DataGrid } from "@mui/x-data-grid";
 import { Box } from "@mui/system";
 
-const Table = ({ tableHeadings, tableData, rowID }) => {
+const Table = ({ tableHeadings, tableData, rowID, setAufNr }) => {
   const columns = tableHeadings.map((heading) => {
     if (heading === "Beschreibung") {
       return {
@@ -43,7 +43,8 @@ const Table = ({ tableHeadings, tableData, rowID }) => {
             const selectedRowData = rows.filter((row) =>
               selectedIDs.has(row.Aufnr)
             );
-            console.log(selectedRowData);
+            const selectedAufNr = selectedRowData.map((row) => row.Aufnr);
+            setAufNr(selectedAufNr);
           }}
         />
       ) : rowID === "KunNr" ? (

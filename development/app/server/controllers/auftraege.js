@@ -1,11 +1,13 @@
 import Auftrag, { ne } from "../models/Auftrag.js";
 
-export const getAuftraege = async (req, res) => {
+export const getNewAuftraege = async (req, res) => {
   try {
-    const auftraege = await Auftrag.findAll();
+    const auftraege = await Auftrag.findAll({
+      where: { MitID: req.query.MitID },
+    });
     res.status(200).json(auftraege);
   } catch (error) {
-    res.status(404).json({ message: error.message });
+    res.status(404).json({ message: error });
   }
 };
 
@@ -16,10 +18,9 @@ export const getErlAuftraege = async (req, res) => {
         ErlDat: { [ne]: null },
       },
     });
-    console.log(auftraege);
     res.status(200).json(auftraege);
   } catch (error) {
-    res.status(404).json({ message: error.message });
+    res.status(404).json({ message: error });
   }
 };
 
@@ -34,6 +35,6 @@ export const getOffenAuftraege = async (req, res) => {
     });
     res.status(200).json(auftraege);
   } catch (error) {
-    res.status(404).json({ message: error.message });
+    res.status(404).json({ message: error });
   }
 };

@@ -1,13 +1,13 @@
 import express from "express";
 import {
-  getAuftraege,
+  getNewAuftraege,
   getErlAuftraege,
   getOffenAuftraege,
 } from "../controllers/auftraege.js";
 
 const router = express.Router();
 
-router.get("/", getAuftraege);
+router.get("/", getNewAuftraege);
 router.get("/erl", getErlAuftraege);
 router.get("/offen", getOffenAuftraege);
 
