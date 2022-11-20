@@ -20,3 +20,5 @@ export const fetchMitarbeiter = () => API.get("/mitarbeiter");
 
 // Kunden API
 export const fetchKunden = () => API.get("/kunden");
+export const deleteKunde = (KunNr) =>
+  API.delete(`/kunden/delete`, { params: { KunNr: KunNr } });

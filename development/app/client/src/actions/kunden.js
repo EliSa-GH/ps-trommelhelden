@@ -8,3 +8,12 @@ export const getKunden = () => async (dispatch) => {
     console.log(error.message);
   }
 };
+
+export const deleteKunde = (KunNr) => async (dispatch) => {
+  try {
+    await api.deleteKunde(KunNr);
+    dispatch({ type: "DELETE_KUNDE", payload: KunNr });
+  } catch (error) {
+    console.log(error);
+  }
+};
