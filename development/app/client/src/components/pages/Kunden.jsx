@@ -1,11 +1,15 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Box, CircularProgress } from "@mui/material";
 
-import { getKunden } from "../../actions/kunden";
+import { useNavigate } from "react-router-dom";
+import { getKunden, deleteKunde } from "../../actions/kunden";
 import Table from "../Table/Table";
+import Progress from "../Progress/Progress";
 
 const Kunden = () => {
+  const [KunNr, setKunNr] = useState([]);
+
   const getHeadings = (data) => {
     return Object.keys(data[0]);
   };
@@ -16,24 +20,56 @@ const Kunden = () => {
     dispatch(getKunden());
   }, [dispatch]);
 
+  const handleDelete = () => {
+    
+    if(KunNr != "")
+    {
+      dispatch(deleteKunde(KunNr));
+      navigate(0);
+    }
+  };
+
   const kunden = useSelector((state) => state.kunden);
   return (
     <>
       {kunden.length > 0 ? (
-        <Table
-          tableHeadings={getHeadings(kunden)}
-          tableData={kunden}
-          rowID="KunNr"
-        />
-      ) : (
-        <Box
-          height="100px"
-          display="flex"
-          justifyContent="center"
-          alignItems="center"
-        >
-          <CircularProgress size="75px" thickness={5} />
+        <Box>
+            <Table
+              tableHeadings={getHeadings(kunden)}
+              tableData={kunden}
+              rowID="KunNr"
+              setKunNr={setKunNr}
+            />
+            <Box
+              display="flex"
+              justifyContent="right"
+              alignItems="right"
+              sx={{
+                width: "90%",
+                margin: "auto",
+                '& button': { m: 1 }
+              }}
+            >
+            <Button
+              variant="contained"
+            >
+              <h3>Kunde anlegen</h3>
+            </Button>
+            <Button
+              variant="contained"
+            >
+              <h3>Bearbeiten</h3>
+            </Button>
+            <Button
+              variant="contained"
+              onClick={handleDelete}
+            >
+              <h3>Löschen</h3>
+            </Button>
+          </Box>
         </Box>
+      ) : (
+        <Progress />
       )}
     </>
   );
