@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Box, CircularProgress } from "@mui/material";
+import { Box, Button } from "@mui/material";
 
 import { useNavigate } from "react-router-dom";
 import { getKunden, deleteKunde } from "../../actions/kunden";
@@ -13,6 +13,8 @@ const Kunden = () => {
   const getHeadings = (data) => {
     return Object.keys(data[0]);
   };
+
+  const navigate = useNavigate();
 
   const dispatch = useDispatch();
 
