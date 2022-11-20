@@ -10,11 +10,14 @@ import Progress from "../../Progress/Progress";
 
 const Auftraege = () => {
   const [AufNr, setAufNr] = useState([]);
+
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   useEffect(() => {
     dispatch(getNewAuftraege(100));
   }, [dispatch]);
 
-  const navigate = useNavigate();
   const getHeadings = (data) => {
     return Object.keys(data[0]);
   };
@@ -25,8 +28,6 @@ const Auftraege = () => {
   };
 
   const handleEdit = () => {};
-
-  const dispatch = useDispatch();
 
   const auftraege = useSelector((state) => state.auftraege);
 

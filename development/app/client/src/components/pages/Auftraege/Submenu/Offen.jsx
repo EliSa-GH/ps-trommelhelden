@@ -22,6 +22,7 @@ import Progress from "../../../Progress/Progress";
 import {
   getOffenAuftraege,
   deleteAuftrag,
+  setAuftragMitarbeiter,
 } from "../../../../actions/auftraege";
 import { getMitarbeiter } from "../../../../actions/mitarbeiter";
 
@@ -29,9 +30,8 @@ const Offen = () => {
   const [open, setOpen] = useState(false);
   const [mitID, setMitID] = useState("");
   const [AufNr, setAufNr] = useState([]);
-  const navigate = useNavigate();
 
-  console.log(AufNr);
+  const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const getHeadings = (data) => {
@@ -51,6 +51,11 @@ const Offen = () => {
     if (reason !== "backdropClick") {
       setOpen(false);
     }
+  };
+
+  const handleAssign = () => {
+    dispatch(setAuftragMitarbeiter(AufNr, mitID));
+    navigate(0);
   };
 
   const handleDelete = () => {
@@ -85,7 +90,7 @@ const Offen = () => {
               </DialogContent>
               <DialogActions>
                 <Button onClick={handleClose}>Cancel</Button>
-                <Button onClick={handleClose}>Ok</Button>
+                <Button onClick={handleAssign}>Ok</Button>
               </DialogActions>
             </Dialog>
             <Box
@@ -98,9 +103,6 @@ const Offen = () => {
                 <FormControl
                   onClick={handleClickOpen}
                   sx={{
-                    ...(AufNr.length > 1
-                      ? { display: "none" }
-                      : { disabled: false }),
                     m: 1,
                     minWidth: 120,
                   }}

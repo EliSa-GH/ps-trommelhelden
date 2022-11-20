@@ -12,6 +12,10 @@ export default (auftraege = [], action) => {
       return auftraege.filter(
         (auftrag) => auftrag.Aufnr !== action.payload.AufNr
       );
+    case "SET_AUFTRAG_MITARBEITER":
+      return auftraege.filter(
+        (auftrag) => auftrag.Aufnr !== action.payload.AufNr
+      );
     default:
       return auftraege;
   }
