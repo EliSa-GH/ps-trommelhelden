@@ -10,6 +10,7 @@ export const getKunden = () => async (dispatch) => {
 };
 
 export const deleteKunde = (KunNr) => async (dispatch) => {
+  //alert("wir sind hier");
   try {
     await api.deleteKunde(KunNr);
     dispatch({ type: "DELETE_KUNDE", payload: KunNr });

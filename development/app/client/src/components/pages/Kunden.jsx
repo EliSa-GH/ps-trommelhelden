@@ -25,9 +25,12 @@ const Kunden = () => {
     
     if(KunNr != "")
     {
-      alert(KunNr);
-      //dispatch(deleteKunde(KunNr));
-      //navigate(0);
+      //alert(KunNr);
+      dispatch(deleteKunde(KunNr));
+      navigate(0);
+    }
+    else{
+      //alert("leer");
     }
   };
 
