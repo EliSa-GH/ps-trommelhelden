@@ -317,3 +317,6 @@ dist
 .yarn/install-state.gz
 .pnp.*
 
+# settings
+development/app/server/config/database.js
+development/app/client/package.json
