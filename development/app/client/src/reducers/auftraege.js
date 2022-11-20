@@ -8,6 +8,10 @@ export default (auftraege = [], action) => {
       return action.payload;
     case "FETCH_OFFEN":
       return action.payload;
+    case "DELETE_AUFTRAG":
+      return auftraege.filter(
+        (auftrag) => auftrag.Aufnr !== action.payload.AufNr
+      );
     default:
       return auftraege;
   }

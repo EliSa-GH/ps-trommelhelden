@@ -8,7 +8,7 @@ export const fetchNewAuftraege = (MitID) =>
 export const fetchErlAuftraege = () => API.get("/auftraege/erl");
 export const fetchOffenAuftraege = () => API.get("/auftraege/offen");
 export const deleteAuftrag = (AufNr) =>
-  API.delete(`/auftraege/`, { params: { AufNr: AufNr } });
+  API.delete(`/auftraege/delete`, { params: { AufNr: AufNr } });
 
 // Mitarbeiter API
 export const fetchMitarbeiter = () => API.get("/mitarbeiter");

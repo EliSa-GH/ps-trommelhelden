@@ -12,10 +12,13 @@ import {
   Select,
   OutlinedInput,
   MenuItem,
-  CircularProgress,
 } from "@mui/material";
 import { useSelector, useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+
 import Table from "../../../Table/Table";
+import Progress from "../../../Progress/Progress";
+
 import {
   getOffenAuftraege,
   deleteAuftrag,
@@ -26,6 +29,7 @@ const Offen = () => {
   const [open, setOpen] = useState(false);
   const [mitID, setMitID] = useState("");
   const [AufNr, setAufNr] = useState([]);
+  const navigate = useNavigate();
 
   console.log(AufNr);
   const dispatch = useDispatch();
@@ -51,6 +55,7 @@ const Offen = () => {
 
   const handleDelete = () => {
     dispatch(deleteAuftrag(AufNr));
+    navigate(0);
   };
 
   useEffect(() => {
@@ -126,21 +131,15 @@ const Offen = () => {
                 <Button
                   sx={{ height: "60px", width: "200px" }}
                   variant="contained"
+                  onClick={handleDelete}
                 >
-                  <h3 onClick={handleDelete}>Delete</h3>
+                  <h3>Delete</h3>
                 </Button>
               </Box>
             </Box>
           </>
         ) : (
-          <Box
-            height="100px"
-            display="flex"
-            justifyContent="center"
-            alignItems="center"
-          >
-            <CircularProgress size="75px" thickness={5} />
-          </Box>
+          <Progress />
         )}
       </Box>
     </Box>

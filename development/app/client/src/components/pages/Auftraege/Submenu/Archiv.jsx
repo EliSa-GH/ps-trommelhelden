@@ -1,20 +1,26 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
-import { Box, CircularProgress, Button } from "@mui/material";
+import { Box, Button } from "@mui/material";
 
 import Table from "../../../Table/Table";
-import { getErlAuftraege } from "../../../../actions/auftraege";
+import Progress from "../../../Progress/Progress";
+import { getErlAuftraege, deleteAuftrag } from "../../../../actions/auftraege";
 
 const Archiv = () => {
   const [AufNr, setAufNr] = useState([]);
-  console.log(AufNr);
+
+  const navigate = useNavigate();
 
   const getHeadings = (data) => {
     return Object.keys(data[0]);
   };
 
-  const handleDelete = () => {};
+  const handleDelete = () => {
+    dispatch(deleteAuftrag(AufNr));
+    navigate(0);
+  };
 
   const handleEdit = () => {};
 
@@ -52,20 +58,14 @@ const Archiv = () => {
             <Button
               sx={{ height: "60px", width: "200px", marginLeft: "10px" }}
               variant="contained"
+              onClick={handleDelete}
             >
-              <h3 onClick={handleDelete}>Delete</h3>
+              <h3>Delete</h3>
             </Button>
           </Box>
         </>
       ) : (
-        <Box
-          height="100px"
-          display="flex"
-          justifyContent="center"
-          alignItems="center"
-        >
-          <CircularProgress size="75px" thickness={5} />
-        </Box>
+        <Progress />
       )}
     </Box>
   );

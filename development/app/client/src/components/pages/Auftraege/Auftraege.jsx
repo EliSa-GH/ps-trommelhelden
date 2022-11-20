@@ -1,19 +1,28 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import { useDispatch, useSelector } from "react-redux";
 import Table from "../../Table/Table";
-import { TextField, Box, CircularProgress, Button } from "@mui/material";
+import { TextField, Box, Button } from "@mui/material";
 
-import { getNewAuftraege } from "../../../actions/auftraege";
+import { useNavigate } from "react-router-dom";
+import { getNewAuftraege, deleteAuftrag } from "../../../actions/auftraege";
+import Progress from "../../Progress/Progress";
 
 const Auftraege = () => {
   const [AufNr, setAufNr] = useState([]);
-  console.log(AufNr);
+  useEffect(() => {
+    dispatch(getNewAuftraege(100));
+  }, [dispatch]);
+
+  const navigate = useNavigate();
   const getHeadings = (data) => {
     return Object.keys(data[0]);
   };
 
-  const handleDelete = () => {};
+  const handleDelete = () => {
+    dispatch(deleteAuftrag(AufNr));
+    navigate(0);
+  };
 
   const handleEdit = () => {};
 
@@ -68,20 +77,14 @@ const Auftraege = () => {
             <Button
               sx={{ height: "60px", width: "200px", marginLeft: "10px" }}
               variant="contained"
+              onClick={handleDelete}
             >
-              <h3 onClick={handleDelete}>Delete</h3>
+              <h3>Delete</h3>
             </Button>
           </Box>
         </>
       ) : (
-        <Box
-          height="100px"
-          display="flex"
-          justifyContent="center"
-          alignItems="center"
-        >
-          <CircularProgress size="75px" thickness={5} />
-        </Box>
+        <Progress />
       )}
     </Box>
   );

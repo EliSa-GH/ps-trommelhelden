@@ -1,5 +1,5 @@
 import { Sequelize } from "sequelize";
-export const { gt, lte, ne } = Sequelize.Op;
+export const { gt, lte, ne, contains } = Sequelize.Op;
 
 import db from "../config/database.js";
 
