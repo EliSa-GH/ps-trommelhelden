@@ -10,11 +10,10 @@ import Progress from "../Progress/Progress";
 const Kunden = () => {
   const [KunNr, setKunNr] = useState([]);
 
+  const navigate = useNavigate();
   const getHeadings = (data) => {
     return Object.keys(data[0]);
   };
-
-  const navigate = useNavigate();
 
   const dispatch = useDispatch();
 
@@ -23,16 +22,13 @@ const Kunden = () => {
   }, [dispatch]);
 
   const handleDelete = () => {
-    alert(KunNr);
-    // if(KunNr )
-    // {
-    //   alert("leer");
-    //   // dispatch(deleteKunde(KunNr));
-    //   // navigate(0);
-    // }
-    // else{
-    //   alert(KunNr);
-    // }
+    
+    if(KunNr != "")
+    {
+      alert(KunNr);
+      //dispatch(deleteKunde(KunNr));
+      //navigate(0);
+    }
   };
 
   const kunden = useSelector((state) => state.kunden);
@@ -40,22 +36,22 @@ const Kunden = () => {
     <>
       {kunden.length > 0 ? (
         <Box>
-            <Table
-              tableHeadings={getHeadings(kunden)}
-              tableData={kunden}
-              rowID="KunNr"
-              setKunNr={setKunNr}
-            />
-            <Box
-              display="flex"
-              justifyContent="right"
-              alignItems="right"
-              sx={{
-                width: "90%",
-                margin: "auto",
-                '& button': { m: 1 }
-              }}
-            >
+          <Table
+          tableHeadings={getHeadings(kunden)}
+          tableData={kunden}
+          rowID="KunNr"
+          setKunNr={setKunNr}
+          />
+          <Box
+            display="flex"
+            justifyContent="right"
+            alignItems="right"
+            sx={{
+              width: "90%",
+              margin: "auto",
+              '& button': { m: 1 }
+            }}
+          >
             <Button
               variant="contained"
             >
