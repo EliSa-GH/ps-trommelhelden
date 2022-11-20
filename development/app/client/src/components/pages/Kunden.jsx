@@ -23,12 +23,16 @@ const Kunden = () => {
   }, [dispatch]);
 
   const handleDelete = () => {
-    
-    if(KunNr != "")
-    {
-      dispatch(deleteKunde(KunNr));
-      navigate(0);
-    }
+    alert(KunNr);
+    // if(KunNr )
+    // {
+    //   alert("leer");
+    //   // dispatch(deleteKunde(KunNr));
+    //   // navigate(0);
+    // }
+    // else{
+    //   alert(KunNr);
+    // }
   };
 
   const kunden = useSelector((state) => state.kunden);
