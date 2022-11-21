@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 
 import { useDispatch, useSelector } from "react-redux";
 import Table from "../../Table/Table";
@@ -13,10 +13,6 @@ const Auftraege = () => {
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
-  useEffect(() => {
-    dispatch(getNewAuftraege(100));
-  }, [dispatch]);
 
   const getHeadings = (data) => {
     return Object.keys(data[0]);
@@ -54,7 +50,7 @@ const Auftraege = () => {
           />
         </form>
       </Box>
-      {auftraege.length > 0 ? (
+      {auftraege.length > 0 && getHeadings(auftraege).length > 5 ? (
         <>
           <Table
             tableHeadings={getHeadings(auftraege)}
