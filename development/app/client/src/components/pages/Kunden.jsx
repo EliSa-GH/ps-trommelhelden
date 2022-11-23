@@ -27,7 +27,7 @@ const Kunden = () => {
     {
       //alert(KunNr);
       dispatch(deleteKunde(KunNr));
-      //navigate(0);
+      navigate(0);
     }
     else{
       //alert("leer");

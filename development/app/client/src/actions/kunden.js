@@ -5,7 +5,7 @@ export const getKunden = () => async (dispatch) => {
     const { data } = await api.fetchKunden();
     dispatch({ type: "FETCH_ALL_KUNDEN", payload: data });
   } catch (error) {
-    console.log(error.message);
+    console.log(error);
   }
 };
 

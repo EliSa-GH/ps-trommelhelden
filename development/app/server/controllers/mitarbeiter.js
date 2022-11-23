@@ -10,10 +10,10 @@ export const getMitarbeiter = async (req, res) => {
 };
 
 export const deleteMitarbeiter = async (req, res) => {
-  alert('hi');
+
   try {
     console.log(req.query);
-    const mitarbeiter = await Mitarbeiter.findAll({
+    const mitarbeiter = await Mitarbeiter.destroy({
       where: { MitID: req.query.MitID },
     });
     
