@@ -3,7 +3,7 @@ import * as React from "react";
 import { DataGrid } from "@mui/x-data-grid";
 import { Box } from "@mui/system";
 
-const Table = ({ tableHeadings, tableData, rowID, setAufNr, setKunNr }) => {
+const Table = ({ tableHeadings, tableData, rowID, setAufNr, setKunNr, setMitID }) => {
   const columns = tableHeadings.map((heading) => {
     if (heading === "Beschreibung") {
       return {
@@ -64,7 +64,24 @@ const Table = ({ tableHeadings, tableData, rowID, setAufNr, setKunNr }) => {
             setKunNr(selectedKunNr);
           }}
         />
-      ) : (
+        ) : rowID === "MitID" ? (
+          <DataGrid
+            rows={rows}
+            columns={columns}
+            pageSize={5}
+            rowsPerPageOptions={[5]}
+            checkboxSelection
+            getRowId={(row) => row.MitID}
+            onSelectionModelChange={(ids) => {
+              const selectedIDs = new Set(ids);
+              const selectedRowData = rows.filter((row) =>
+                selectedIDs.has(row.MitID)
+              );
+              const selectedMitID = selectedRowData.map((row) => row.MitID);
+              setMitID(selectedMitID);
+            }}
+          />
+        ) : (
         <DataGrid
             rows={rows}
             columns={columns}
