@@ -3,7 +3,13 @@ import * as React from "react";
 import { DataGrid } from "@mui/x-data-grid";
 import { Box } from "@mui/system";
 
-const Table = ({ tableHeadings, tableData, rowID, setAufNr, setKunNr }) => {
+const Table = ({
+  tableHeadings,
+  tableData,
+  rowID,
+  setSelectedAuftraege,
+  setKunNr,
+}) => {
   const columns = tableHeadings.map((heading) => {
     if (heading === "Beschreibung") {
       return {
@@ -43,8 +49,7 @@ const Table = ({ tableHeadings, tableData, rowID, setAufNr, setKunNr }) => {
             const selectedRowData = rows.filter((row) =>
               selectedIDs.has(row.Aufnr)
             );
-            const selectedAufNr = selectedRowData.map((row) => row.Aufnr);
-            setAufNr(selectedAufNr);
+            setSelectedAuftraege(selectedRowData);
           }}
         />
       ) : rowID === "KunNr" ? (
@@ -66,17 +71,17 @@ const Table = ({ tableHeadings, tableData, rowID, setAufNr, setKunNr }) => {
         />
       ) : (
         <DataGrid
-            rows={rows}
-            columns={columns}
-            pageSize={5}
-            rowsPerPageOptions={[5]}
-            checkboxSelection
-            getRowId={(row) => row.KunNr}
-            onSelectionModelChange={(ids) => {
-              const selectedIDs = new Set(ids);
-              const selectedRowData = rows.filter((row) =>
-                selectedIDs.has(row.KunNr)
-              );
+          rows={rows}
+          columns={columns}
+          pageSize={5}
+          rowsPerPageOptions={[5]}
+          checkboxSelection
+          getRowId={(row) => row.KunNr}
+          onSelectionModelChange={(ids) => {
+            const selectedIDs = new Set(ids);
+            const selectedRowData = rows.filter((row) =>
+              selectedIDs.has(row.KunNr)
+            );
             const selectedKunNr = selectedRowData.map((row) => row.KunNr);
             setKunNr(selectedKunNr);
           }}

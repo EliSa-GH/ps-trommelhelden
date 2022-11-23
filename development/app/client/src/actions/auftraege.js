@@ -5,7 +5,7 @@ export const getNewAuftraege = (MitID) => async (dispatch) => {
     const { data } = await api.fetchNewAuftraege(MitID);
     dispatch({ type: "FETCH_NEW", payload: data });
   } catch (error) {
-    console.log(error.message);
+    console.log(error);
   }
 };
 

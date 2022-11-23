@@ -9,7 +9,19 @@ import { getNewAuftraege, deleteAuftrag } from "../../../actions/auftraege";
 import Progress from "../../Progress/Progress";
 
 const Auftraege = () => {
-  const [AufNr, setAufNr] = useState([]);
+  const [selectedAuftraege, setSelectedAuftraege] = useState([
+    {
+      Aufnr: 0,
+      MitID: 0,
+      KunNr: 0,
+      AufDat: "",
+      ErlDat: "",
+      Dauer: 0,
+      Anfahrt: 0,
+      Beschreibung: "",
+    },
+  ]);
+  const [MitID, setMitID] = useState("");
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -19,7 +31,7 @@ const Auftraege = () => {
   };
 
   const handleDelete = () => {
-    dispatch(deleteAuftrag(AufNr));
+    dispatch(deleteAuftrag(selectedAuftraege.map((auftrag) => auftrag.Aufnr)));
     navigate(0);
   };
 
@@ -39,7 +51,7 @@ const Auftraege = () => {
         <form
           onSubmit={(e) => {
             e.preventDefault();
-            dispatch(getNewAuftraege(e.target[0].value));
+            dispatch(getNewAuftraege(MitID));
           }}
         >
           <TextField
@@ -47,6 +59,8 @@ const Auftraege = () => {
             required
             label="Employee's ID"
             sx={{ marginBottom: "20px" }}
+            onChange={(e) => setMitID(e.target.value)}
+            value={MitID}
           />
         </form>
       </Box>
@@ -56,7 +70,7 @@ const Auftraege = () => {
             tableHeadings={getHeadings(auftraege)}
             tableData={auftraege}
             rowID="Aufnr"
-            setAufNr={setAufNr}
+            setSelectedAuftraege={setSelectedAuftraege}
           />
           <Box
             display="flex"
@@ -65,7 +79,9 @@ const Auftraege = () => {
             marginRight={12}
           >
             <Button
-              {...(AufNr.length > 1 ? { disabled: true } : { disabled: false })}
+              {...(selectedAuftraege.length > 1
+                ? { disabled: true }
+                : { disabled: false })}
               sx={{ height: "60px", width: "200px", marginRight: "10px" }}
               variant="contained"
             >

@@ -18,6 +18,7 @@ import { useNavigate } from "react-router-dom";
 
 import Table from "../../../Table/Table";
 import Progress from "../../../Progress/Progress";
+import AuftragForm from "../AuftragForm/AuftragForm";
 
 import {
   getOffenAuftraege,
@@ -29,7 +30,7 @@ import { getMitarbeiter } from "../../../../actions/mitarbeiter";
 const Offen = () => {
   const [open, setOpen] = useState(false);
   const [mitID, setMitID] = useState("");
-  const [AufNr, setAufNr] = useState([]);
+  const [selectedAuftraege, setSelectedAuftraege] = useState([]);
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -44,7 +45,9 @@ const Offen = () => {
   };
 
   const handleClickOpen = () => {
-    setOpen(true);
+    if (selectedAuftraege.length > 0) {
+      setOpen(true);
+    }
   };
 
   const handleClose = (event, reason) => {
@@ -54,12 +57,16 @@ const Offen = () => {
   };
 
   const handleAssign = () => {
-    dispatch(setAuftragMitarbeiter(AufNr, mitID));
+    dispatch(
+      setAuftragMitarbeiter(
+        (selectedAuftraege.map((auftrag) => auftrag.Aufnr), mitID)
+      )
+    );
     navigate(0);
   };
 
   const handleDelete = () => {
-    dispatch(deleteAuftrag(AufNr));
+    dispatch(deleteAuftrag(selectedAuftraege.map((auftrag) => auftrag.Aufnr)));
     navigate(0);
   };
 
@@ -79,7 +86,7 @@ const Offen = () => {
               tableHeadings={getHeadings(offenAuftraege)}
               tableData={offenAuftraege}
               rowID="Aufnr"
-              setAufNr={setAufNr}
+              setSelectedAuftraege={setSelectedAuftraege}
             />{" "}
             <Dialog disableEscapeKeyDown open={open} onClose={handleClose}>
               <DialogContent>
@@ -101,6 +108,7 @@ const Offen = () => {
             >
               <Box component="form" sx={{ display: "flex", flexWrap: "wrap" }}>
                 <FormControl
+                  disabled={selectedAuftraege.length === 0}
                   onClick={handleClickOpen}
                   sx={{
                     m: 1,
