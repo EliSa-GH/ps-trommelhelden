@@ -69,6 +69,23 @@ const Table = ({
             setKunNr(selectedKunNr);
           }}
         />
+      ) : rowID === "MitID" ? (
+        <DataGrid
+          rows={rows}
+          columns={columns}
+          pageSize={5}
+          rowsPerPageOptions={[5]}
+          checkboxSelection
+          getRowId={(row) => row.MitID}
+          onSelectionModelChange={(ids) => {
+            const selectedIDs = new Set(ids);
+            const selectedRowData = rows.filter((row) =>
+              selectedIDs.has(row.MitID)
+            );
+            const selectedMitID = selectedRowData.map((row) => row.MitID);
+            setMitID(selectedMitID);
+          }}
+        />
       ) : (
         <DataGrid
           rows={rows}

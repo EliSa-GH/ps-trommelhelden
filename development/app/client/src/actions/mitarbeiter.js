@@ -8,3 +8,13 @@ export const getMitarbeiter = () => async (dispatch) => {
     console.log(error.message);
   }
 };
+
+export const deleteMitarbeiter = (MitID) => async (dispatch) => {
+  //alert("wir sind hier");
+   try {
+    await api.deleteMitarbeiter(MitID);
+    dispatch({ type: "DELETE_MITARBEITER", payload: MitID });
+  } catch (error) {
+    console.log(error);
+  }
+};
