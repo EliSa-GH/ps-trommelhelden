@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
-import { Box, Button, Dialog, DialogTitle } from "@mui/material";
+import { Box, Button } from "@mui/material";
 
 import Table from "../../../Table/Table";
 import Progress from "../../../Progress/Progress";
@@ -10,8 +10,9 @@ import { getErlAuftraege, deleteAuftrag } from "../../../../actions/auftraege";
 import AuftragForm from "../AuftragForm/AuftragForm";
 
 const Archiv = () => {
-  const [selectedAuftraege, setSelectedAuftraege] = useState([]);
+  const [selectedAuftraege, setSelectedAuftraege] = useState([{}]);
   const [open, setOpen] = useState(false);
+
   const navigate = useNavigate();
 
   const getHeadings = (data) => {
@@ -20,10 +21,7 @@ const Archiv = () => {
 
   const handleClickOpen = () => {
     setOpen(true);
-  };
-
-  const handleClose = () => {
-    setOpen(false);
+    console.log(selectedAuftraege);
   };
 
   const handleDelete = () => {
@@ -31,9 +29,7 @@ const Archiv = () => {
     navigate(0);
   };
 
-  const handleEdit = () => {
-    console.log(selectedAuftraege);
-  };
+  const handleEdit = () => {};
 
   const dispatch = useDispatch();
 
@@ -81,13 +77,14 @@ const Archiv = () => {
       ) : (
         <Progress />
       )}
-      <Dialog fullWidth open={open} onClose={handleClose} maxWidth="sm">
-        <DialogTitle>Editing Job</DialogTitle>
+      {open && (
         <AuftragForm
           selectedAuftraege={selectedAuftraege}
           setSelectedAuftraege={setSelectedAuftraege}
+          open={open}
+          setOpen={setOpen}
         />
-      </Dialog>
+      )}
     </Box>
   );
 };
