@@ -10,7 +10,6 @@ export const getMitarbeiter = () => async (dispatch) => {
 };
 
 export const deleteMitarbeiter = (MitID) => async (dispatch) => {
-  //alert("wir sind hier");
    try {
     await api.deleteMitarbeiter(MitID);
     dispatch({ type: "DELETE_MITARBEITER", payload: MitID });

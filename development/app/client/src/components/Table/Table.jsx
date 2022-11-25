@@ -8,6 +8,8 @@ const Table = ({
   tableData,
   rowID,
   setSelectedAuftraege,
+  setSelectedKunde,
+  setSelectedMitarbeiter,
   setKunNr,
   setMitID,
 }) => {
@@ -66,8 +68,7 @@ const Table = ({
             const selectedRowData = rows.filter((row) =>
               selectedIDs.has(row.KunNr)
             );
-            const selectedKunNr = selectedRowData.map((row) => row.KunNr);
-            setKunNr(selectedKunNr);
+            setSelectedKunde(selectedRowData);
           }}
         />
       ) : rowID === "MitID" ? (
@@ -83,8 +84,7 @@ const Table = ({
             const selectedRowData = rows.filter((row) =>
               selectedIDs.has(row.MitID)
             );
-            const selectedMitID = selectedRowData.map((row) => row.MitID);
-            setMitID(selectedMitID);
+            setSelectedMitarbeiter(selectedRowData);
           }}
         />
       ) : (
