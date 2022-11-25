@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { TextField, Button, Box } from "@mui/material";
+import React, { useEffect, useState } from "react";
+import { TextField, Box } from "@mui/material";
 import dayjs from "dayjs";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { DesktopDatePicker, LocalizationProvider } from "@mui/x-date-pickers";
@@ -7,24 +7,20 @@ import { DesktopDatePicker, LocalizationProvider } from "@mui/x-date-pickers";
 const AuftragForm = ({ selectedAuftraege, setSelectedAuftraege }) => {
   const { Aufnr, MitID, KunNr, AufDat, ErlDat, Dauer, Anfahrt, Beschreibung } =
     selectedAuftraege[0];
+  useEffect(() => {
+    if (AufDat === "") {
+      setValue({ ...value, AufDat: dayjs().format("YYYY-MM-DD") });
+    }
+  }, []);
   const [value, setValue] = useState({
-    AufDat: dayjs(
-      AufDat === ""
-        ? setSelectedAuftraege([
-            {
-              ...selectedAuftraege[0],
-              AufDat: new Date().toLocaleDateString("pt-PT"),
-            },
-          ])
-        : AufDat
-    ),
+    AufDat: dayjs(AufDat),
     ErlDat: dayjs(ErlDat),
   });
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setSelectedAuftraege([{ ...selectedAuftraege[0], [name]: value }]);
-    console.log(selectedAuftraege);
+    console.log(selectedAuftraege[0]);
   };
 
   return (

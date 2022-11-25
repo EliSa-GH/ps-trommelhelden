@@ -10,6 +10,7 @@ import {
   DialogActions,
   DialogContent,
   DialogTitle,
+  Typography,
 } from "@mui/material";
 
 import { useNavigate } from "react-router-dom";
@@ -18,20 +19,10 @@ import Progress from "../../Progress/Progress";
 import AuftragForm from "./AuftragForm/AuftragForm";
 
 const Auftraege = () => {
-  const [selectedAuftraege, setSelectedAuftraege] = useState([
-    {
-      Aufnr: 0,
-      MitID: 0,
-      KunNr: 0,
-      AufDat: "",
-      ErlDat: "",
-      Dauer: 0,
-      Anfahrt: 0,
-      Beschreibung: "",
-    },
-  ]);
+  const [selectedAuftraege, setSelectedAuftraege] = useState([]);
   const [MitID, setMitID] = useState("");
-  const [open, setOpen] = useState(false);
+  const [openEdit, setOpenEdit] = useState(false);
+  const [openDelete, setOpenDelete] = useState(false);
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -40,20 +31,19 @@ const Auftraege = () => {
     return Object.keys(data[0]);
   };
 
-  const handleClickOpen = () => {
-    setOpen(true);
-    console.log(selectedAuftraege);
+  const handleOpenEdit = () => {
+    setOpenEdit(true);
+  };
+  const handleOpenDelete = () => {
+    setOpenDelete(true);
   };
   const handleClose = () => {
-    setOpen(false);
+    setOpenEdit(false);
+    setOpenDelete(false);
   };
   const handleDelete = () => {
     dispatch(deleteAuftrag(selectedAuftraege.map((auftrag) => auftrag.Aufnr)));
     navigate(0);
-  };
-
-  const handleEdit = () => {
-    handleClickOpen();
   };
 
   const auftraege = useSelector((state) => state.auftraege);
@@ -103,13 +93,14 @@ const Auftraege = () => {
                 : { disabled: false })}
               sx={{ height: "60px", width: "200px", marginRight: "10px" }}
               variant="contained"
+              onClick={handleOpenEdit}
             >
-              <h3 onClick={handleEdit}>Edit</h3>
+              <h3>Edit</h3>
             </Button>
             <Button
               sx={{ height: "60px", width: "200px", marginLeft: "10px" }}
               variant="contained"
-              onClick={handleDelete}
+              onClick={handleOpenDelete}
             >
               <h3>Delete</h3>
             </Button>
@@ -118,7 +109,7 @@ const Auftraege = () => {
       ) : (
         <Progress />
       )}
-      <Dialog open={open} onClose={handleClose}>
+      <Dialog open={openEdit} onClose={handleClose}>
         <DialogTitle>Edit</DialogTitle>
         <DialogContent>
           <AuftragForm
@@ -130,6 +121,33 @@ const Auftraege = () => {
           <Box display="flex" justifyContent="flex-end">
             <Button
               onClick={() => console.log(selectedAuftraege)}
+              variant="contained"
+              sx={{ margin: "5px" }}
+            >
+              Confirm
+            </Button>
+            <Button
+              onClick={handleClose}
+              variant="contained"
+              sx={{ margin: "5px" }}
+            >
+              Cancel
+            </Button>
+          </Box>
+        </DialogActions>
+      </Dialog>
+      <Dialog open={openDelete} onClose={handleClose}>
+        <DialogTitle>Delete</DialogTitle>
+        <DialogContent>
+          <Typography variant="h6">
+            Are you sure you want to delete these job(s) with number:
+            {selectedAuftraege.map((auftrag) => ` [${auftrag.Aufnr}] `)} ?
+          </Typography>
+        </DialogContent>
+        <DialogActions>
+          <Box display="flex" justifyContent="flex-end">
+            <Button
+              onClick={handleDelete}
               variant="contained"
               sx={{ margin: "5px" }}
             >

@@ -22,15 +22,9 @@ const Kunden = () => {
   }, [dispatch]);
 
   const handleDelete = () => {
-    
-    if(KunNr != "")
-    {
-      //alert(KunNr);
+    if (KunNr.length > 0) {
       dispatch(deleteKunde(KunNr));
       navigate(0);
-    }
-    else{
-      //alert("leer");
     }
   };
 
@@ -40,10 +34,10 @@ const Kunden = () => {
       {kunden.length > 0 ? (
         <Box>
           <Table
-          tableHeadings={getHeadings(kunden)}
-          tableData={kunden}
-          rowID="KunNr"
-          setKunNr={setKunNr}
+            tableHeadings={getHeadings(kunden)}
+            tableData={kunden}
+            rowID="KunNr"
+            setKunNr={setKunNr}
           />
           <Box
             display="flex"
@@ -52,23 +46,16 @@ const Kunden = () => {
             sx={{
               width: "90%",
               margin: "auto",
-              '& button': { m: 1 }
+              "& button": { m: 1 },
             }}
           >
-            <Button
-              variant="contained"
-            >
+            <Button variant="contained">
               <h3>Kunde anlegen</h3>
             </Button>
-            <Button
-              variant="contained"
-            >
+            <Button variant="contained">
               <h3>Bearbeiten</h3>
             </Button>
-            <Button
-              variant="contained"
-              onClick={handleDelete}
-            >
+            <Button variant="contained" onClick={handleDelete}>
               <h3>Löschen</h3>
             </Button>
           </Box>
