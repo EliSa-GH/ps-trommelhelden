@@ -4,6 +4,7 @@ import {
   Box,
   Typography,
   Dialog,
+  DialogTitle,
   DialogActions,
   DialogContent,
   Button,
@@ -28,8 +29,9 @@ import { getMitarbeiter } from "../../../../actions/mitarbeiter";
 
 const Offen = () => {
   const [open, setOpen] = useState(false);
+  const [openDelete, setOpenDelete] = useState(false);
   const [mitID, setMitID] = useState("");
-  const [AufNr, setAufNr] = useState([]);
+  const [selectedAuftraege, setSelectedAuftraege] = useState([]);
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -44,23 +46,37 @@ const Offen = () => {
   };
 
   const handleClickOpen = () => {
-    setOpen(true);
+    if (selectedAuftraege.length > 0) {
+      setOpen(true);
+    }
+  };
+  const handleOpenDelete = () => {
+    setOpenDelete(true);
   };
 
   const handleClose = (event, reason) => {
     if (reason !== "backdropClick") {
       setOpen(false);
     }
+    setOpenDelete(false);
   };
 
   const handleAssign = () => {
-    dispatch(setAuftragMitarbeiter(AufNr, mitID));
+    dispatch(
+      setAuftragMitarbeiter(
+        (selectedAuftraege.map((auftrag) => auftrag.Aufnr), mitID)
+      )
+    );
     navigate(0);
   };
 
   const handleDelete = () => {
-    dispatch(deleteAuftrag(AufNr));
-    navigate(0);
+    if (selectedAuftraege.length > 0) {
+      dispatch(
+        deleteAuftrag(selectedAuftraege.map((auftrag) => auftrag.Aufnr))
+      );
+      navigate(0);
+    }
   };
 
   useEffect(() => {
@@ -79,7 +95,7 @@ const Offen = () => {
               tableHeadings={getHeadings(offenAuftraege)}
               tableData={offenAuftraege}
               rowID="Aufnr"
-              setAufNr={setAufNr}
+              setSelectedAuftraege={setSelectedAuftraege}
             />{" "}
             <Dialog disableEscapeKeyDown open={open} onClose={handleClose}>
               <DialogContent>
@@ -101,6 +117,7 @@ const Offen = () => {
             >
               <Box component="form" sx={{ display: "flex", flexWrap: "wrap" }}>
                 <FormControl
+                  disabled={selectedAuftraege.length === 0}
                   onClick={handleClickOpen}
                   sx={{
                     m: 1,
@@ -133,7 +150,7 @@ const Offen = () => {
                 <Button
                   sx={{ height: "60px", width: "200px" }}
                   variant="contained"
-                  onClick={handleDelete}
+                  onClick={handleOpenDelete}
                 >
                   <h3>Delete</h3>
                 </Button>
@@ -144,6 +161,33 @@ const Offen = () => {
           <Progress />
         )}
       </Box>
+      <Dialog open={openDelete} onClose={handleClose}>
+        <DialogTitle>Delete</DialogTitle>
+        <DialogContent>
+          <Typography variant="h6">
+            Are you sure you want to delete these job(s) with number:
+            {selectedAuftraege.map((auftrag) => ` [${auftrag.Aufnr}] `)} ?
+          </Typography>
+        </DialogContent>
+        <DialogActions>
+          <Box display="flex" justifyContent="flex-end">
+            <Button
+              onClick={handleDelete}
+              variant="contained"
+              sx={{ margin: "5px" }}
+            >
+              Confirm
+            </Button>
+            <Button
+              onClick={handleClose}
+              variant="contained"
+              sx={{ margin: "5px" }}
+            >
+              Cancel
+            </Button>
+          </Box>
+        </DialogActions>
+      </Dialog>
     </Box>
   );
 };

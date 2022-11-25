@@ -9,7 +9,7 @@ import Progress from "../Progress/Progress";
 
 const Mitarbeiter = () => {
   const [MitID, setMitID] = useState([]);
-  
+
   const navigate = useNavigate();
   const getHeadings = (data) => {
     return Object.keys(data[0]);
@@ -22,15 +22,9 @@ const Mitarbeiter = () => {
   }, [dispatch]);
 
   const handleDelete = () => {
-    
-    if(MitID != "")
-    {
-      //alert(MitID);
+    if (MitID.length > 0) {
       dispatch(deleteMitarbeiter(MitID));
       navigate(0);
-    }
-    else{
-      //alert("leer");
     }
   };
 
@@ -40,10 +34,10 @@ const Mitarbeiter = () => {
       {mitarbeiter.length > 0 ? (
         <Box>
           <Table
-          tableHeadings={getHeadings(mitarbeiter)}
-          tableData={mitarbeiter}
-          rowID="MitID"
-          setMitID={setMitID}
+            tableHeadings={getHeadings(mitarbeiter)}
+            tableData={mitarbeiter}
+            rowID="MitID"
+            setMitID={setMitID}
           />
           <Box
             display="flex"
@@ -52,23 +46,16 @@ const Mitarbeiter = () => {
             sx={{
               width: "90%",
               margin: "auto",
-              '& button': { m: 1 }
+              "& button": { m: 1 },
             }}
           >
-            <Button
-              variant="contained"
-            >
+            <Button variant="contained">
               <h3>Mitarbeiter anlegen</h3>
             </Button>
-            <Button
-              variant="contained"
-            >
+            <Button variant="contained">
               <h3>Bearbeiten</h3>
             </Button>
-            <Button
-              variant="contained"
-              onClick={handleDelete}
-            >
+            <Button variant="contained" onClick={handleDelete}>
               <h3>Löschen</h3>
             </Button>
           </Box>
