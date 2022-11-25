@@ -14,7 +14,11 @@ import {
 } from "@mui/material";
 
 import { useNavigate } from "react-router-dom";
-import { getNewAuftraege, deleteAuftrag } from "../../../actions/auftraege";
+import {
+  getNewAuftraege,
+  deleteAuftrag,
+  editAuftrag,
+} from "../../../actions/auftraege";
 import Progress from "../../Progress/Progress";
 import AuftragForm from "./AuftragForm/AuftragForm";
 
@@ -42,7 +46,15 @@ const Auftraege = () => {
     setOpenDelete(false);
   };
   const handleDelete = () => {
-    dispatch(deleteAuftrag(selectedAuftraege.map((auftrag) => auftrag.Aufnr)));
+    if (selectedAuftraege.length > 0) {
+      dispatch(
+        deleteAuftrag(selectedAuftraege.map((auftrag) => auftrag.Aufnr))
+      );
+      navigate(0);
+    }
+  };
+  const handleEdit = () => {
+    dispatch(editAuftrag(selectedAuftraege));
     navigate(0);
   };
 
@@ -120,7 +132,7 @@ const Auftraege = () => {
         <DialogActions>
           <Box display="flex" justifyContent="flex-end">
             <Button
-              onClick={() => console.log(selectedAuftraege)}
+              onClick={handleEdit}
               variant="contained"
               sx={{ margin: "5px" }}
             >

@@ -77,3 +77,35 @@ export const setAuftragMitarbeiter = async (req, res) => {
     res.status(404).json({ message: error });
   }
 };
+
+export const editAuftrag = async (req, res) => {
+  try {
+    const selectedAuftrag = await req.body.params.selectedAuftrag;
+
+    const auftrag = await Auftrag.findAll({
+      where: { Aufnr: selectedAuftrag[0].Aufnr },
+    });
+
+    console.log(auftrag);
+    if (auftrag.length > 0) {
+      Auftrag.update(
+        {
+          Aufnr: selectedAuftrag[0].Aufnr,
+          KunNr: selectedAuftrag[0].KunNr,
+          MitID: selectedAuftrag[0].MitID,
+          AufDat: selectedAuftrag[0].AufDat,
+          ErlDat: selectedAuftrag[0].AufDat,
+          Dauer: selectedAuftrag[0].Dauer,
+          Anfahrt: selectedAuftrag[0].Anfahrt,
+          Beschreibung: selectedAuftrag[0].Beschreibung,
+        },
+        { where: { Aufnr: selectedAuftrag[0].Aufnr } }
+      );
+      res.status(200).json({ message: "Update erfolgreich" });
+    } else {
+      res.status(404).json({ message: "Auftraege existieren nicht" });
+    }
+  } catch (error) {
+    res.status(404).json({ message: error });
+  }
+};
