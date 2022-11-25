@@ -2,7 +2,14 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
-import { Box, Button } from "@mui/material";
+import {
+  Box,
+  Button,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogTitle,
+} from "@mui/material";
 
 import Table from "../../../Table/Table";
 import Progress from "../../../Progress/Progress";
@@ -22,6 +29,9 @@ const Archiv = () => {
   const handleClickOpen = () => {
     setOpen(true);
     console.log(selectedAuftraege);
+  };
+  const handleClose = () => {
+    setOpen(false);
   };
 
   const handleDelete = () => {
@@ -77,14 +87,34 @@ const Archiv = () => {
       ) : (
         <Progress />
       )}
-      {open && (
-        <AuftragForm
-          selectedAuftraege={selectedAuftraege}
-          setSelectedAuftraege={setSelectedAuftraege}
-          open={open}
-          setOpen={setOpen}
-        />
-      )}
+
+      <Dialog open={open} onClose={handleClose}>
+        <DialogTitle>Edit</DialogTitle>
+        <DialogContent>
+          <AuftragForm
+            selectedAuftraege={selectedAuftraege}
+            setSelectedAuftraege={setSelectedAuftraege}
+          />
+        </DialogContent>
+        <DialogActions>
+          <Box display="flex" justifyContent="flex-end">
+            <Button
+              onClick={() => console.log(selectedAuftraege)}
+              variant="contained"
+              sx={{ margin: "5px" }}
+            >
+              Confirm
+            </Button>
+            <Button
+              onClick={handleClose}
+              variant="contained"
+              sx={{ margin: "5px" }}
+            >
+              Cancel
+            </Button>
+          </Box>
+        </DialogActions>
+      </Dialog>
     </Box>
   );
 };

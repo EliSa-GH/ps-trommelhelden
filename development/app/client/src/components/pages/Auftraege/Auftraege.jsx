@@ -2,11 +2,20 @@ import React, { useState } from "react";
 
 import { useDispatch, useSelector } from "react-redux";
 import Table from "../../Table/Table";
-import { TextField, Box, Button } from "@mui/material";
+import {
+  TextField,
+  Box,
+  Button,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogTitle,
+} from "@mui/material";
 
 import { useNavigate } from "react-router-dom";
 import { getNewAuftraege, deleteAuftrag } from "../../../actions/auftraege";
 import Progress from "../../Progress/Progress";
+import AuftragForm from "./AuftragForm/AuftragForm";
 
 const Auftraege = () => {
   const [selectedAuftraege, setSelectedAuftraege] = useState([
@@ -22,6 +31,7 @@ const Auftraege = () => {
     },
   ]);
   const [MitID, setMitID] = useState("");
+  const [open, setOpen] = useState(false);
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -30,12 +40,21 @@ const Auftraege = () => {
     return Object.keys(data[0]);
   };
 
+  const handleClickOpen = () => {
+    setOpen(true);
+    console.log(selectedAuftraege);
+  };
+  const handleClose = () => {
+    setOpen(false);
+  };
   const handleDelete = () => {
     dispatch(deleteAuftrag(selectedAuftraege.map((auftrag) => auftrag.Aufnr)));
     navigate(0);
   };
 
-  const handleEdit = () => {};
+  const handleEdit = () => {
+    handleClickOpen();
+  };
 
   const auftraege = useSelector((state) => state.auftraege);
 
@@ -79,7 +98,7 @@ const Auftraege = () => {
             marginRight={12}
           >
             <Button
-              {...(selectedAuftraege.length > 1
+              {...(selectedAuftraege.length !== 1
                 ? { disabled: true }
                 : { disabled: false })}
               sx={{ height: "60px", width: "200px", marginRight: "10px" }}
@@ -99,6 +118,33 @@ const Auftraege = () => {
       ) : (
         <Progress />
       )}
+      <Dialog open={open} onClose={handleClose}>
+        <DialogTitle>Edit</DialogTitle>
+        <DialogContent>
+          <AuftragForm
+            selectedAuftraege={selectedAuftraege}
+            setSelectedAuftraege={setSelectedAuftraege}
+          />
+        </DialogContent>
+        <DialogActions>
+          <Box display="flex" justifyContent="flex-end">
+            <Button
+              onClick={() => console.log(selectedAuftraege)}
+              variant="contained"
+              sx={{ margin: "5px" }}
+            >
+              Confirm
+            </Button>
+            <Button
+              onClick={handleClose}
+              variant="contained"
+              sx={{ margin: "5px" }}
+            >
+              Cancel
+            </Button>
+          </Box>
+        </DialogActions>
+      </Dialog>
     </Box>
   );
 };

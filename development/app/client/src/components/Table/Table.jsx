@@ -9,6 +9,7 @@ const Table = ({
   rowID,
   setSelectedAuftraege,
   setKunNr,
+  setMitID,
 }) => {
   const columns = tableHeadings.map((heading) => {
     if (heading === "Beschreibung") {
