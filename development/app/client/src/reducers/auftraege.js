@@ -16,6 +16,10 @@ export default (auftraege = [], action) => {
       return auftraege.filter(
         (auftrag) => auftrag.Aufnr !== action.payload.AufNr
       );
+    case "EDIT_AUFTRAG":
+      return auftraege.map((auftrag) =>
+        auftrag.Aufnr === action.payload.Aufnr ? action.payload : auftrag
+      );
     default:
       return auftraege;
   }

@@ -62,14 +62,14 @@ const AuftragForm = ({ selectedAuftraege, setSelectedAuftraege }) => {
             <LocalizationProvider dateAdapter={AdapterDayjs}>
               <DesktopDatePicker
                 label="Auftragsdatum"
-                inputFormat="DD/MM/YYYY"
+                inputFormat="YYYY-MM-DD"
                 value={value.AufDat}
                 onChange={(newValue) => {
                   setValue({ ...value, AufDat: newValue });
                   setSelectedAuftraege([
                     {
                       ...selectedAuftraege[0],
-                      AufDat: newValue.$d.toLocaleDateString("pt-PT"),
+                      AufDat: newValue.format("YYYY-MM-DD"),
                     },
                   ]);
                 }}
@@ -85,19 +85,20 @@ const AuftragForm = ({ selectedAuftraege, setSelectedAuftraege }) => {
               <DesktopDatePicker
                 label="Erlösedatum"
                 name="ErlDat"
-                inputFormat="DD/MM/YYYY"
+                inputFormat="YYYY-MM-DD"
                 value={value.ErlDat}
                 onChange={(newValue) => {
                   setValue({ ...value, ErlDat: newValue });
                   setSelectedAuftraege([
                     {
                       ...selectedAuftraege[0],
-                      ErlDat: newValue.$d.toLocaleDateString("pt-PT"),
+                      ErlDat: newValue.format("YYYY-MM-DD"),
                     },
                   ]);
                 }}
                 renderInput={(params) => (
                   <TextField
+                    required
                     {...params}
                     sx={{ width: "290px", margin: "5px" }}
                   />

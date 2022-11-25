@@ -44,3 +44,12 @@ export const setAuftragMitarbeiter = (AufNr, MitID) => async (dispatch) => {
     console.log(error);
   }
 };
+
+export const editAuftrag = (selectedAuftrag) => async (dispatch) => {
+  try {
+    await api.editAuftrag(selectedAuftrag);
+    dispatch({ type: "EDIT_AUFTRAG", payload: selectedAuftrag });
+  } catch (error) {
+    console.log(error);
+  }
+};

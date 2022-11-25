@@ -14,6 +14,10 @@ export const setAuftragMitarbeiter = (AufNr, MitID) =>
     `/auftraege/assign?MitID=${MitID}` +
       AufNr.map((AufNr) => `&AufNr[]=${AufNr}`).join("")
   );
+export const editAuftrag = (selectedAuftrag) =>
+  API.patch(`/auftraege/edit`, {
+    params: { selectedAuftrag },
+  });
 
 // Mitarbeiter API
 export const fetchMitarbeiter = () => API.get("/mitarbeiter");

@@ -5,6 +5,7 @@ import {
   getOffenAuftraege,
   deleteAuftraege,
   setAuftragMitarbeiter,
+  editAuftrag,
 } from "../controllers/auftraege.js";
 
 const router = express.Router();
@@ -14,5 +15,6 @@ router.get("/erl", getErlAuftraege);
 router.get("/offen", getOffenAuftraege);
 router.delete("/delete", deleteAuftraege);
 router.post("/assign", setAuftragMitarbeiter);
+router.patch("/edit", editAuftrag);
 
 export default router;
