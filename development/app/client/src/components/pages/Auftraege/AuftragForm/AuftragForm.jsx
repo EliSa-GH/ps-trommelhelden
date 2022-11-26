@@ -20,7 +20,6 @@ const AuftragForm = ({ selectedAuftraege, setSelectedAuftraege }) => {
   const handleChange = (e) => {
     const { name, value } = e.target;
     setSelectedAuftraege([{ ...selectedAuftraege[0], [name]: value }]);
-    console.log(selectedAuftraege[0]);
   };
 
   return (
@@ -28,7 +27,6 @@ const AuftragForm = ({ selectedAuftraege, setSelectedAuftraege }) => {
       <form
         onSubmit={(e) => {
           e.preventDefault();
-          console.log(selectedAuftraege);
         }}
       >
         <Box margin={1}>

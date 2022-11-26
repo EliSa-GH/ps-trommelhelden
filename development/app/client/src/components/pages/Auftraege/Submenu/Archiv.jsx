@@ -14,7 +14,11 @@ import {
 
 import Table from "../../../Table/Table";
 import Progress from "../../../Progress/Progress";
-import { getErlAuftraege, deleteAuftrag } from "../../../../actions/auftraege";
+import {
+  getErlAuftraege,
+  deleteAuftrag,
+  editAuftrag,
+} from "../../../../actions/auftraege";
 import AuftragForm from "../AuftragForm/AuftragForm";
 
 const Archiv = () => {
@@ -44,6 +48,13 @@ const Archiv = () => {
       dispatch(
         deleteAuftrag(selectedAuftraege.map((auftrag) => auftrag.Aufnr))
       );
+      navigate(0);
+    }
+  };
+
+  const handleEdit = () => {
+    if (selectedAuftraege.length > 0) {
+      dispatch(editAuftrag(selectedAuftraege));
       navigate(0);
     }
   };
@@ -106,7 +117,7 @@ const Archiv = () => {
         <DialogActions>
           <Box display="flex" justifyContent="flex-end">
             <Button
-              onClick={() => console.log(selectedAuftraege)}
+              onClick={handleEdit}
               variant="contained"
               sx={{ margin: "5px" }}
             >

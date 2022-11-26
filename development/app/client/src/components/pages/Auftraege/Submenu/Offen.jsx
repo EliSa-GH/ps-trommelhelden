@@ -62,12 +62,15 @@ const Offen = () => {
   };
 
   const handleAssign = () => {
-    dispatch(
-      setAuftragMitarbeiter(
-        (selectedAuftraege.map((auftrag) => auftrag.Aufnr), mitID)
-      )
-    );
-    navigate(0);
+    if (selectedAuftraege.length > 0) {
+      dispatch(
+        setAuftragMitarbeiter(
+          selectedAuftraege.map((auftrag) => auftrag.Aufnr),
+          mitID
+        )
+      );
+      navigate(0);
+    }
   };
 
   const handleDelete = () => {
