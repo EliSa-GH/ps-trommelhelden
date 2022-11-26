@@ -61,13 +61,13 @@ export const deleteAuftraege = async (req, res) => {
 export const setAuftragMitarbeiter = async (req, res) => {
   try {
     const auftrag = await Auftrag.findAll({
-      where: { Aufnr: req.query.AufNr },
+      where: { Aufnr: req.body.params.AufNr },
     });
-
+    console.log(auftrag);
     if (auftrag.length > 0) {
       Auftrag.update(
-        { MitID: req.query.MitID },
-        { where: { Aufnr: req.query.AufNr } }
+        { MitID: req.body.params.MitID },
+        { where: { Aufnr: req.body.params.AufNr } }
       );
       res.status(200).json({ message: "Update erfolgreich" });
     } else {

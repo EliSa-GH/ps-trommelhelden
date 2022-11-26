@@ -10,10 +10,7 @@ export const fetchOffenAuftraege = () => API.get("/auftraege/offen");
 export const deleteAuftrag = (AufNr) =>
   API.delete(`/auftraege/delete`, { params: { AufNr } });
 export const setAuftragMitarbeiter = (AufNr, MitID) =>
-  API.post(
-    `/auftraege/assign?MitID=${MitID}` +
-      AufNr.map((AufNr) => `&AufNr[]=${AufNr}`).join("")
-  );
+  API.post("/auftraege/assign", { params: { AufNr, MitID } });
 export const editAuftrag = (selectedAuftrag) =>
   API.patch(`/auftraege/edit`, {
     params: { selectedAuftrag },
