@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import { DataGrid } from "@mui/x-data-grid";
+import { DataGrid, gridColumnGroupsLookupSelector } from "@mui/x-data-grid";
 import { Box } from "@mui/system";
 
 const Table = ({ tableHeadings, tableData, rowID, setAufNr, setKunNr }) => {
@@ -62,6 +62,8 @@ const Table = ({ tableHeadings, tableData, rowID, setAufNr, setKunNr }) => {
             );
             const selectedKunNr = selectedRowData.map((row) => row.KunNr);
             setKunNr(selectedKunNr);
+            console.log(selectedKunNr);
+
           }}
         />
       ) : (
@@ -79,6 +81,7 @@ const Table = ({ tableHeadings, tableData, rowID, setAufNr, setKunNr }) => {
               );
             const selectedKunNr = selectedRowData.map((row) => row.KunNr);
             setKunNr(selectedKunNr);
+
           }}
         />
       )}

@@ -25,3 +25,10 @@ export const deleteKunde = async (req, res) => {
     res.status(404).json({ message: error });
   }
 };
+
+export const editKunde = async (req, res) => {
+  const kunden = await Kunde.findAll({
+    where: { KunNr: req.query.KunNr }
+  });
+  console.log(req.query);
+};

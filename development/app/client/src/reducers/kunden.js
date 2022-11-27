@@ -6,6 +6,9 @@ export default (kunden = [], action) => {
       return kunden.filter(
         (kunde) => kunde.KunNr !== action.payload.KunNr
       );
+    case "EDIT_KUNDE":
+      return kunden.filter(
+        (kunde) => kunde.KunNr !== action.payload.KunNr);
     default:
       return kunden;
   }

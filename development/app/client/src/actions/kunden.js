@@ -18,3 +18,12 @@ export const deleteKunde = (KunNr) => async (dispatch) => {
     console.log(error);
   }
 };
+
+export const editKunde = (data) => async (dispatch) => {
+  try {
+    await api.editKunde();
+    dispatch({ type: "EDIT_KUNDE", payload: data })
+  } catch (error) {
+    console.log(error);
+  }
+};

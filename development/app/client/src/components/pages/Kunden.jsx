@@ -1,14 +1,26 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Box, Button } from "@mui/material";
+import { Box, Button, TextField, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle } from "@mui/material";
 
 import { useNavigate } from "react-router-dom";
-import { getKunden, deleteKunde } from "../../actions/kunden";
+import { getKunden, deleteKunde, editKunde } from "../../actions/kunden";
 import Table from "../Table/Table";
 import Progress from "../Progress/Progress";
 
+
+
 const Kunden = () => {
   const [KunNr, setKunNr] = useState([]);
+  
+  const [open, setOpen] = React.useState(false);
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
 
   const navigate = useNavigate();
   const getHeadings = (data) => {
@@ -33,6 +45,11 @@ const Kunden = () => {
       //alert("leer");
     }
   };
+
+  const handleEdit = () => {
+     dispatch(editKunde(KunNr));
+       navigate(0);
+   };
 
   const kunden = useSelector((state) => state.kunden);
   return (
@@ -60,11 +77,40 @@ const Kunden = () => {
             >
               <h3>Kunde anlegen</h3>
             </Button>
-            <Button
-              variant="contained"
-            >
-              <h3>Bearbeiten</h3>
-            </Button>
+            <Button variant="outlined" onClick={handleClickOpen}>
+            Bearbeiten
+      </Button>
+      <Dialog open={open} onClose={handleClose}>
+        <DialogTitle>Kunde Bearbeiten</DialogTitle>
+        <DialogContent>
+          <DialogContentText>
+            
+          </DialogContentText>
+          <TextField
+            autoFocus
+            margin="dense"
+            id="name"
+            label="Name"
+            type="string"
+            fullWidth
+            variant="standard"
+            value= {KunNr}
+          />
+          <TextField
+            autoFocus
+            margin="dense"
+            id="name"
+            label="Email Address"
+            type="email"
+            fullWidth
+            variant="standard"
+          />
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleClose}>Abbrechen</Button>
+          <Button onClick={handleClose}>Übernehmen</Button>
+        </DialogActions>
+      </Dialog>
             <Button
               variant="contained"
               onClick={handleDelete}
