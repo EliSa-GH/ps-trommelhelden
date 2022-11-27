@@ -11,19 +11,19 @@ const Kunde = db.define(
     },
     KunName: {
       type: Sequelize.STRING(20),
-      allowNull: false,
+      allowNull: true,
     },
     KunOrt: {
       type: Sequelize.STRING(20),
-      allowNull: false,
+      allowNull: true,
     },
     KunPlz: {
       type: Sequelize.CHAR(5),
-      allowNull: false,
+      allowNull: true,
     },
     KunStrasse: {
       type: Sequelize.STRING(20),
-      allowNull: false,
+      allowNull: true,
     },
   },
   {

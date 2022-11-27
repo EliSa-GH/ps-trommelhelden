@@ -15,3 +15,4 @@ export const fetchMitarbeiter = () => API.get("/mitarbeiter");
 
 // Kunden API
 export const fetchKunden = () => API.get("/kunden");
+export const createKunde = (details) => API.post("/kunden/create",{params:{details:details}});
