@@ -25,3 +25,4 @@ export const deleteMitarbeiter = (MitID) =>
 export const fetchKunden = () => API.get("/kunden");
 export const deleteKunde = (KunNr) =>
   API.delete(`/kunden/delete`, { params: { KunNr: KunNr } });
+export const createKunde = (details) => API.post("/kunden/create",{params:{details:details}});

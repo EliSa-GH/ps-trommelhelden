@@ -17,3 +17,13 @@ export const deleteKunde = (KunNr) => async (dispatch) => {
     console.log(error);
   }
 };
+
+export const createKunde = (details) => async (dispatch) => {
+  try{
+    console.log(details)
+    await api.createKunde(details);
+    dispatch({ type: "CREATE_KUNDE", payload: details});
+  } catch (error){
+    console.log(error);
+  }
+}
