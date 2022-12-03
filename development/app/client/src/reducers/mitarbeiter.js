@@ -6,6 +6,8 @@ export default (mitarbeiter = [], action) => {
       return mitarbeiter.filter(
         (mitarbeiter) => mitarbeiter.MitID !== action.payload.MitID
       );
+    case "CREATE_MITARBEITER":
+      return [...mitarbeiter, action.payload]
     default:
       return mitarbeiter;
   }

@@ -17,3 +17,13 @@ export const deleteMitarbeiter = (MitID) => async (dispatch) => {
     console.log(error);
   }
 };
+
+export const createMitarbeiter = (mDetails) => async (dispatch) => {
+  try{
+    console.log(mDetails)
+    await api.createMitarbeiter(mDetails);
+    dispatch({ type: "CREATE_MITARBEITER", payload: mDetails});
+  } catch (error){
+    console.log(error);
+  }
+}

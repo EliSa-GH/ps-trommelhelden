@@ -7,7 +7,7 @@ export default (kunden = [], action) => {
         (kunde) => kunde.KunNr !== action.payload.KunNr
       );
     case "CREATE_KUNDE":
-        return [...kunden, action.payload]
+      return [...kunden, action.payload];
     default:
       return kunden;
   }

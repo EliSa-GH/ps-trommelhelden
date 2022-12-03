@@ -20,6 +20,7 @@ export const editAuftrag = (selectedAuftrag) =>
 export const fetchMitarbeiter = () => API.get("/mitarbeiter");
 export const deleteMitarbeiter = (MitID) =>
   API.delete(`/mitarbeiter/delete`, { params: { MitID: MitID } });
+export const createMitarbeiter = (mDetails) => API.post("/mitarbeiter/create",{params:{mDetails:mDetails}});
 
 // Kunden API
 export const fetchKunden = () => API.get("/kunden");

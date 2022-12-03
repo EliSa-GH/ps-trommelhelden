@@ -11,10 +11,14 @@ import {
   DialogTitle,
   Typography, } from "@mui/material";
 
+import TextField from '@mui/material/TextField';
+import DialogContentText from '@mui/material/DialogContentText';
 
 import { useNavigate } from "react-router-dom";
-import { getMitarbeiter,
+import { 
+  getMitarbeiter,
   deleteMitarbeiter,
+  createMitarbeiter,
 } from "../../actions/mitarbeiter";
 import Progress from "../Progress/Progress";
 
@@ -26,6 +30,41 @@ const Mitarbeiter = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+  /**
+     * Create Kunden Dialog Funktions
+     */
+    //START
+
+  const [mDetails, setmDetails] = React.useState({
+      mID: 0,
+      mName: "",
+      mVorname: "",
+      mBirthday: "",
+      mJob: "",
+      mSalary: "",
+      mPLace: "",
+    });
+
+    const handleChange = (e) => {
+      const {name, value} = e.target;
+      setmDetails((prev) => {
+        return {...prev, [name]: value}
+      }) 
+    }
+
+    const handleSubmit = (e) => {
+      e.preventDefault();
+      console.log(mDetails);
+      dispatch(createMitarbeiter(mDetails))
+      handleClose(true);
+      navigate(0)
+    };
+    
+    const handleClickOpen = () => {
+      setOpen(true);
+    };
+
+  //END
   const getHeadings = (data) => {
     return Object.keys(data[0]);
   };
@@ -77,9 +116,92 @@ const Mitarbeiter = () => {
               "& button": { m: 1 },
             }}
           >
-            <Button variant="contained">
-              <h3>Mitarbeiter anlegen</h3>
-            </Button>
+            <div className="MitarbeiterCreate">
+                  <Button variant="contained"
+                    onClick={handleClickOpen}>
+                <h3>Mitarbeiter anlegen</h3>
+              </Button>
+              <Dialog open={open} onClose={handleClose}>
+          <DialogTitle>Create new Employee</DialogTitle>
+          <DialogContent>
+          <TextField
+              autoFocus
+              type="number"
+              margin="dense"
+              name="mID"
+              label="Mitarbeiternummer"
+              fullWidth
+              variant="standard"
+              value={Table.MitID}
+              onChange={handleChange}
+            />
+            <TextField
+              autoFocus
+              type="text"
+              margin="dense"
+              name="mName"
+              label="Name"
+              fullWidth
+              variant="standard"
+              onChange={handleChange}
+            />
+            <TextField
+              autoFocus
+              type="text"
+              margin="dense"
+              name="mVorname"
+              label="Vorname"
+              fullWidth
+              variant="standard"
+              onChange={handleChange}
+            />
+            <TextField
+              autoFocus
+              type="date"
+              margin="dense"
+              name="mBirthday"
+              //label="Birthday"
+              fullWidth
+              variant="standard"
+              onChange={handleChange}
+            />
+            <TextField
+              autoFocus
+              type="text"
+              margin="dense"
+              name="mJob"
+              label="Job"
+              fullWidth
+              variant="standard"
+              onChange={handleChange}
+            />
+            <TextField
+              autoFocus
+              type="text"
+              margin="dense"
+              name="mSalary"
+              label="Stundensatz"
+              fullWidth
+              variant="standard"
+              onChange={handleChange}
+            />
+            <TextField
+              autoFocus
+              type="text"
+              margin="dense"
+              name="mPlace"
+              label="Einsatzort"
+              fullWidth
+              variant="standard"
+              onChange={handleChange}
+            />
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={handleClose}>Cancel</Button>
+            <Button onClick={handleSubmit}>Save & Exit</Button>
+          </DialogActions>
+        </Dialog>
+              </div>
             <Button variant="contained">
               <h3>Bearbeiten</h3>
             </Button>
