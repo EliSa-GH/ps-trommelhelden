@@ -1,8 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Box, Button, Typography } from "@mui/material";
 import AuftragForm from "../AuftragForm/AuftragForm";
-
+import { getKunden } from "../../../../actions/kunden";
+import { useDispatch, useSelector } from "react-redux";
 const Anlegen = () => {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getKunden());
+  }, [dispatch]);
+  const kunden = useSelector((state) => state.kunden);
   const [selectedAuftraege, setSelectedAuftraege] = useState([
     {
       Aufnr: "",
@@ -40,6 +46,8 @@ const Anlegen = () => {
         <AuftragForm
           selectedAuftraege={selectedAuftraege}
           setSelectedAuftraege={setSelectedAuftraege}
+          kunden={kunden}
+          disable={true}
         />
         <Box display="flex" justifyContent="right">
           <Button

@@ -107,11 +107,16 @@ const Archiv = () => {
       )}
 
       <Dialog open={openEdit} onClose={handleClose}>
-        <DialogTitle>Edit</DialogTitle>
+        <DialogTitle>
+          Edit Job [{selectedAuftraege.length > 0 && selectedAuftraege[0].Aufnr}
+          ]
+        </DialogTitle>
         <DialogContent>
           <AuftragForm
             selectedAuftraege={selectedAuftraege}
             setSelectedAuftraege={setSelectedAuftraege}
+            disable={false}
+            kunden={[]}
           />
         </DialogContent>
         <DialogActions>

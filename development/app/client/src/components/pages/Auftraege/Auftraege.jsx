@@ -24,6 +24,7 @@ import AuftragForm from "./AuftragForm/AuftragForm";
 
 const Auftraege = () => {
   const [selectedAuftraege, setSelectedAuftraege] = useState([]);
+  const [isEnter, setIsEnter] = useState(false);
   const [MitID, setMitID] = useState("");
   const [openEdit, setOpenEdit] = useState(false);
   const [openDelete, setOpenDelete] = useState(false);
@@ -73,6 +74,7 @@ const Auftraege = () => {
           onSubmit={(e) => {
             e.preventDefault();
             dispatch(getNewAuftraege(MitID));
+            setIsEnter(true);
           }}
         >
           <TextField
@@ -85,7 +87,7 @@ const Auftraege = () => {
           />
         </form>
       </Box>
-      {auftraege.length > 0 && getHeadings(auftraege).length > 5 ? (
+      {auftraege.length > 0 && isEnter ? (
         <>
           <Table
             tableHeadings={getHeadings(auftraege)}
@@ -122,7 +124,9 @@ const Auftraege = () => {
         <Progress />
       )}
       <Dialog open={openEdit} onClose={handleClose}>
-        <DialogTitle>Edit</DialogTitle>
+        <DialogTitle>
+          [{selectedAuftraege.length > 0 && selectedAuftraege[0].Aufnr}]
+        </DialogTitle>
         <DialogContent>
           <AuftragForm
             selectedAuftraege={selectedAuftraege}
