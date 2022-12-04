@@ -20,6 +20,8 @@ export default (auftraege = [], action) => {
       return auftraege.map((auftrag) =>
         auftrag.Aufnr === action.payload.Aufnr ? action.payload : auftrag
       );
+    case "CREATE_AUFTRAG":
+      return [...auftraege, action.payload];
     default:
       return auftraege;
   }

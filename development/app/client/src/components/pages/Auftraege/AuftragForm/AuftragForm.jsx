@@ -1,5 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { TextField, Box, Autocomplete } from "@mui/material";
+import { useNavigate } from "react-router-dom";
+import {
+  TextField,
+  Box,
+  Autocomplete,
+  Button,
+  Typography,
+} from "@mui/material";
 
 const AuftragForm = ({
   selectedAuftraege,
@@ -10,6 +17,7 @@ const AuftragForm = ({
   const { Aufnr, MitID, KunNr, AufDat, ErlDat, Dauer, Anfahrt, Beschreibung } =
     selectedAuftraege[0];
 
+  const navigate = useNavigate();
   useEffect(() => {
     if (AufDat === "") {
       setSelectedAuftraege([
@@ -50,10 +58,24 @@ const AuftragForm = ({
                 options={kundenList}
                 sx={{ width: "290px", margin: "5px" }}
                 onChange={(e, value) => {
-                  console.log(value.slice(0, 4), selectedAuftraege[0]);
+                  setSelectedAuftraege([
+                    { ...selectedAuftraege[0], KunNr: value.split(" - ")[0] },
+                  ]);
                 }}
+                noOptionsText={
+                  <Button
+                    onMouseDown={() => {
+                      navigate("/kunden");
+                    }}
+                  >
+                    <Typography sx={{ fontSize: "10px" }}>
+                      Keine Kunden gefunden?
+                      <br /> Klicken Sie hier um einen Kunden zu erstellen
+                    </Typography>
+                  </Button>
+                }
                 renderInput={(params) => {
-                  return <TextField {...params} label="Kundenname" />;
+                  return <TextField {...params} label="Kundenname" required />;
                 }}
               />
             ) : (

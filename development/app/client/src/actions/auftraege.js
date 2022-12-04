@@ -53,3 +53,12 @@ export const editAuftrag = (selectedAuftrag) => async (dispatch) => {
     console.log(error);
   }
 };
+
+export const createAuftrag = (selectedAuftrag, KunNr) => async (dispatch) => {
+  try {
+    await api.createAuftrag(selectedAuftrag, KunNr);
+    dispatch({ type: "CREATE_AUFTRAG", payload: selectedAuftrag });
+  } catch (error) {
+    console.log(error);
+  }
+};

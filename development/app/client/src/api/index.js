@@ -15,15 +15,19 @@ export const editAuftrag = (selectedAuftrag) =>
   API.patch(`/auftraege/edit`, {
     params: { selectedAuftrag },
   });
+export const createAuftrag = (selectedAuftrag, KunNr) =>
+  API.post("/auftraege/create", { params: { selectedAuftrag, KunNr } });
 
 // Mitarbeiter API
 export const fetchMitarbeiter = () => API.get("/mitarbeiter");
 export const deleteMitarbeiter = (MitID) =>
   API.delete(`/mitarbeiter/delete`, { params: { MitID: MitID } });
-export const createMitarbeiter = (mDetails) => API.post("/mitarbeiter/create",{params:{mDetails:mDetails}});
+export const createMitarbeiter = (mDetails) =>
+  API.post("/mitarbeiter/create", { params: { mDetails: mDetails } });
 
 // Kunden API
 export const fetchKunden = () => API.get("/kunden");
 export const deleteKunde = (KunNr) =>
   API.delete(`/kunden/delete`, { params: { KunNr: KunNr } });
-export const createKunde = (details) => API.post("/kunden/create",{params:{details:details}});
+export const createKunde = (details) =>
+  API.post("/kunden/create", { params: { details: details } });

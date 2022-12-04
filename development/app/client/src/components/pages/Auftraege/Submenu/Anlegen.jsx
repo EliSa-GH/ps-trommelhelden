@@ -1,8 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { Box, Button, Typography } from "@mui/material";
-import AuftragForm from "../AuftragForm/AuftragForm";
-import { getKunden } from "../../../../actions/kunden";
 import { useDispatch, useSelector } from "react-redux";
+
+import { Box, Button, Typography } from "@mui/material";
+
+import AuftragForm from "../AuftragForm/AuftragForm";
+import { createAuftrag } from "../../../../actions/auftraege";
+import { getKunden } from "../../../../actions/kunden";
+
 const Anlegen = () => {
   const dispatch = useDispatch();
   useEffect(() => {
@@ -22,7 +26,14 @@ const Anlegen = () => {
     },
   ]);
 
-  const handleClick = () => {};
+  const handleCreate = () => {
+    if (selectedAuftraege[0].KunNr !== "") {
+      dispatch(createAuftrag(selectedAuftraege[0]));
+    } else {
+      alert("Bitte Kundennummer eingeben!");
+    }
+  };
+  console.log(selectedAuftraege[0]);
 
   return (
     <Box
@@ -51,7 +62,7 @@ const Anlegen = () => {
         />
         <Box display="flex" justifyContent="right">
           <Button
-            onClick={handleClick}
+            onClick={handleCreate}
             sx={{ height: "60px", width: "200px", margin: " 0 10px 10px" }}
             variant="contained"
           >

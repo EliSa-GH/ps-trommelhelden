@@ -8,7 +8,7 @@ const Auftrag = db.define(
   {
     Aufnr: {
       type: Sequelize.INTEGER,
-      allowNull: false,
+      allowNull: true,
       primaryKey: true,
     },
     MitID: {
@@ -51,6 +51,7 @@ const Auftrag = db.define(
   {
     db,
     tableName: "Auftrag",
+    hasTrigger: true,
     schema: "dbo",
     timestamps: false,
     indexes: [

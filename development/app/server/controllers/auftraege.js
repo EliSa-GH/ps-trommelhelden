@@ -109,3 +109,33 @@ export const editAuftrag = async (req, res) => {
     res.status(404).json({ message: error });
   }
 };
+
+export const createAuftrag = async (req, res) => {
+  try {
+    const {
+      Aufnr,
+      MitID,
+      KunNr,
+
+      AufDat,
+      ErlDat,
+      Dauer,
+      Anfahrt,
+      Beschreibung,
+    } = await req.body.params.selectedAuftrag;
+
+    await Auftrag.create({
+      Aufnr: Aufnr ? Aufnr : null,
+      MitID: MitID ? MitID : null,
+      KunNr: KunNr,
+      AufDat: AufDat,
+      ErlDat: ErlDat ? ErlDat : null,
+      Dauer: Dauer ? Dauer : null,
+      Anfahrt: Anfahrt ? Anfahrt : null,
+      Beschreibung: Beschreibung ? Beschreibung : null,
+    });
+    res.status(200).json({ message: "Auftrag erfolgreich erstellt" });
+  } catch (error) {
+    res.status(404).json({ message: error });
+  }
+};
