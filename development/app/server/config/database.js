@@ -1,6 +1,6 @@
 import { Sequelize } from "sequelize";
 
-const db = new Sequelize("ii19s80431", "s80431", "s80431", {
+const db = new Sequelize("ii20s82591", "s82591", "s82591", {
   host: "141.56.2.45",
   dialect: "mssql",
   operatorAliases: false,

@@ -19,6 +19,7 @@
     getKunden,
     deleteKunde,
     createKunde,
+    editKunde,
   } from "../../actions/kunden";
   import Progress from "../Progress/Progress";
 
@@ -45,6 +46,7 @@
     
     const handleChange = (e) => {
       const {name, value} = e.target;
+      setSelectedKunde([{...selectedKunde[0], [name]: value}])
       setDetails((prev) => {
         return {...prev, [name]: value}
       }) 
@@ -87,6 +89,14 @@
         );
         navigate(0);
       }
+    };
+
+    const handleEdit = (e) => {
+      e.preventDefault();
+       dispatch(editKunde(selectedKunde[0]))
+       console.log(editKunde)
+       handleClose(true);
+       //navigate(0)
     };
 
     useEffect(() => {
@@ -183,7 +193,7 @@
               </div>
           
 
-              <Button variant="contained">
+              <Button variant="contained" onClick={handleClickOpen}>
                 <h3>Bearbeiten</h3>
               </Button>
               <Button variant="contained" onClick={handleOpenDelete}>
@@ -195,6 +205,84 @@
           <Progress />
         )}
         </Box>
+        {selectedKunde.length > 0 ? (<>
+
+          <Dialog open={open} onClose={handleClose}>
+         <DialogTitle>Kunde Bearbeiten</DialogTitle>
+         <DialogContent>
+           <DialogContentText>
+
+           </DialogContentText>
+           <TextField
+             
+             margin="dense"
+             id="KunNr"
+             name="KunNr"
+             label="Kundennummer"
+             type="number"
+             fullWidth
+             variant="standard"
+             value={selectedKunde[0].KunNr}
+             disabled
+             />
+           <TextField
+             
+             
+             margin="dense"
+             id="KunName"
+             name="KunName"
+             label="Kundenname"
+             type="text"
+             fullWidth
+             variant="standard"
+             value={selectedKunde[0].KunName}
+             onChange={handleChange}
+
+           />           
+           <TextField
+             
+           margin="dense"
+           id="KunOrt"
+           name="KunOrt"
+           label="Kundenort"
+           type="text"
+           fullWidth
+           variant="standard"
+           value= {selectedKunde[0].KunOrt}
+           onChange={handleChange}
+         />
+          <TextField
+             
+             margin="dense"
+             id="KunPlz"
+             name="KunPlz"
+             label="Postleitzahl"
+             type="text"
+             fullWidth
+             variant="standard"
+             value= {selectedKunde[0].KunPlz}
+             onChange={handleChange}
+             inputProps={{ maxLength: 5 }}
+
+           />
+            <TextField
+             
+             margin="dense"
+             id="KunStrasse"
+             name="KunStrasse"
+             label="Straße"
+             type="text"
+             fullWidth
+             variant="standard"
+             value= {selectedKunde[0].KunStrasse}
+             onChange={handleChange}
+           />
+         </DialogContent>
+         <DialogActions>
+           <Button onClick={handleClose}>Abbrechen</Button>
+           <Button onClick={handleEdit}>Übernehmen</Button>
+         </DialogActions>
+       </Dialog>
         <Dialog open={openDelete} onClose={handleClose}>
           <DialogTitle>Löschen</DialogTitle>
           <DialogContent>
@@ -221,7 +309,8 @@
               </Button>
             </Box>
           </DialogActions>
-        </Dialog>
+        </Dialog> </>) : false
+       } 
       </Box>
     );
   };
