@@ -133,7 +133,9 @@
             >
               <div className="KundenCreate">
                   <Button variant="contained"
-                    onClick={handleClickOpen}>
+                    onClick={handleClickOpen}
+                    disabled={selectedKunde.length > 0 || selectedKunde.length >= 2 }>
+                    
                 <h3>Kunde anlegen</h3>
               </Button>
               <Dialog open={open} onClose={handleClose}>
@@ -199,7 +201,7 @@
               </div>
           
 
-              <Button variant="contained" onClick={handleClickOpen} disabled={selectedKunde.length <= 0}>
+              <Button variant="contained" onClick={handleClickOpen} disabled={selectedKunde.length <= 0 || selectedKunde.length >= 2}>
                 <h3>Bearbeiten</h3>
               </Button>
               <Button variant="contained" onClick={handleOpenDelete}>
