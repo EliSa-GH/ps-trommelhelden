@@ -46,11 +46,17 @@
     
     const handleChange = (e) => {
       const {name, value} = e.target;
-      setSelectedKunde([{...selectedKunde[0], [name]: value}])
       setDetails((prev) => {
         return {...prev, [name]: value}
       }) 
     }
+
+      const handleChangeEdit = (e) => {
+      const {name, value} = e.target;
+      console.log(name, value);
+      setSelectedKunde([{...selectedKunde[0], [name]: value}]
+      )
+    };
   
     const handleSubmit = (e) => {
       e.preventDefault();
@@ -107,7 +113,7 @@
     return (
       <Box>
         <Box>
-        {kunden.length > 0 ? (
+          {kunden.length > 0 ? (
           <Box>
             <Table
               tableHeadings={getHeadings(kunden)}
@@ -189,11 +195,11 @@
             <Button onClick={handleClose}>Cancel</Button>
             <Button onClick={handleSubmit}>Save & Exit</Button>
           </DialogActions>
-        </Dialog>
+         </Dialog>
               </div>
           
 
-              <Button variant="contained" onClick={handleClickOpen}>
+              <Button variant="contained" onClick={handleClickOpen} disabled={selectedKunde.length <= 0}>
                 <h3>Bearbeiten</h3>
               </Button>
               <Button variant="contained" onClick={handleOpenDelete}>
@@ -236,7 +242,7 @@
              fullWidth
              variant="standard"
              value={selectedKunde[0].KunName}
-             onChange={handleChange}
+             onChange={handleChangeEdit}
 
            />           
            <TextField
@@ -249,7 +255,7 @@
            fullWidth
            variant="standard"
            value= {selectedKunde[0].KunOrt}
-           onChange={handleChange}
+           onChange={handleChangeEdit}
          />
           <TextField
              
@@ -261,7 +267,7 @@
              fullWidth
              variant="standard"
              value= {selectedKunde[0].KunPlz}
-             onChange={handleChange}
+             onChange={handleChangeEdit}
              inputProps={{ maxLength: 5 }}
 
            />
@@ -275,7 +281,7 @@
              fullWidth
              variant="standard"
              value= {selectedKunde[0].KunStrasse}
-             onChange={handleChange}
+             onChange={handleChangeEdit}
            />
          </DialogContent>
          <DialogActions>
