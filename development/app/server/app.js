@@ -8,7 +8,7 @@ import db from "./config/database.js";
 import auftraegeRoutes from "./routes/auftraege.js";
 import kundenRoutes from "./routes/kunden.js";
 import mitarbeiterRoutes from "./routes/mitarbeiter.js";
-import ersatzteilRoutes from "./routes/mitarbeiter.js";
+import ersatzteilRoutes from "./routes/ersatzteil.js";
 
 const app = express();
 app.use(bodyParser.json({ limit: "30mb", extended: true }));

@@ -1,13 +1,13 @@
 import express from "express";
 import {
     getErsatzteil,
-    deleteKErsatzteil,
+    deleteErsatzteil,
     createErsatzteil
-} from "../controllers/ersatzteil.js";
+} from "../controllers/ersatzteile.js";
 
 const router = express.Router();
 
-router.get("/", getErsatz);
+router.get("/", getErsatzteil);
 router.delete("/delete", deleteErsatzteil);
 router.post("/create",createErsatzteil)
 

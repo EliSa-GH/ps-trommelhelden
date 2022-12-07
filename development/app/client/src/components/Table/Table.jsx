@@ -89,7 +89,7 @@ const Table = ({
             setSelectedMitarbeiter(selectedRowData);
           }}
         />
-      ) : rowID === "EttID" ? (
+      ) : rowID === "EtID" ? (
         <DataGrid
           rows={rows}
           columns={columns}
@@ -100,7 +100,7 @@ const Table = ({
           onSelectionModelChange={(ids) => {
             const selectedIDs = new Set(ids);
             const selectedRowData = rows.filter((row) =>
-              selectedIDs.has(row.MitID)
+              selectedIDs.has(row.EtID)
             );
             setSelectedErsatzteil(selectedRowData);
           }}
