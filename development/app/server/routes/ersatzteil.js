@@ -3,7 +3,7 @@ import {
     getErsatzteil,
     deleteErsatzteil,
     createErsatzteil
-} from "../controllers/ersatzteile.js";
+} from "../controllers/ersatzteil.js";
 
 const router = express.Router();
 

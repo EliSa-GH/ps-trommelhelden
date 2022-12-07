@@ -26,11 +26,9 @@ import { Sequelize } from "sequelize";
 });
 export default db; */
 
-// const db = new Sequelize("trommelhelden", "sa", "Trommelhelden24!", {
-//   host: "localhost",
-//   port: 1433,
-const db = new Sequelize("ii19s80447", "s80447", "s80447", {
-  host: "141.56.2.45",
+const db = new Sequelize("trommelhelden", "sa", "Trommelhelden24!", {
+  host: "localhost",
+  port: 1433,
   dialect: "mssql",
   operatorAliases: false,
   pool: {

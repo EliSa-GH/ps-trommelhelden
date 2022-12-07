@@ -141,10 +141,10 @@ const Ersatzteil = () => {
             />
             <TextField
               autoFocus
-              type="text"
+              type="number"
               margin="dense"
-              name="kStreet"
-              label="Street"
+              name="EtPreis"
+              label="Preis"
               fullWidth
               variant="standard"
               onChange={handleChange}
@@ -153,8 +153,8 @@ const Ersatzteil = () => {
               autoFocus
               type="number"
               margin="dense"
-              name="kZipcode"
-              label="Zip Code"
+              name="EtAnzLager"
+              label="Anzahl Lager"
               fullWidth
               variant="standard"
               onChange={handleChange}
@@ -163,8 +163,8 @@ const Ersatzteil = () => {
               autoFocus
               type="text"
               margin="dense"
-              name="kCity"
-              label="City"
+              name="EtHersteller"
+              label="Hersteller"
               fullWidth
               variant="standard"
               onChange={handleChange}
