@@ -10,8 +10,10 @@ const Table = ({
   setSelectedAuftraege,
   setSelectedKunde,
   setSelectedMitarbeiter,
+  setSelectedErsatzteil,
   setKunNr,
   setMitID,
+  setEtID,
 }) => {
   const columns = tableHeadings.map((heading) => {
     if (heading === "Beschreibung") {
@@ -85,6 +87,22 @@ const Table = ({
               selectedIDs.has(row.MitID)
             );
             setSelectedMitarbeiter(selectedRowData);
+          }}
+        />
+      ) : rowID === "EttID" ? (
+        <DataGrid
+          rows={rows}
+          columns={columns}
+          pageSize={5}
+          rowsPerPageOptions={[5]}
+          checkboxSelection
+          getRowId={(row) => row.EtID}
+          onSelectionModelChange={(ids) => {
+            const selectedIDs = new Set(ids);
+            const selectedRowData = rows.filter((row) =>
+              selectedIDs.has(row.MitID)
+            );
+            setSelectedErsatzteil(selectedRowData);
           }}
         />
       ) : (

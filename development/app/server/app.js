@@ -8,6 +8,7 @@ import db from "./config/database.js";
 import auftraegeRoutes from "./routes/auftraege.js";
 import kundenRoutes from "./routes/kunden.js";
 import mitarbeiterRoutes from "./routes/mitarbeiter.js";
+import ersatzteilRoutes from "./routes/mitarbeiter.js";
 
 const app = express();
 app.use(bodyParser.json({ limit: "30mb", extended: true }));
@@ -19,6 +20,7 @@ const PORT = process.env.PORT || 5000;
 app.use("/auftraege", auftraegeRoutes);
 app.use("/kunden", kundenRoutes);
 app.use("/mitarbeiter", mitarbeiterRoutes);
+app.use("/ersatzteil", ersatzteilRoutes);
 
 db.authenticate()
   .then(() => {
