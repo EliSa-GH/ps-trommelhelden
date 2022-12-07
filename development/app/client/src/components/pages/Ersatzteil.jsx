@@ -86,8 +86,6 @@ const Ersatzteil = () => {
     dispatch(getErsatzteil());
   }, [dispatch]);
 
-  
-
   const ersatzteil = useSelector((state) => state.ersatzteil);
 
   console.log(ersatzteil);

@@ -15,6 +15,7 @@ body {
 .bericht,
 .home,
 .kunden,
+.ersatzteil,
 .mitarbeiter {
   display: flex;
   justify-content: center;
