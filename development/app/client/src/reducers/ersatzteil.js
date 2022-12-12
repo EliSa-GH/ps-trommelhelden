@@ -6,8 +6,12 @@ export default (ersatzteil = [], action) => {
         return ersatzteil.filter(
           (ersatzteil) => ersatzteil.EtID !== action.payload.EtID
         );
-      case "CREATE_ERSATTEIL":
+      case "CREATE_ERSATZTEIL":
         return [...ersatzteil, action.payload];
+      case "EDIT_ERSATZTEIL":
+        return ersatzteil.map((ersatzteil) =>
+          ersatzteil.EtID === action.payload.EtID ? action.payload : ersatzteil
+            );
       default:
         return ersatzteil;
     }

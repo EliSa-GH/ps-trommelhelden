@@ -38,3 +38,6 @@ export const deleteErsatzteil = (EtID) =>
   API.delete(`/ersatzteil/delete`, { params: { EtID: EtID } });
 export const createErsatzteil = (details) =>
   API.post("/ersatzteil/create", { params: { details: details } });
+export const editErsatzteil = (selectedErsatzteil) => API.patch(`/ersatzteil/edit`, {
+    params: { selectedErsatzteil },
+  });

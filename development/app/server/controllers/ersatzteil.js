@@ -41,3 +41,31 @@ export const createErsatzteil = async (req, res) => {
     res.status(404).json({message: error.message});
   }
 };
+
+
+export const editErsatzteil = async (req, res) => {
+  try {
+    const selectedErsatzteil = await req.body.params.selectedErsatzteil;
+    const ersatzteil = await Ersatzteil.findAll({
+      where: { EtID: selectedErsatzteil.EtID },
+    });
+
+    if (ersatzteil.length > 0) {
+      Ersatzteil.update(await
+        {
+          EtID: selectedErsatzteil.EtID,
+          EtBezeichnung: selectedErsatzteil.EtBezeichnung,
+          EtPreis: selectedErsatzteil.EtPreis,
+          EtAnzLager: selectedErsatzteil.EtAnzLager,
+          EtHersteller: selectedErsatzteil.EtHersteller,
+        },
+        { where: { EtID: selectedErsatzteil.EtID } }
+      );
+      res.status(200).json({ message: "Update erfolgreich" });
+    } else {
+      res.status(404).json({ message: "Ersatzteil existiert nicht" });
+    }
+  } catch (error) {
+    res.status(404).json({ message: "Error: Ersatzteil nicht gepatcht" });
+  }
+};

@@ -27,3 +27,12 @@ export const createErsatzteil = (details) => async (dispatch) => {
     console.log(error);
   }
 }
+
+export const editErsatzteil = (data) => async (dispatch) => {
+  try {
+    await api.editErsatzteil(data);
+    dispatch({ type: "EDIT_ERSATZTEIL", payload: data })
+  } catch (error) {
+    console.log(error);
+  }
+};
