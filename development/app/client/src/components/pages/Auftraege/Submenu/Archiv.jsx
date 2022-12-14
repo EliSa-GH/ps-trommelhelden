@@ -71,6 +71,16 @@ const Archiv = () => {
     <Box>
       {erlAuftraege.length > 0 ? (
         <>
+          <Box
+            display="flex"
+            justifyContent="left"
+            sx={{
+              width: "90%",
+              margin: "auto",
+            }}
+          >
+            <h1>Archiv</h1>
+          </Box>
           <Table
             tableHeadings={getHeadings(erlAuftraege)}
             tableData={erlAuftraege}
@@ -80,25 +90,30 @@ const Archiv = () => {
           <Box
             display="flex"
             justifyContent="right"
-            alignItems="center"
-            marginRight={12}
+            alignItems="right"
+            sx={{
+              width: "90%",
+              margin: "auto",
+              "& button": { m: 1 },
+            }}
           >
             <Button
               {...(selectedAuftraege.length !== 1
                 ? { disabled: true }
                 : { disabled: false })}
-              sx={{ height: "60px", width: "200px", marginRight: "10px" }}
+              //sx={{ height: "60px", width: "200px", marginRight: "10px" }}
+              
               variant="contained"
               onClick={handleOpenEdit}
             >
-              <h3>Edit</h3>
+              <h3>Bearbeiten</h3>
             </Button>
             <Button
-              sx={{ height: "60px", width: "200px", marginLeft: "10px" }}
+              //sx={{ height: "60px", width: "200px", marginLeft: "10px" }}
               variant="contained"
               onClick={handleOpenDelete}
             >
-              <h3>Delete</h3>
+              <h3>Löschen</h3>
             </Button>
           </Box>
         </>
@@ -108,7 +123,7 @@ const Archiv = () => {
 
       <Dialog open={openEdit} onClose={handleClose}>
         <DialogTitle>
-          Edit Job [{selectedAuftraege.length > 0 && selectedAuftraege[0].Aufnr}
+          Auftrag bearbeiten [{selectedAuftraege.length > 0 && selectedAuftraege[0].Aufnr}
           ]
         </DialogTitle>
         <DialogContent>
@@ -126,23 +141,23 @@ const Archiv = () => {
               variant="contained"
               sx={{ margin: "5px" }}
             >
-              Confirm
+              Speichern
             </Button>
             <Button
               onClick={handleClose}
               variant="contained"
               sx={{ margin: "5px" }}
             >
-              Cancel
+              Abbruch
             </Button>
           </Box>
         </DialogActions>
       </Dialog>
       <Dialog open={openDelete} onClose={handleClose}>
-        <DialogTitle>Delete</DialogTitle>
+        <DialogTitle>Löschen</DialogTitle>
         <DialogContent>
           <Typography variant="h6">
-            Are you sure you want to delete these job(s) with number:
+            Zu löschende Auftragsnummer(n):
             {selectedAuftraege.map((auftrag) => ` [${auftrag.Aufnr}] `)} ?
           </Typography>
         </DialogContent>
@@ -153,14 +168,14 @@ const Archiv = () => {
               variant="contained"
               sx={{ margin: "5px" }}
             >
-              Confirm
+              Löschen
             </Button>
             <Button
               onClick={handleClose}
               variant="contained"
               sx={{ margin: "5px" }}
             >
-              Cancel
+              Abbruch
             </Button>
           </Box>
         </DialogActions>

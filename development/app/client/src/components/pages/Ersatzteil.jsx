@@ -111,6 +111,16 @@ const Ersatzteil = () => {
       <Box>
         {ersatzteil.length > 0 ? (
           <Box>
+            <Box
+              display="flex"
+              justifyContent="left"
+              sx={{
+                width: "90%",
+                margin: "auto",
+              }}
+            >
+              <h1>Ersatzteile</h1>
+            </Box>
             <Table
               tableHeadings={getHeadings(ersatzteil)}
               tableData={ersatzteil}
@@ -190,7 +200,7 @@ const Ersatzteil = () => {
           </DialogContent>
           <DialogActions>
             <Button onClick={handleClose}>Abbruch</Button>
-            <Button onClick={handleSubmit}>Speichern</Button>
+            <Button onClick={handleSubmit}>Anlegen</Button>
           </DialogActions>
         </Dialog>
               </div>
@@ -282,7 +292,7 @@ const Ersatzteil = () => {
           </DialogContent>
           <DialogActions>
             <Button onClick={handleClose}>Abbrechen</Button>
-            <Button onClick={handleEdit}>Übernehmen</Button>
+            <Button onClick={handleEdit}>Speichern</Button>
           </DialogActions>
         </Dialog>
       <Dialog open={openDelete} onClose={handleClose}>
@@ -290,7 +300,7 @@ const Ersatzteil = () => {
         <DialogContent>
           <Typography variant="h6">
             Zu löschende Ersatzteilnummer(n):
-            {selectedErsatzteil.map((ersatzteil) => ` [${ersatzteil.EtID}] `)} ?
+            {selectedErsatzteil.map((ersatzteil) => ` [${ersatzteil.EtID}] `)}
           </Typography>
         </DialogContent>
         <DialogActions>

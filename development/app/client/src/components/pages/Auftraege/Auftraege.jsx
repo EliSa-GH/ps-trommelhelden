@@ -80,7 +80,7 @@ const Auftraege = () => {
           <TextField
             fullWidth
             required
-            label="Employee's ID"
+            label="Mitarbeiter-ID"
             sx={{ marginBottom: "20px" }}
             onChange={(e) => setMitID(e.target.value)}
             value={MitID}
@@ -89,6 +89,16 @@ const Auftraege = () => {
       </Box>
       {auftraege.length > 0 && isEnter ? (
         <>
+          <Box
+            display="flex"
+            justifyContent="left"
+            sx={{
+              width: "90%",
+              margin: "auto",
+            }}
+          >
+            <h1>Aufträge</h1>
+          </Box>
           <Table
             tableHeadings={getHeadings(auftraege)}
             tableData={auftraege}
@@ -98,25 +108,27 @@ const Auftraege = () => {
           <Box
             display="flex"
             justifyContent="right"
-            alignItems="center"
-            marginRight={12}
+            alignItems="right"
+            sx={{
+              width: "90%",
+              margin: "auto",
+              "& button": { m: 1 },
+            }}
           >
             <Button
               {...(selectedAuftraege.length !== 1
                 ? { disabled: true }
                 : { disabled: false })}
-              sx={{ height: "60px", width: "200px", marginRight: "10px" }}
               variant="contained"
               onClick={handleOpenEdit}
             >
-              <h3>Edit</h3>
+              <h3>Bearbeiten</h3>
             </Button>
             <Button
-              sx={{ height: "60px", width: "200px", marginLeft: "10px" }}
               variant="contained"
               onClick={handleOpenDelete}
             >
-              <h3>Delete</h3>
+              <h3>Löschen</h3>
             </Button>
           </Box>
         </>
@@ -141,24 +153,24 @@ const Auftraege = () => {
               variant="contained"
               sx={{ margin: "5px" }}
             >
-              Confirm
+              Speichern
             </Button>
             <Button
               onClick={handleClose}
               variant="contained"
               sx={{ margin: "5px" }}
             >
-              Cancel
+              Abbrechen
             </Button>
           </Box>
         </DialogActions>
       </Dialog>
       <Dialog open={openDelete} onClose={handleClose}>
-        <DialogTitle>Delete</DialogTitle>
+        <DialogTitle>Löschen</DialogTitle>
         <DialogContent>
           <Typography variant="h6">
-            Are you sure you want to delete these job(s) with number:
-            {selectedAuftraege.map((auftrag) => ` [${auftrag.Aufnr}] `)} ?
+            Zu löschende Auftragsnummer(n):
+            {selectedAuftraege.map((auftrag) => ` [${auftrag.Aufnr}] `)}
           </Typography>
         </DialogContent>
         <DialogActions>
@@ -168,14 +180,14 @@ const Auftraege = () => {
               variant="contained"
               sx={{ margin: "5px" }}
             >
-              Confirm
+              Löschen
             </Button>
             <Button
               onClick={handleClose}
               variant="contained"
               sx={{ margin: "5px" }}
             >
-              Cancel
+              Abbruch
             </Button>
           </Box>
         </DialogActions>

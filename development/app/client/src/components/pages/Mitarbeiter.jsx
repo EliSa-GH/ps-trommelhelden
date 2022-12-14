@@ -100,6 +100,16 @@ const Mitarbeiter = () => {
       <Box>
       {mitarbeiter.length > 0 ? (
         <Box>
+          <Box
+            display="flex"
+            justifyContent="left"
+            sx={{
+              width: "90%",
+              margin: "auto",
+            }}
+          >
+            <h1>Mitarbeiter</h1>
+          </Box>
           <Table
             tableHeadings={getHeadings(mitarbeiter)}
             tableData={mitarbeiter}
@@ -122,7 +132,7 @@ const Mitarbeiter = () => {
                 <h3>Mitarbeiter anlegen</h3>
               </Button>
               <Dialog open={open} onClose={handleClose}>
-          <DialogTitle>Create new Employee</DialogTitle>
+          <DialogTitle>Mitarbeiter anlegen</DialogTitle>
           <DialogContent>
           <TextField
               autoFocus
@@ -197,8 +207,8 @@ const Mitarbeiter = () => {
             />
           </DialogContent>
           <DialogActions>
-            <Button onClick={handleClose}>Cancel</Button>
-            <Button onClick={handleSubmit}>Save & Exit</Button>
+            <Button onClick={handleClose}>Abbruch</Button>
+            <Button onClick={handleSubmit}>Anlegen</Button>
           </DialogActions>
         </Dialog>
               </div>
@@ -219,7 +229,7 @@ const Mitarbeiter = () => {
         <DialogContent>
           <Typography variant="h6">
             Zu löschende Mitarbeiternummer(n):
-            {selectedMitarbeiter.map((mitarbeiter) => ` [${mitarbeiter.MitID}] `)} ?
+            {selectedMitarbeiter.map((mitarbeiter) => ` [${mitarbeiter.MitID}] `)}
           </Typography>
         </DialogContent>
         <DialogActions>

@@ -31,11 +31,6 @@
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
-    /**
-     * Create Kunden Dialog Funktions
-     */
-    //START
-    
     const [details, setDetails] = React.useState({
       kKunnr: 0,
       kName: "",
@@ -69,9 +64,6 @@
       const handleClickOpen = () => {
         setOpen(true);
       };
-    
-  
-  // END 
     
     const getHeadings = (data) => {
       return Object.keys(data[0]);
@@ -115,6 +107,16 @@
         <Box>
           {kunden.length > 0 ? (
           <Box>
+            <Box
+              display="flex"
+              justifyContent="left"
+              sx={{
+                width: "90%",
+                margin: "auto",
+              }}
+            >
+              <h1>Kunden</h1>
+            </Box>
             <Table
               tableHeadings={getHeadings(kunden)}
               tableData={kunden}
@@ -139,7 +141,7 @@
                 <h3>Kunde anlegen</h3>
               </Button>
               <Dialog open={open} onClose={handleClose}>
-          <DialogTitle>Create new customer</DialogTitle>
+          <DialogTitle>Kunde anlegen</DialogTitle>
           <DialogContent>
           <TextField
               autoFocus
@@ -194,8 +196,8 @@
             />
           </DialogContent>
           <DialogActions>
-            <Button onClick={handleClose}>Cancel</Button>
-            <Button onClick={handleSubmit}>Save & Exit</Button>
+            <Button onClick={handleClose}>Abbruch</Button>
+            <Button onClick={handleSubmit}>Anlegen</Button>
           </DialogActions>
          </Dialog>
               </div>
@@ -216,7 +218,7 @@
         {selectedKunde.length > 0 ? (<>
 
           <Dialog open={open} onClose={handleClose}>
-         <DialogTitle>Kunde Bearbeiten</DialogTitle>
+         <DialogTitle>Kunde bearbeiten</DialogTitle>
          <DialogContent>
            <DialogContentText>
 
@@ -288,7 +290,7 @@
          </DialogContent>
          <DialogActions>
            <Button onClick={handleClose}>Abbrechen</Button>
-           <Button onClick={handleEdit}>Übernehmen</Button>
+           <Button onClick={handleEdit}>Speichern</Button>
          </DialogActions>
        </Dialog>
         <Dialog open={openDelete} onClose={handleClose}>
@@ -296,7 +298,7 @@
           <DialogContent>
             <Typography variant="h6">
               Zu löschende Kundennummer(n):
-              {selectedKunde.map((kunden) => ` [${kunden.KunNr}] `)} ?
+              {selectedKunde.map((kunden) => ` [${kunden.KunNr}] `)}
             </Typography>
           </DialogContent>
           <DialogActions>
