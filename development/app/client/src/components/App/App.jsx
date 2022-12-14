@@ -12,6 +12,7 @@ import Archiv from "../pages/Auftraege/Submenu/Archiv";
 import Kunden from "../pages/Kunden";
 import Mitarbeiter from "../pages/Mitarbeiter";
 import Bericht from "../pages/Bericht";
+import Ersatzteil from "../pages/Ersatzteil";
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
           <Route path="/archiv" element={<Archiv />}></Route>
           <Route path="/kunden" element={<Kunden />}></Route>
           <Route path="/mitarbeiter" element={<Mitarbeiter />}></Route>
+          <Route path="/ersatzteil" element={<Ersatzteil />}></Route>
           <Route path="/bericht" element={<Bericht />}></Route>
           <Route path="/" exact element={<Home />}></Route>
         </Routes>

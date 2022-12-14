@@ -62,6 +62,21 @@ const NavItems = () => {
           boxShadow: "none",
         }}
         component={Link}
+        to="ersatzteil"
+      >
+        Ersatzteil
+      </Typography>
+      <Typography
+        sx={{
+          marginRight: "30px",
+          cursor: "pointer",
+          color: "#616161",
+          fontSize: "20px",
+          fontWeight: "bold",
+          textDecoration: "none",
+          boxShadow: "none",
+        }}
+        component={Link}
         to="/bericht"
       >
         Bericht

@@ -33,4 +33,14 @@ export const createKunde = (details) =>
   API.post("/kunden/create", { params: { details: details } });
 export const editKunde = (selectedKunde) => API.patch(`/kunden/edit`, {
     params: { selectedKunde },
+    });
+    
+// Ersatzteil API
+export const fetchErsatzteil = () => API.get("/ersatzteil");
+export const deleteErsatzteil = (EtID) =>
+  API.delete(`/ersatzteil/delete`, { params: { EtID: EtID } });
+export const createErsatzteil = (details) =>
+  API.post("/ersatzteil/create", { params: { details: details } });
+export const editErsatzteil = (selectedErsatzteil) => API.patch(`/ersatzteil/edit`, {
+    params: { selectedErsatzteil },
   });
