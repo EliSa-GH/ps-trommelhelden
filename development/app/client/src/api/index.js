@@ -31,8 +31,11 @@ export const deleteKunde = (KunNr) =>
   API.delete(`/kunden/delete`, { params: { KunNr: KunNr } });
 export const createKunde = (details) =>
   API.post("/kunden/create", { params: { details: details } });
-
-  // Ersatzteil API
+export const editKunde = (selectedKunde) => API.patch(`/kunden/edit`, {
+    params: { selectedKunde },
+    });
+    
+// Ersatzteil API
 export const fetchErsatzteil = () => API.get("/ersatzteil");
 export const deleteErsatzteil = (EtID) =>
   API.delete(`/ersatzteil/delete`, { params: { EtID: EtID } });

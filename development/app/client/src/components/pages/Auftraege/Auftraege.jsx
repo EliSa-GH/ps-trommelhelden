@@ -131,6 +131,7 @@ const Auftraege = () => {
           <AuftragForm
             selectedAuftraege={selectedAuftraege}
             setSelectedAuftraege={setSelectedAuftraege}
+            kunden={[]}
           />
         </DialogContent>
         <DialogActions>

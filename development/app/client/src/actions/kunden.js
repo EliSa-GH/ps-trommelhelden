@@ -27,3 +27,12 @@ export const createKunde = (details) => async (dispatch) => {
     console.log(error);
   }
 }
+
+export const editKunde = (data) => async (dispatch) => {
+  try {
+    await api.editKunde(data);
+    dispatch({ type: "EDIT_KUNDE", payload: data })
+  } catch (error) {
+    console.log(error);
+  }
+};

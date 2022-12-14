@@ -19,6 +19,7 @@
     getKunden,
     deleteKunde,
     createKunde,
+    editKunde,
   } from "../../actions/kunden";
   import Progress from "../Progress/Progress";
 
@@ -49,6 +50,13 @@
         return {...prev, [name]: value}
       }) 
     }
+
+      const handleChangeEdit = (e) => {
+      const {name, value} = e.target;
+      console.log(name, value);
+      setSelectedKunde([{...selectedKunde[0], [name]: value}]
+      )
+    };
   
     const handleSubmit = (e) => {
       e.preventDefault();
@@ -89,6 +97,14 @@
       }
     };
 
+    const handleEdit = (e) => {
+      e.preventDefault();
+       dispatch(editKunde(selectedKunde[0]))
+       console.log(editKunde)
+       handleClose(true);
+       //navigate(0)
+    };
+
     useEffect(() => {
       dispatch(getKunden());
     }, [dispatch]);
@@ -97,7 +113,7 @@
     return (
       <Box>
         <Box>
-        {kunden.length > 0 ? (
+          {kunden.length > 0 ? (
           <Box>
             <Table
               tableHeadings={getHeadings(kunden)}
@@ -117,7 +133,9 @@
             >
               <div className="KundenCreate">
                   <Button variant="contained"
-                    onClick={handleClickOpen}>
+                    onClick={handleClickOpen}
+                    disabled={selectedKunde.length > 0 || selectedKunde.length >= 2 }>
+                    
                 <h3>Kunde anlegen</h3>
               </Button>
               <Dialog open={open} onClose={handleClose}>
@@ -179,11 +197,11 @@
             <Button onClick={handleClose}>Cancel</Button>
             <Button onClick={handleSubmit}>Save & Exit</Button>
           </DialogActions>
-        </Dialog>
+         </Dialog>
               </div>
           
 
-              <Button variant="contained">
+              <Button variant="contained" onClick={handleClickOpen} disabled={selectedKunde.length <= 0 || selectedKunde.length >= 2}>
                 <h3>Bearbeiten</h3>
               </Button>
               <Button variant="contained" onClick={handleOpenDelete}>
@@ -195,6 +213,84 @@
           <Progress />
         )}
         </Box>
+        {selectedKunde.length > 0 ? (<>
+
+          <Dialog open={open} onClose={handleClose}>
+         <DialogTitle>Kunde Bearbeiten</DialogTitle>
+         <DialogContent>
+           <DialogContentText>
+
+           </DialogContentText>
+           <TextField
+             
+             margin="dense"
+             id="KunNr"
+             name="KunNr"
+             label="Kundennummer"
+             type="number"
+             fullWidth
+             variant="standard"
+             value={selectedKunde[0].KunNr}
+             disabled
+             />
+           <TextField
+             
+             
+             margin="dense"
+             id="KunName"
+             name="KunName"
+             label="Kundenname"
+             type="text"
+             fullWidth
+             variant="standard"
+             value={selectedKunde[0].KunName}
+             onChange={handleChangeEdit}
+
+           />           
+           <TextField
+             
+           margin="dense"
+           id="KunOrt"
+           name="KunOrt"
+           label="Kundenort"
+           type="text"
+           fullWidth
+           variant="standard"
+           value= {selectedKunde[0].KunOrt}
+           onChange={handleChangeEdit}
+         />
+          <TextField
+             
+             margin="dense"
+             id="KunPlz"
+             name="KunPlz"
+             label="Postleitzahl"
+             type="text"
+             fullWidth
+             variant="standard"
+             value= {selectedKunde[0].KunPlz}
+             onChange={handleChangeEdit}
+             inputProps={{ maxLength: 5 }}
+
+           />
+            <TextField
+             
+             margin="dense"
+             id="KunStrasse"
+             name="KunStrasse"
+             label="Straße"
+             type="text"
+             fullWidth
+             variant="standard"
+             value= {selectedKunde[0].KunStrasse}
+             onChange={handleChangeEdit}
+           />
+         </DialogContent>
+         <DialogActions>
+           <Button onClick={handleClose}>Abbrechen</Button>
+           <Button onClick={handleEdit}>Übernehmen</Button>
+         </DialogActions>
+       </Dialog>
         <Dialog open={openDelete} onClose={handleClose}>
           <DialogTitle>Löschen</DialogTitle>
           <DialogContent>
@@ -221,7 +317,8 @@
               </Button>
             </Box>
           </DialogActions>
-        </Dialog>
+        </Dialog> </>) : false
+       } 
       </Box>
     );
   };

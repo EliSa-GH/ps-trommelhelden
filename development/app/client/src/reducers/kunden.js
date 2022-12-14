@@ -8,6 +8,10 @@ export default (kunden = [], action) => {
       );
     case "CREATE_KUNDE":
       return [...kunden, action.payload];
+    case "EDIT_KUNDE":
+      return kunden.map((kunde) =>
+        kunde.KunNr === action.payload.KunNr ? action.payload : kunde
+        );
     default:
       return kunden;
   }

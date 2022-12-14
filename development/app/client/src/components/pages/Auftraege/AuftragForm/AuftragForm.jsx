@@ -102,7 +102,7 @@ const AuftragForm = ({
             <TextField
               disabled={disable}
               type="date"
-              label="Erlösedatum"
+              label="Erledigungsdatum"
               name="ErlDat"
               sx={{ width: "290px", margin: "5px" }}
               InputLabelProps={{ shrink: true }}

@@ -6,8 +6,10 @@ import { Box, Button, Typography } from "@mui/material";
 import AuftragForm from "../AuftragForm/AuftragForm";
 import { createAuftrag } from "../../../../actions/auftraege";
 import { getKunden } from "../../../../actions/kunden";
+import { useNavigate } from "react-router-dom";
 
 const Anlegen = () => {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getKunden());
@@ -29,11 +31,11 @@ const Anlegen = () => {
   const handleCreate = () => {
     if (selectedAuftraege[0].KunNr !== "") {
       dispatch(createAuftrag(selectedAuftraege[0]));
+      navigate(0);
     } else {
       alert("Bitte Kundennummer eingeben!");
     }
   };
-  console.log(selectedAuftraege[0]);
 
   return (
     <Box
