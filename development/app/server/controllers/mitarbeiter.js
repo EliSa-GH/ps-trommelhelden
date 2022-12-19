@@ -46,3 +46,32 @@ export const createMitarbeiter = async (req, res) => {
     res.status(404).json({message: error.message});
   }
 };
+
+export const editMitarbeiter = async (req, res) => {
+  try {
+    const selectedMitarbeiter = await req.body.params.selectedMitarbeiter;
+    const mitarbeiter = await Mitarbeiter.findAll({
+      where: { MitID: selectedMitarbeiter.MitID },
+    });
+
+    if (mitarbeiter.length > 0) {
+      Mitarbeiter.update(await
+        {
+          MitID: selectedMitarbeiter.MitID,
+          MitName: selectedMitarbeiter.MitName,
+          MitVorname: selectedMitarbeiter.MitVorname,
+          MitGebDat: selectedMitarbeiter.MitGebDat,
+          MitJob: selectedMitarbeiter.MitJob,
+          MitStundensatz: selectedMitarbeiter.MitStundensatz,
+          MitEinsatzort: selectedMitarbeiter.MitEinsatzort,
+        },
+        { where: { MitID: selectedMitarbeiter.MitID } }
+      );
+      res.status(200).json({ message: "Update erfolgreich" });
+    } else {
+      res.status(404).json({ message: "Mitarbeiter existiert nicht" });
+    }
+  } catch (error) {
+    res.status(404).json({ message: "Error: Mitarbeiter nicht gepatcht" });
+  }
+};

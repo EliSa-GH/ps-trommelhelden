@@ -7,7 +7,11 @@ export default (mitarbeiter = [], action) => {
         (mitarbeiter) => mitarbeiter.MitID !== action.payload.MitID
       );
     case "CREATE_MITARBEITER":
-      return [...mitarbeiter, action.payload]
+      return [...mitarbeiter, action.payload];
+    case "EDIT_MITARBEITER":
+      return mitarbeiter.map((mitarbeiter) =>
+        mitarbeiter.MitID === action.payload.MitID ? action.payload : mitarbeiter
+        );
     default:
       return mitarbeiter;
   }

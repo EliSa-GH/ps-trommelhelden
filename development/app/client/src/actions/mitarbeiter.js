@@ -26,4 +26,13 @@ export const createMitarbeiter = (mDetails) => async (dispatch) => {
   } catch (error){
     console.log(error);
   }
-}
+};
+
+export const editMitarbeiter = (data) => async (dispatch) => {
+  try {
+    await api.editMitarbeiter(data);
+    dispatch({ type: "EDIT_MITARBEITER", payload: data })
+  } catch (error) {
+    console.log(error);
+  }
+};

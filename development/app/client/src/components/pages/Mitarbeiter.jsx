@@ -19,6 +19,7 @@ import {
   getMitarbeiter,
   deleteMitarbeiter,
   createMitarbeiter,
+  editMitarbeiter,
 } from "../../actions/mitarbeiter";
 import Progress from "../Progress/Progress";
 
@@ -50,7 +51,14 @@ const Mitarbeiter = () => {
       setmDetails((prev) => {
         return {...prev, [name]: value}
       }) 
-    }
+    };
+
+    const handleChangeEdit = (e) => {
+      const {name, value} = e.target;
+      console.log(name, value);
+      setSelectedMitarbeiter([{...selectedMitarbeiter[0], [name]: value}]
+      )
+    };
 
     const handleSubmit = (e) => {
       e.preventDefault();
@@ -87,6 +95,14 @@ const Mitarbeiter = () => {
       );
       navigate(0);
     }
+  };
+
+  const handleEdit = (e) => {
+    e.preventDefault();
+     dispatch(editMitarbeiter(selectedMitarbeiter[0]))
+     console.log(selectedMitarbeiter)
+     handleClose(true);
+     //navigate(0)
   };
 
   useEffect(() => {
@@ -128,7 +144,9 @@ const Mitarbeiter = () => {
           >
             <div className="MitarbeiterCreate">
                   <Button variant="contained"
-                    onClick={handleClickOpen}>
+                    onClick={handleClickOpen}
+                    disabled={selectedMitarbeiter.length > 0 || selectedMitarbeiter.length >= 2 }>
+                    
                 <h3>Mitarbeiter anlegen</h3>
               </Button>
               <Dialog open={open} onClose={handleClose}>
@@ -212,7 +230,7 @@ const Mitarbeiter = () => {
           </DialogActions>
         </Dialog>
               </div>
-            <Button variant="contained">
+              <Button variant="contained" onClick={handleClickOpen} disabled={selectedMitarbeiter.length <= 0 || selectedMitarbeiter.length >= 2}>
               <h3>Bearbeiten</h3>
             </Button>
             <Button variant="contained" onClick={handleOpenDelete}>
@@ -224,6 +242,109 @@ const Mitarbeiter = () => {
         <Progress />
       )}
     </Box>
+    {selectedMitarbeiter.length > 0 ? (<>
+      <Dialog open={open} onClose={handleClose}>
+         <DialogTitle>Mitarbeiter bearbeiten</DialogTitle>
+         <DialogContent>
+           <DialogContentText>
+
+           </DialogContentText>
+           <TextField
+             
+             margin="dense"
+             id="MitID"
+             name="MitID"
+             label="Mitarbeiternummer"
+             type="number"
+             fullWidth
+             variant="standard"
+             value={selectedMitarbeiter[0].MitID}
+             disabled
+             />
+           <TextField
+             
+             
+             margin="dense"
+             id="MitName"
+             name="MitName"
+             label="Name"
+             type="text"
+             fullWidth
+             variant="standard"
+             value={selectedMitarbeiter[0].MitName}
+             onChange={handleChangeEdit}
+
+           />           
+           <TextField
+             
+           margin="dense"
+           id="MitVorname"
+           name="MitVorname"
+           label="Vorname"
+           type="text"
+           fullWidth
+           variant="standard"
+           value= {selectedMitarbeiter[0].MitVorname}
+           onChange={handleChangeEdit}
+         />
+          <TextField
+             
+             margin="dense"
+             id="MitGebDat"
+             name="MitGebDat"
+             label="Geburtsdatum"
+             type="date"
+             fullWidth
+             variant="standard"
+             value= {selectedMitarbeiter[0].MitGebDat}
+             onChange={handleChangeEdit}
+
+           />
+            <TextField
+             
+             margin="dense"
+             id="MitJob"
+             name="MitJob"
+             label="Job"
+             type="text"
+             fullWidth
+             variant="standard"
+             value= {selectedMitarbeiter[0].MitJob}
+             onChange={handleChangeEdit}
+           />
+
+            <TextField
+             
+             margin="dense"
+             id="MitStundensatz"
+             name="MitStundensatz"
+             label="Stundensatz"
+             type="number"
+             fullWidth
+             variant="standard"
+             value= {selectedMitarbeiter[0].MitStundensatz}
+             onChange={handleChangeEdit}
+           />
+
+            <TextField
+             
+             margin="dense"
+             id="MitEinsatzOrt"
+             name="MitEinsatzOrt"
+             label="Einsatzort"
+             type="text"
+             fullWidth
+             variant="standard"
+             value= {selectedMitarbeiter[0].MitEinsatzort}
+             onChange={handleChangeEdit}
+           />
+
+         </DialogContent>
+         <DialogActions>
+           <Button onClick={handleClose}>Abbrechen</Button>
+           <Button onClick={handleEdit}>Speichern</Button>
+         </DialogActions>
+       </Dialog>
     <Dialog open={openDelete} onClose={handleClose}>
         <DialogTitle>Löschen</DialogTitle>
         <DialogContent>
@@ -250,7 +371,8 @@ const Mitarbeiter = () => {
             </Button>
           </Box>
         </DialogActions>
-      </Dialog>
+      </Dialog></>) : false
+       } 
     </Box>
   );
 };
