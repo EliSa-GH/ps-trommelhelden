@@ -1,5 +1,14 @@
 import * as api from "../api";
 
+export const getAllAuftraege = () => async (dispatch) => {
+  try {
+    const { data } = await api.fetchAllAuftraege();
+    dispatch({ type: "FETCH_ALL_AUFTRAG", payload: data });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 export const getNewAuftraege = (MitID) => async (dispatch) => {
   try {
     const { data } = await api.fetchNewAuftraege(MitID);
@@ -54,11 +63,25 @@ export const editAuftrag = (selectedAuftrag) => async (dispatch) => {
   }
 };
 
-export const createAuftrag = (selectedAuftrag, KunNr) => async (dispatch) => {
+export const createAuftrag = (selectedAuftrag) => async (dispatch) => {
   try {
-    await api.createAuftrag(selectedAuftrag, KunNr);
+    await api.createAuftrag(selectedAuftrag);
     dispatch({ type: "CREATE_AUFTRAG", payload: selectedAuftrag });
   } catch (error) {
     console.log(error);
   }
 };
+
+export const createAuftragWithoutTrigger =
+  (selectedAuftrag) => async (dispatch) => {
+    try {
+      console.log(selectedAuftrag);
+      await api.createAuftragWithoutTrigger(selectedAuftrag);
+      dispatch({
+        type: "CREATE_AUFTRAG_WITHOUT_TRIGGER",
+        payload: selectedAuftrag,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };

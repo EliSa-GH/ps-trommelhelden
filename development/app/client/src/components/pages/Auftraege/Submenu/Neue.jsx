@@ -1,7 +1,8 @@
 import React from "react";
+import ErsatzteilForm from "../AuftragForm/ErsatzteilForm";
 
 const Neue = () => {
-  return <h1 className="neue">neue</h1>;
+  return <ErsatzteilForm />;
 };
 
 export default Neue;

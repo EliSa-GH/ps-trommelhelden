@@ -21,7 +21,9 @@ export default (auftraege = [], action) => {
         auftrag.Aufnr === action.payload.Aufnr ? action.payload : auftrag
       );
     case "CREATE_AUFTRAG":
+    case "CREATE_AUFTRAG_WITHOUT_TRIGGER":
       return [...auftraege, action.payload];
+
     default:
       return auftraege;
   }
