@@ -3,5 +3,12 @@ import auftraege from "./auftraege";
 import kunden from "./kunden";
 import mitarbeiter from "./mitarbeiter";
 import ersatzteil from "./ersatzteil";
+import montage from "./montage";
 
-export default combineReducers({ auftraege, kunden, mitarbeiter, ersatzteil });
+export default combineReducers({
+  auftraege,
+  kunden,
+  mitarbeiter,
+  ersatzteil,
+  montage,
+});

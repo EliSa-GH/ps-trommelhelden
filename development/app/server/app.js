@@ -9,6 +9,7 @@ import auftraegeRoutes from "./routes/auftraege.js";
 import kundenRoutes from "./routes/kunden.js";
 import mitarbeiterRoutes from "./routes/mitarbeiter.js";
 import ersatzteilRoutes from "./routes/ersatzteil.js";
+import montageRoutes from "./routes/montage.js";
 
 const app = express();
 app.use(bodyParser.json({ limit: "30mb", extended: true }));
@@ -21,6 +22,7 @@ app.use("/auftraege", auftraegeRoutes);
 app.use("/kunden", kundenRoutes);
 app.use("/mitarbeiter", mitarbeiterRoutes);
 app.use("/ersatzteil", ersatzteilRoutes);
+app.use("/montage", montageRoutes);
 
 db.authenticate()
   .then(() => {

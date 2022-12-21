@@ -3,6 +3,7 @@ import axios from "axios";
 const API = axios.create({ baseURL: "http://localhost:5000" });
 
 // Auftraege API
+export const fetchAllAuftraege = () => API.get("/auftraege/all");
 export const fetchNewAuftraege = (MitID) =>
   API.get("/auftraege", { params: { MitID: MitID } });
 export const fetchErlAuftraege = () => API.get("/auftraege/erl");
@@ -15,8 +16,10 @@ export const editAuftrag = (selectedAuftrag) =>
   API.patch(`/auftraege/edit`, {
     params: { selectedAuftrag },
   });
-export const createAuftrag = (selectedAuftrag, KunNr) =>
-  API.post("/auftraege/create", { params: { selectedAuftrag, KunNr } });
+export const createAuftrag = (selectedAuftrag) =>
+  API.post("/auftraege/create", { params: { selectedAuftrag } });
+export const createAuftragWithoutTrigger = (selectedAuftrag) =>
+  API.post("/auftraege/createWithoutTrigger", { params: { selectedAuftrag } });
 
 // Mitarbeiter API
 export const fetchMitarbeiter = () => API.get("/mitarbeiter");
@@ -34,16 +37,24 @@ export const deleteKunde = (KunNr) =>
   API.delete(`/kunden/delete`, { params: { KunNr: KunNr } });
 export const createKunde = (details) =>
   API.post("/kunden/create", { params: { details: details } });
-export const editKunde = (selectedKunde) => API.patch(`/kunden/edit`, {
+export const editKunde = (selectedKunde) =>
+  API.patch(`/kunden/edit`, {
     params: { selectedKunde },
-    });
-    
+  });
+
 // Ersatzteil API
 export const fetchErsatzteil = () => API.get("/ersatzteil");
 export const deleteErsatzteil = (EtID) =>
   API.delete(`/ersatzteil/delete`, { params: { EtID: EtID } });
 export const createErsatzteil = (details) =>
   API.post("/ersatzteil/create", { params: { details: details } });
-export const editErsatzteil = (selectedErsatzteil) => API.patch(`/ersatzteil/edit`, {
+export const editErsatzteil = (selectedErsatzteil) =>
+  API.patch(`/ersatzteil/edit`, {
     params: { selectedErsatzteil },
+  });
+
+//Montage API
+export const createMontage = (Aufnr, ersatzteile) =>
+  API.post(`/montage/create`, {
+    params: { Aufnr, ersatzteile },
   });

@@ -1,10 +1,20 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import { Box, Button, Typography } from "@mui/material";
+import {
+  Box,
+  Button,
+  Typography,
+  FormControlLabel,
+  Switch,
+} from "@mui/material";
 
 import AuftragForm from "../AuftragForm/AuftragForm";
-import { createAuftrag } from "../../../../actions/auftraege";
+import {
+  createAuftrag,
+  createAuftragWithoutTrigger,
+  getAllAuftraege,
+} from "../../../../actions/auftraege";
 import { getKunden } from "../../../../actions/kunden";
 import { useNavigate } from "react-router-dom";
 
@@ -13,8 +23,10 @@ const Anlegen = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getKunden());
+    dispatch(getAllAuftraege());
   }, [dispatch]);
   const kunden = useSelector((state) => state.kunden);
+  const auftraege = useSelector((state) => state.auftraege);
   const [selectedAuftraege, setSelectedAuftraege] = useState([
     {
       Aufnr: "",
@@ -27,11 +39,39 @@ const Anlegen = () => {
       Beschreibung: "",
     },
   ]);
+  const [withTrigger, setWithTrigger] = useState(true);
 
-  const handleCreate = () => {
+  const handleCreate = async () => {
     if (selectedAuftraege[0].KunNr !== "") {
-      dispatch(createAuftrag(selectedAuftraege[0]));
-      navigate(0);
+      if (withTrigger) {
+        const start = new Date().getTime();
+
+        dispatch(createAuftrag(selectedAuftraege[0]));
+
+        const end = new Date().getTime();
+        const time = end - start;
+        console.log(
+          "start: " + start + ", end: " + end + ", total time: " + time
+        ); /* navigate(0); */
+      } else {
+        const start = new Date().getTime();
+
+        dispatch(getAllAuftraege()).then(() => {
+          return auftraege;
+        });
+        const newAufnr =
+          auftraege.length > 0 &&
+          (await auftraege[auftraege.length - 1].Aufnr) + 1;
+        selectedAuftraege[0].Aufnr = newAufnr;
+        dispatch(createAuftragWithoutTrigger(selectedAuftraege[0]));
+
+        const end = new Date().getTime();
+        const time = end - start;
+        console.log(
+          "start: " + start + ", end: " + end + ", total time: " + time
+        );
+        /* navigate(0);  */
+      }
     } else {
       alert("Bitte Kundennummer eingeben!");
     }
@@ -53,9 +93,22 @@ const Anlegen = () => {
           margin: "10px",
         }}
       >
-        <Typography variant="h5" sx={{ margin: "10px" }}>
-          Auftrag anlegen
-        </Typography>
+        <Box display="flex" justifyContent="space-between" alignItems="center">
+          <Typography variant="h5" sx={{ margin: "10px" }}>
+            Auftrag anlegen
+          </Typography>
+          <FormControlLabel
+            control={
+              <Switch
+                checked={withTrigger}
+                onChange={() => setWithTrigger(!withTrigger)}
+              />
+            }
+            label="Mit Trigger: "
+            labelPlacement="start"
+            sx={{ margin: "10px" }}
+          />
+        </Box>
         <AuftragForm
           selectedAuftraege={selectedAuftraege}
           setSelectedAuftraege={setSelectedAuftraege}

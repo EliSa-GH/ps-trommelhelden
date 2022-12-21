@@ -21,11 +21,13 @@ import {
 } from "../../../actions/auftraege";
 import Progress from "../../Progress/Progress";
 import AuftragForm from "./AuftragForm/AuftragForm";
+import ErsatzteilForm from "./AuftragForm/ErsatzteilForm";
 
 const Auftraege = () => {
   const [selectedAuftraege, setSelectedAuftraege] = useState([]);
   const [isEnter, setIsEnter] = useState(false);
   const [MitID, setMitID] = useState("");
+  const [openRequest, setOpenRequest] = useState(false);
   const [openEdit, setOpenEdit] = useState(false);
   const [openDelete, setOpenDelete] = useState(false);
 
@@ -36,16 +38,32 @@ const Auftraege = () => {
     return Object.keys(data[0]);
   };
 
+  const handleOpenRequest = () => {
+    if (selectedAuftraege[0].Ersatzteil === null) {
+      setOpenRequest(true);
+    } else {
+      alert("Dieser Auftrag hat bereits ein Ersatzteil angefordert!");
+    }
+  };
+
   const handleOpenEdit = () => {
     setOpenEdit(true);
   };
   const handleOpenDelete = () => {
     setOpenDelete(true);
   };
+
   const handleClose = () => {
     setOpenEdit(false);
     setOpenDelete(false);
+    setOpenRequest(false);
   };
+
+  const handleEdit = () => {
+    dispatch(editAuftrag(selectedAuftraege));
+    navigate(0);
+  };
+
   const handleDelete = () => {
     if (selectedAuftraege.length > 0) {
       dispatch(
@@ -54,15 +72,12 @@ const Auftraege = () => {
       navigate(0);
     }
   };
-  const handleEdit = () => {
-    dispatch(editAuftrag(selectedAuftraege));
-    navigate(0);
-  };
 
   const auftraege = useSelector((state) => state.auftraege);
 
   return (
     <Box>
+      <h1 style={{ margin: "10px 100px" }}> Deine Aufträge</h1>
       <Box
         sx={{
           display: "flex",
@@ -96,9 +111,7 @@ const Auftraege = () => {
               width: "90%",
               margin: "auto",
             }}
-          >
-            <h1>Aufträge</h1>
-          </Box>
+          ></Box>
           <Table
             tableHeadings={getHeadings(auftraege)}
             tableData={auftraege}
@@ -120,14 +133,20 @@ const Auftraege = () => {
                 ? { disabled: true }
                 : { disabled: false })}
               variant="contained"
+              onClick={handleOpenRequest}
+            >
+              <h3>Ersatzteil anfordern</h3>
+            </Button>
+            <Button
+              {...(selectedAuftraege.length !== 1
+                ? { disabled: true }
+                : { disabled: false })}
+              variant="contained"
               onClick={handleOpenEdit}
             >
               <h3>Bearbeiten</h3>
             </Button>
-            <Button
-              variant="contained"
-              onClick={handleOpenDelete}
-            >
+            <Button variant="contained" onClick={handleOpenDelete}>
               <h3>Löschen</h3>
             </Button>
           </Box>
@@ -135,9 +154,27 @@ const Auftraege = () => {
       ) : (
         <Progress />
       )}
+
+      {/* Spare part request Dialog */}
+      <Dialog open={openRequest} onClose={handleClose}>
+        <DialogTitle>
+          Ersatzteil für den Auftrag [
+          {selectedAuftraege.length > 0 && selectedAuftraege[0].Aufnr}]
+          anfordern
+        </DialogTitle>
+        <DialogContent>
+          <ErsatzteilForm
+            Aufnr={selectedAuftraege.length > 0 && selectedAuftraege[0].Aufnr}
+            onClose={handleClose}
+          />
+        </DialogContent>
+      </Dialog>
+
+      {/* Edit Dialog */}
       <Dialog open={openEdit} onClose={handleClose}>
         <DialogTitle>
-          [{selectedAuftraege.length > 0 && selectedAuftraege[0].Aufnr}]
+          Auftrag [{selectedAuftraege.length > 0 && selectedAuftraege[0].Aufnr}]
+          bearbeiten
         </DialogTitle>
         <DialogContent>
           <AuftragForm
@@ -165,6 +202,8 @@ const Auftraege = () => {
           </Box>
         </DialogActions>
       </Dialog>
+
+      {/* Delete Dialog */}
       <Dialog open={openDelete} onClose={handleClose}>
         <DialogTitle>Löschen</DialogTitle>
         <DialogContent>

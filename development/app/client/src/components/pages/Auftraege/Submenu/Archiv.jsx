@@ -10,6 +10,7 @@ import {
   DialogContent,
   DialogTitle,
   Typography,
+  Alert,
 } from "@mui/material";
 
 import Table from "../../../Table/Table";
@@ -20,9 +21,11 @@ import {
   editAuftrag,
 } from "../../../../actions/auftraege";
 import AuftragForm from "../AuftragForm/AuftragForm";
+import ErsatzteilForm from "../AuftragForm/ErsatzteilForm";
 
 const Archiv = () => {
   const [selectedAuftraege, setSelectedAuftraege] = useState([]);
+  const [openRequest, setOpenRequest] = useState(false);
   const [openEdit, setOpenEdit] = useState(false);
   const [openDelete, setOpenDelete] = useState(false);
 
@@ -35,7 +38,18 @@ const Archiv = () => {
   const handleClose = () => {
     setOpenEdit(false);
     setOpenDelete(false);
+    setOpenRequest(false);
   };
+
+  const handleOpenRequest = () => {
+    console.log(selectedAuftraege);
+    if (selectedAuftraege[0].Ersatzteil === null) {
+      setOpenRequest(true);
+    } else {
+      alert("Dieser Auftrag hat bereits ein Ersatzteil angefordert!");
+    }
+  };
+
   const handleOpenDelete = () => {
     setOpenDelete(true);
   };
@@ -43,18 +57,18 @@ const Archiv = () => {
     setOpenEdit(true);
   };
 
+  const handleEdit = () => {
+    if (selectedAuftraege.length > 0) {
+      dispatch(editAuftrag(selectedAuftraege));
+      navigate(0);
+    }
+  };
+
   const handleDelete = () => {
     if (selectedAuftraege.length > 0) {
       dispatch(
         deleteAuftrag(selectedAuftraege.map((auftrag) => auftrag.Aufnr))
       );
-      navigate(0);
-    }
-  };
-
-  const handleEdit = () => {
-    if (selectedAuftraege.length > 0) {
-      dispatch(editAuftrag(selectedAuftraege));
       navigate(0);
     }
   };
@@ -102,7 +116,18 @@ const Archiv = () => {
                 ? { disabled: true }
                 : { disabled: false })}
               //sx={{ height: "60px", width: "200px", marginRight: "10px" }}
-              
+
+              variant="contained"
+              onClick={handleOpenRequest}
+            >
+              <h3>Ersatzteil anfordern</h3>
+            </Button>
+            <Button
+              {...(selectedAuftraege.length !== 1
+                ? { disabled: true }
+                : { disabled: false })}
+              //sx={{ height: "60px", width: "200px", marginRight: "10px" }}
+
               variant="contained"
               onClick={handleOpenEdit}
             >
@@ -121,10 +146,25 @@ const Archiv = () => {
         <Progress />
       )}
 
+      {/* Spare part request Dialog */}
+      <Dialog open={openRequest} onClose={handleClose}>
+        <DialogTitle>
+          Ersatzteil für den Auftrag [
+          {selectedAuftraege.length > 0 && selectedAuftraege[0].Aufnr}]{" "}
+        </DialogTitle>
+        <DialogContent>
+          <ErsatzteilForm
+            Aufnr={selectedAuftraege.length > 0 && selectedAuftraege[0].Aufnr}
+            onClose={handleClose}
+          />
+        </DialogContent>
+      </Dialog>
+
+      {/* Edit Dialog */}
       <Dialog open={openEdit} onClose={handleClose}>
         <DialogTitle>
-          Auftrag bearbeiten [{selectedAuftraege.length > 0 && selectedAuftraege[0].Aufnr}
-          ]
+          Auftrag [{selectedAuftraege.length > 0 && selectedAuftraege[0].Aufnr}]
+          bearbeiten
         </DialogTitle>
         <DialogContent>
           <AuftragForm
@@ -153,6 +193,8 @@ const Archiv = () => {
           </Box>
         </DialogActions>
       </Dialog>
+
+      {/* Delete Dialog */}
       <Dialog open={openDelete} onClose={handleClose}>
         <DialogTitle>Löschen</DialogTitle>
         <DialogContent>

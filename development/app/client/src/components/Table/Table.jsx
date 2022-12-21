@@ -22,6 +22,12 @@ const Table = ({
         headerName: heading,
         width: 500,
       };
+    } else if (heading === "Ersatzteil") {
+      return {
+        field: heading,
+        headerName: heading,
+        width: 200,
+      };
     } else {
       return {
         field: heading,
