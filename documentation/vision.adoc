@@ -1,0 +1,4 @@
+=== Vision
+
+Ziel dieses Projektseminars ist es, Für die im Rahmen der Module Datenbanksysteme I und II verwendete Trommelhelden-Datenbank ein Web-Frontend zu entwickeln, welche grundlegenden Funktionen zur Datenverwaltung des fiktiven Waschmaschinen-Reparaturservices "Trommelhelden" beinhalten soll. Dies umfasst die Verwaltung von Auftragsdaten, Kundendaten, Mitarbeiterdaten und Daten der Ersatzteile, die während eines Auftrages zum Einsatz kommen.
+In Hinblick auf die Laufzeit sollen verschiedene Implementierungsalternativen aufgezeigt werden, um die Unverzichtbarkeit verschiedener Datenbankkenntnisse und -methoden praktisch zu vermitteln.
