@@ -1,0 +1,51 @@
+=== Arbeit im Team
+[cols="1, 3, 4"]
+|===
+| Alias | Teammitglied | Fachsemester/Studiengang
+
+| Di | Quang Duy Pham | 5. Sem. Allgemeine Informatik
+| Beni | Thanh Binh Nguyen | 7. Sem. Allgemeine Informatik
+| Sabine | Sabine Adam | 7. Sem. Allgemeine Informatik
+| Vitali | Vitali Tichonow | 5. Sem. Allgemeine Informatik
+|===
+
+==== Rollen
+Eine klassische Rollenverteilung fand innerhalb des Projektseminars nicht konkret statt. Allerdings haben sich nach den ersten Wochen Mitglieder der Gruppe durch ihre Taten augenscheinlich selbst in die jeweiligen Rollen versetzt, welche nachträglich wie folgt identifiziert werden können:
+
+Für die erste Aufgabe, die grobe Analyse und Erstellung der Wireframes, habt sich das ganze Team zusammengefunden, sodass diese Rolle keiner einzelnen Person zugeschrieben werden kann.
+
+Sabine fand sich nach kurzer Zeit in der Rolle des Managements wieder. Regelmäßig motivierte sie das Team, koordinierte zusätzliche Treffen für ein gemeinsames Arbeiten und übernahm hauptsächlich das Reden während der wöchentlichen Meetings um den Stand des Projektes darzulegen.
+
+Da Di schon Erfahrungen im Umgang mit dem gewählten Framework hatte, war er der inoffizielle Hauptentwickler der Gruppe. Natürlich war jedes einzelne Mitglied an der Programmierung selbst beteiligt, doch Di war der erste Ansprechpartner, wenn es zu Fragen zu beispielsweise hartnäckigen fehlermeldungen kam.
+
+Die Rolle des Testers wurde ebenfalls jedem zu Teil. Nachdem eine neue Funktion implementiert und auf Github geladen wurde, wurde das Team meist direkt nachrichtlich verständigt und so zum ausgiebigen Testen aufgefordert. 
+
+=== Werkzeuge
+==== Kommunikation
+Gleich zu Beginn des Projektes wurde ein Discord Server aufgesetzt, der wöchentlich für virtuelle Treffen genutzt werden sollte. Durch die Einrichtung verschiedener Kanäle auf die gezielt nur bestimmte Personen Zugriff hatten, konnte zwischen offiziellen Meetings zusammen mit Herrn Professor Thiele und Team-Meetings unterschieden werden.
+
+Des Weiteren wurde am Anfang der Gruppenarbeit eine WhatsApp-Gruppe eingerichtet, in der zumeist Termine für zusätzliche Meetings ausgemacht wurden. Kleinere Probleme oder Fragen konnten so textuell schnell geklärt werden.
+
+==== Dokumentation
+[cols="3, 5"]
+|===
+| Tool                  | Verwendungszweck
+
+| git/ Github           | Versionsverwaltung des gesamten Projektes
+| Asciidoc              | Verfassung schriftlicher Dokumentationen
+Codedokumentation
+| Diagrams.net          |Erstellung von Diagrammen und Wireframes
+|===
+
+==== Framework
+React
+
+==== Deployment
+Docker
+
+=== Zeitlicher Ablauf
+
+=== Probleme und Lösungen
+* *Sprachbarriere* +
+
+* *Probleme mit JSON* +

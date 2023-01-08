@@ -1,0 +1,23 @@
+=== Systemweite Anforderungen
+
+==== Qualitätsanforderungen
+
+* *Deployment* +
+Von Anfang an war geplant die fertiggestellte Applikation Studierenden zur Verfügung zu stellen, welche sich im Rahmen der Module Datenbanksysteme I und II ebenfalls mit der Trommelheldendatenbank beschäftigen. Hierfür bedarf es ein möglichst einfaches Verfahren, welches die komplexe Installation weiterer Hilfsmodule mit einschließt.
+
+* *Datenbestand* +
+Daten sollen zwar neu angelegt, verändert oder gelöscht werden können, doch soll bei der Neustart der Applikation immer wieder der Ausgangsdatenbestand vorhanden sein.
+
+* *Implementierungsalternativen* +
+Die zeitliche Auswirkung von Abfragen innerhalb bzw. außerhalb der Datenbankschicht soll untersucht werden. Für eine geeignete Gegenüberstellung braucht es daher mindestens zwei sich unterschiedene Implementierungen ein und der selben Funktion.
+
+* *Laufzeitmessung* +
+Für die zu untersuchenden Implementierungsalternativen wird ein Messmethodik benötigt, welche die konkrete Laufzeit der Alternativen festhält und für die weitere Bearbeitung bereitstellt.
+
+==== Einschränkungen
+
+* *Datenbank* +
+Die Verwendung einer bereits bestehenden Trommelheldendatenbank wird vorausgesetzt, daher kommt auch das bereits in den Modulen datenbanksysteme I und II verwendete relationale SQL Datenbankmanagementsystem von Microsoft zum Einsatz.
+
+* *Webframework* +
+Für die Umsetzung des Frontends soll ein Javaskript-basiertes Webframework genutzt werden.

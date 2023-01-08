@@ -1,46 +1,39 @@
-= Projektseminar
+= Projektseminar =
+
 
 :doctype: book
 :toc:
-:toclevels: 2
+:toclevels: 3
 :toc-title: Inhaltsverzeichnis
+:figure-caption!:
 
+== Aufgabenstellung und Ausgangssituation
 
-<<<
-include::requirements/use_case_kunden.adoc[]
+include::vision.adoc[]
 
-<<<
-include::requirements/use_case_mitarbeiter.adoc[]
+include::database-structure.adoc[]
 
-<<<
-include::requirements/use_case_auftrag.adoc[]
+== Anforderungen
 
-//<<<
-//include::requirements/use_case_archiv.adoc[]
+include::sys-wide-req.adoc[]
 
-//== Funktionalität
-//
-//=== Kundenverwaltung
-//* Kunden suchen
-//* Kunden bearbeiten
-//* Kunden löschen
-//
-//=== Mitarbeiterverwaltung
-//* Mitarbeiter neu anlegen
-//* Mitarbeiter suchen
-//* Mitarbeiter bearbeiten
-//* Mitarbeiter löschen
-//
-//=== Auftragsverwaltung in 3 Schritten
-//* Kunde gibt Auftrag auf
-//** Neukunde/ Identifikation über KunNr/ KunName + KunOrt + KunPLZ → KunNr
-//** Problembeschreibung → Beschreibung
-//** automatische Angabe von AufNr, AufDat
-//* offene Anträge anzeigen
-//** Mitarbeiter zuordnen → MitID
-//** offene Aufträge je Mitarbeiter anzeigen und bearbeiten
-//** Angabe ErlDat, Dauer, Anfahrt
-//** Rechnung wird automatisch erzeugt
+include::use_cases.adoc[]
 
-<<<
-include::requirements/glossary.adoc[]
+== Projektorganisation
+
+include::organisation.adoc[]
+
+//Arbeit im Team (1)
+//    Rollen
+//Werkzeuge (1+)
+//    Kommunikation/ Programmierung
+//    Docker mit Begründung
+//    Framework mit Begründung
+//Zeitlicher Ablauf und Meilensteine (1.5)
+//    Risikofaktoren -> Umgang damit
+
+== Funktionsdokumentation
+
+== Ergebnisse
+
+== Fazit
