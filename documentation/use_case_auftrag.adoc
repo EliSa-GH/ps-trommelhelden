@@ -26,3 +26,11 @@ Vorbedingung: der Auftraggeber ist Teil der Kundendatei +
 . der Use-Case beginnt, wenn der Auftragstab sowie die Abschluss-Funktion ausgewählt wurden
 . dem System werden die restlichen Auftragsdaten übergeben
 . der Use-Case ist abgeschlossen, sobald die Eingaben bestätigt wurden
+
+*Wireframes für den Auftragstab*
+
+.Auftrag annehmen / Neue Aufträge
+image::wireframes/auftraege_unzugeordnet.png[Neue Aufträge, align="center"]
+
+.Offene Aufträge
+image::wireframes/offene_auftraege.png[Offene Aufträge, align="center"]

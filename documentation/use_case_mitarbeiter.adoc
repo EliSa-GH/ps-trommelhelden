@@ -26,3 +26,8 @@ Das System ermöglicht es Mitarbeiter neu anzulegen, zu suchen, zu bearbeiten od
 
 . der Use-Case beginnt, wenn die Lösch-Funktion eines Mitarbeiter ausgewählt wurde
 . der Use-Case ist abgeschlossen, sobald dem system das Vorhaben bestätigt wurde
+
+*Wireframe für den Mitarbeitertab*
+
+.Mitarbeitertab-Wireframe
+image::wireframes/mitarbeiter.png[Wireframe Mitarbeitertab, align="center"]
