@@ -23,15 +23,6 @@ include::use_cases.adoc[]
 
 include::organisation.adoc[]
 
-//Arbeit im Team (1)
-//    Rollen
-//Werkzeuge (1+)
-//    Kommunikation/ Programmierung
-//    Docker mit Begründung
-//    Framework mit Begründung
-//Zeitlicher Ablauf und Meilensteine (1.5)
-//    Risikofaktoren -> Umgang damit
-
 == Funktionsdokumentation
 
 == Ergebnisse

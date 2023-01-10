@@ -38,14 +38,14 @@ Codedokumentation
 |===
 
 ==== Framework
-React
+ToDo
 
 ==== Deployment
-Docker
+ToDo
 
 === Zeitlicher Ablauf
 
 === Probleme und Lösungen
-* *Sprachbarriere* +
 
 * *Probleme mit JSON* +
+ToDo

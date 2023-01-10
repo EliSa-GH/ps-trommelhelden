@@ -26,3 +26,8 @@ Das System ermöglicht es Kunden neu anzulegen, zu suchen, zu bearbeiten oder zu
 
 . der Use-Case beginnt, wenn der Kundentab und die Lösch-Funktion eines Kunden ausgewählt wurde
 . der Use-Case ist abgeschlossen, sobald dem system das Vorhaben bestätigt wurde
+
+*Wireframe für den Kundentab*
+
+.Kundentab-Wireframe
+image::wireframes/kunden.png[Wireframe Kundentab, align="center"]

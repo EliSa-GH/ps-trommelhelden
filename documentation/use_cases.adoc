@@ -5,3 +5,14 @@ include::use_case_kunden.adoc[]
 include::use_case_mitarbeiter.adoc[]
 
 include::use_case_auftrag.adoc[]
+
+==== Weitere Bestandteile
+
+*Ersatzteile verwalten* +
+Für die Verwaltung von Ersatzteilen wird ebenfalls ein eigener Tab benötigt. Die benötigten Funktionalitäten (Erstellen, Bearbeiten, Löschen) decken sich mit denen, die bereits in den Use-Cases 01 und 02 verschriftlicht worden sind, weshalb von einer ausführlichen Ausführung abgesehen wurde.
+
+*Archiv* +
+Dem Auftragstab untergeordnet existiert ein Tab, welcher abgeschlossene Aufträge enthält. Mitarbeitende können hier Korrekturen an jenen Aufträgen vornehmen.
+
+*Bericht* +
+ToDo
