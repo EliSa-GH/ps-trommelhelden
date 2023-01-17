@@ -25,6 +25,8 @@ include::organisation.adoc[]
 
 == Funktionsdokumentation
 
+include::funcktion_description.adoc[]
+
 == Ergebnisse
 
 == Fazit
