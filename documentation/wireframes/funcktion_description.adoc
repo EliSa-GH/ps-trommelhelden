@@ -1,0 +1,58 @@
+=== Funktionsbeschreibung
+
+==== CREATE
+
+Funktion "Create" oder Anlegen wird im Seiten Auftrag, Kunden, Mitarbeiter und Ersatzteile implementiert.
+
+*Auftrag Anlegen* +
+
+* Die Erstellung einer neuen Auftragsinstanz erfolgt mit der Option, einen Trigger hinzuzufügen oder nicht. Wenn die Option "mit Trigger" gewählt wird, wird ein Auftrag mit der nächstmöglichen Nummer erstellt. Dies basiert auf der letzten höchsten Auftragsnummer.
+** _Beispiel: Wenn die letzte Auftragsnummer 1000 ist, wird bei der Auswahl der Option "mit Trigger" automatisch eine Inkrementierung durchgeführt. Ohne spezifische Angabe wird die Nummer um eins erhöht und der neue Auftrag mit der Nummer 1001 erstellt._
+* Der Kundenname ist ein erforderliches Feld, um den Auftrag zuordnen zu können. Sollte der Kundenname oder die Nummer nicht in der Datenbank vorhanden sein, wird eine Option zur Erstellung des Kunden angezeigt. Nach dem Klicken wird die Kundenseite geöffnet, um die Erstellung durchzuführen."
+*Es gibt optional Felder wie Dauer, MitID, Anfahrt und Beschreibung die ausgefüllt werden können. Das Auftragsdatum wird automatisch mit dem aktuellen Datum gefüllt.
+
+* *ENTWICKLUNG:* Entwicklungdatei liegt in 
+
+    ~client/src/components/pages/Auftraege/Submenu/Anlegen.jsx
+
+** Funktion ist als Singlepage implementiert und deshalb wird es als eine eigene Seite angezeigt.     
+
+*Kunden Anlegen* +
+
+* Es erzeugt eine neuen Kundeninstanz in Datenbank. 
+
+*"I didnt see a trigger for autoincrement the KundenNr. so i will leave this section open for later to add some information about it when the quiestion will be cleared"  
+
+* *ENTWICKLUNG:* Entwicklungdatei liegt in 
+
+    ~client/src/components/pages/Kunden.jsx
+
+** Funktion ist implementiert als DialogBox innerhalb eine Seite und wird als PopUp angezeigt.
+
+*Mitarbeiter Anlegen* +
+
+* Eine neue Mitarbeiterinstanz wird in der Datenbank erstellt. Die Funktion enthält einen automatischen Trigger für die Auto-Inkrementierung. Wenn die MitID nicht spezifiziert wird, wird die Auto-Inkrementierung aufgerufen und die nächste verfügbare Nummer wird verwendet. 
+* Es gibt keine Pflichtfelder. Die angezeigten Felder sind MitID, Name, Vorname, Geburtsdatum, Job, Stundensatz und Einsatzort.
+
+* *ENTWICKLUNG:* Entwicklungdatei liegt in 
+
+    ~client/src/components/pages/Mitarbeiter.jsx
+
+** Funktion ist implementiert als DialogBox innerhalb eine Seite und wird als PopUp angezeigt.
+
+*Ersatzteil Anlegen* +
+
+* Anlegen von Ersatzteil in Datenbank. Funktion ist ohne Trigger und muss selbst spezifiziert werden.
+
+* *ENTWICKLUNG:* Entwicklungdatei liegt in 
+
+    ~client/src/components/pages/Ersatzteil.jsx
+
+** Funktion ist implementiert als DialogBox innerhalb eine Seite und wird als PopUp angezeigt.
+
+==== DELETE
+*Auftrag, Kunden, Mitarbeiter, Ersatzteil* +
+
+* Die Funktion "Delete" oder Löschen ist in allen vier Hauptseiten identisch und ermöglicht das Entfernen der ausgewählten Instanz aus der Datenbank. 
+* Es besteht auch die Option, mehrere Werte gleichzeitig zu löschen (Multipleinstanz-Löschen). Dazu können auf der linken Seite Kästchen angehakt werden, um die entsprechenden Zeilen auszuwählen. 
+* Durch das Klicken auf "Löschen" wird eine Bestätigungsaufforderung angezeigt, in der bestätigt werden muss, dass die richtigen Werte (bezogen auf die ID) ausgewählt sind. Nach erfolgreicher Bestätigung werden die Daten dann sicher gelöscht.
