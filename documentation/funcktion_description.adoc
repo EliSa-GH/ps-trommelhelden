@@ -56,3 +56,22 @@ Funktion "Create" oder Anlegen wird im Seiten Auftrag, Kunden, Mitarbeiter und E
 * Die Funktion "Delete" oder Löschen ist in allen vier Hauptseiten identisch und ermöglicht das Entfernen der ausgewählten Instanz aus der Datenbank. 
 * Es besteht auch die Option, mehrere Werte gleichzeitig zu löschen (Multipleinstanz-Löschen). Dazu können auf der linken Seite Kästchen angehakt werden, um die entsprechenden Zeilen auszuwählen. 
 * Durch das Klicken auf "Löschen" wird eine Bestätigungsaufforderung angezeigt, in der bestätigt werden muss, dass die richtigen Werte (bezogen auf die ID) ausgewählt sind. Nach erfolgreicher Bestätigung werden die Daten dann sicher gelöscht.
+
+==== EDIT
+*Auftrag, Kunden, Mitarbeiter, Ersatzteil*
+
+* Die Edit-Funktion ist eine wichtige Funktion, die es ermöglicht, bereits erstellte Datensätze zu bearbeiten und anzupassen. Dies kann sehr nützlich sein, wenn es darum geht, Fehler in den Daten zu korrigieren oder aktualisierte Informationen hinzuzufügen. Mit der Edit-Funktion können auch bestimmte Teile eines Datensatzes geändert werden, ohne den gesamten Datensatz neu erstellen zu müssen. Dies kann Zeit und Ressourcen sparen und die Datenqualität verbessern. 
+
+* Gleichzeitig kann nur ein Eintrag bearbeitet werden, demzufolge bei der Auswahl mehrerer Einträge wird der Button ausgegraut. Das selbe passiert mit dem Button "Anlegen", falls ein zu bearbeitender Eintrag ausgewählt wird. 
+
+* Außerdem gibt es datenbankspezifische Abhängigkeiten, wodurch nicht jedes Feld bearbeitet werden kann, wie zum Beispiel die laufenden Nummern (MitID, EtID, KunNr, AufNr). 
+
+* Darüber hinaus darf bei den Kundendaten keine beliebige Postleitzahlt eingegeben werden - sie muss immer aus 5 Ziffern bestehen
+
+* Diese Funktion ist an vier Stellen (Auftrag, Kunden,  Mitarbeiter, Ersatzteil) zu finden und wurde an allen vier Stellen analog implementiert. Durch die konsistente Implementierung wird die Pflege des Quellcodes minimiert. 
+
+
+
+
+
+

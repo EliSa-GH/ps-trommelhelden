@@ -38,7 +38,12 @@ Codedokumentation
 |===
 
 ==== Framework
-ToDo
+
+Obwohl das Team am Anfang des Projektes nach Beratung für das in Python-geschriebene Webframework Flask entschieden hatte, wurde nach kurzer Zeit beschlossen, auf React umzusteigen. Diese Entscheidung wurde getroffen, da ein Gruppenmitglied bereits über grundlegende Kenntnisse in React verfügte. Der Umstieg ermöglichte es dem Team, die Entwicklungszeit zu beschleunigen.
+
+React ist kein Framework, sondern eine JavaScript-Bibliothek für die Erstellung von Benutzeroberflächen (UI). Es ermöglicht, einzelne UI-Komponenten zu erstellen, die unabhängig voneinander verwendet werden können und sich automatisch aktualisieren, wenn sich die Daten ändern. 
+
+Außerdem ist React eine der am weitesten verbreiteten JavaScript-Bibliotheken. Das Erlangen der Kenntnisse darin kann die Chancen im späteren Berufsleben erhöhen, wenn man sich für eine Karriere in der Webentwicklung entscheidet.
 
 ==== Deployment
 ToDo
