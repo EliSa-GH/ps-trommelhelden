@@ -15,4 +15,4 @@ Für die Verwaltung von Ersatzteilen wird ebenfalls ein eigener Tab benötigt. D
 Dem Auftragstab untergeordnet existiert ein Tab, welcher abgeschlossene Aufträge enthält. Mitarbeitende können hier Korrekturen an jenen Aufträgen vornehmen.
 
 *Bericht* +
-ToDo
+Unter diesem Tab haben die Mitarbeitenden die Möglichkeit, alle Ersatzteile einzusehen, die häufiger verwendet wurden als die von ihnen eingegebene Anzahl. Dies ermöglicht es ihnen, schnell und einfach die am häufigsten gefragten Ersatzteile zu identifizieren und ihre Bestände entsprechend anzupassen.
