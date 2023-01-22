@@ -48,7 +48,10 @@ Außerdem ist React eine der am weitesten verbreiteten JavaScript-Bibliotheken. 
 ==== Deployment
 ToDo
 
-=== Zeitlicher Ablauf
+=== Entwicklungsprozess und zeitlicher Ablauf
+Schon zu Begin des Projektes war der grobe Umfang der Programmierarbeit bekannt, da Funktionalitäten wie das Neuanlegen, Bearbeiten und Löschen zu den Mindestanforderungen gehörten. Nach einer ersten Analyse und Erstellung von Use-Cases sowie den dazugehörigen Wireframes konnte mit dem eigentlichen Entwicklungsprozess begonnen werden. +
+Mittels einer iterative Entwicklung konnte ein regelmäßiger Fortschritt erzielt werden, der in den wöchentlichen Meetings präsentiert und diskutiert werden konnte. Nach der Fertigstellung der Kunden-, Mitarbeiter- und Ersatzteilseite konnte der Auftrags-Tab weiter ausgebaut werden, welcher bei der Erstellung eines Auftrages die Möglichkeit bieten sollte, einen Trigger in die ID-Erzeugung mit einzubeziehen statt diese manuell zu vergeben. Das letzte Inkrement der Applikation bildete die Seite "Bericht", welche nach Eingabe einer natürlichen Zahl, Ersatzteile listet, welche mindestens so oft verwendet wurden, wie angegeben.
+
 
 === Probleme und Lösungen
 
