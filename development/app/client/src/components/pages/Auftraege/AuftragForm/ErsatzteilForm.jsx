@@ -38,6 +38,7 @@ const ErsatzteilForm = ({ Aufnr, onClose }) => {
 
   const handleRequest = () => {
     dispatch(createMontage(Aufnr, ersatzteile));
+    navigate(0);
   };
   return (
     <Box

@@ -52,7 +52,8 @@ const Anlegen = () => {
         const time = end - start;
         console.log(
           "start: " + start + ", end: " + end + ", total time: " + time
-        ); /* navigate(0); */
+        );
+        navigate(0);
       } else {
         const start = new Date().getTime();
 
@@ -70,7 +71,7 @@ const Anlegen = () => {
         console.log(
           "start: " + start + ", end: " + end + ", total time: " + time
         );
-        /* navigate(0);  */
+        navigate(0);
       }
     } else {
       alert("Bitte Kundennummer eingeben!");
