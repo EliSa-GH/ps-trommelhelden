@@ -14,7 +14,7 @@ const AuftragForm = ({
   kunden,
   disable,
 }) => {
-  const { Aufnr, MitID, KunNr, AufDat, ErlDat, Dauer, Anfahrt, Beschreibung } =
+  const { MitID, KunNr, AufDat, ErlDat, Dauer, Anfahrt, Beschreibung } =
     selectedAuftraege[0];
 
   const navigate = useNavigate();

@@ -27,9 +27,10 @@ export const deleteMitarbeiter = (MitID) =>
   API.delete(`/mitarbeiter/delete`, { params: { MitID: MitID } });
 export const createMitarbeiter = (mDetails) =>
   API.post("/mitarbeiter/create", { params: { mDetails: mDetails } });
-export const editMitarbeiter = (selectedMitarbeiter) => API.patch(`/mitarbeiter/edit`, {
+export const editMitarbeiter = (selectedMitarbeiter) =>
+  API.patch(`/mitarbeiter/edit`, {
     params: { selectedMitarbeiter },
-    });
+  });
 
 // Kunden API
 export const fetchKunden = () => API.get("/kunden");
@@ -58,3 +59,7 @@ export const createMontage = (Aufnr, ersatzteile) =>
   API.post(`/montage/create`, {
     params: { Aufnr, ersatzteile },
   });
+
+//Bericht API
+export const getBerichte = (etAnzahl) =>
+  API.get(`/bericht`, { params: { etAnzahl } });
