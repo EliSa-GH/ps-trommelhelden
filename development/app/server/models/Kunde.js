@@ -30,6 +30,7 @@ const Kunde = db.define(
     db,
     tableName: "Kunde",
     schema: "dbo",
+    hasTrigger: true,
     timestamps: false,
     indexes: [
       {

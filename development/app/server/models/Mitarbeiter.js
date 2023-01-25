@@ -38,6 +38,7 @@ const Mitarbeiter = db.define(
     db,
     tableName: "Mitarbeiter",
     schema: "dbo",
+    hasTrigger: true,
     timestamps: false,
     indexes: [
       {

@@ -55,5 +55,4 @@ Mittels einer iterative Entwicklung konnte ein regelmäßiger Fortschritt erziel
 
 === Probleme und Lösungen
 
-* *Probleme mit JSON* +
-ToDo
+*Probleme mit JSON:* Am Anfang des Projekts entschied das Team, Python Flask zur Verwaltung von API-Anfragen aus der Frontend-Anwendung und SQLAlchemy als Werkzeug zum Abrufen von Daten aus dem SQL Server zu verwenden. Während des Projekts stellten sie jedoch fest, dass die Verwendung von Python-Dictionaries durch SQLAlchemy zur Speicherung von Daten für das Projekt ungeeignet war, da eine Serialisierung der Dictionary-Daten in JSON-Format erforderlich war. Darüber hinaus gab es Probleme bei der Serialisierung von Decimal- und Datetime-Typen. Außerdem hatten keine der Teammitglieder Erfahrung mit Python und Flask. Daher entschied das Team, zu einer vertrauteren Sprache für die Backend-Entwicklung zu wechseln, JavaScript. Sie untersuchten mehrere Backend-Frameworks und wählten schließlich Express aus, um die Backend-Seite zu handhaben. Nach dem Wechsel stellten sie keine strukturellen Probleme fest. 

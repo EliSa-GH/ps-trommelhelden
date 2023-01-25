@@ -11,6 +11,7 @@ import {
   DialogContent,
   DialogTitle,
   Typography,
+  Snackbar,
 } from "@mui/material";
 
 import { useNavigate } from "react-router-dom";
@@ -26,6 +27,7 @@ import ErsatzteilForm from "./AuftragForm/ErsatzteilForm";
 const Auftraege = () => {
   const [selectedAuftraege, setSelectedAuftraege] = useState([]);
   const [isEnter, setIsEnter] = useState(false);
+  const [hasError, setHasError] = useState([]);
   const [MitID, setMitID] = useState("");
   const [openRequest, setOpenRequest] = useState(false);
   const [openEdit, setOpenEdit] = useState(false);
@@ -57,6 +59,7 @@ const Auftraege = () => {
     setOpenEdit(false);
     setOpenDelete(false);
     setOpenRequest(false);
+    setHasError([]);
   };
 
   const handleEdit = () => {
@@ -73,11 +76,36 @@ const Auftraege = () => {
     }
   };
 
-  const auftraege = useSelector((state) => state.auftraege);
+  const auftraege = useSelector((state) => (isEnter ? state.auftraege : []));
 
   return (
     <Box>
       <h1 style={{ margin: "10px 100px" }}> Deine Aufträge</h1>
+
+      <Snackbar
+        sx={{ marginTop: "75px" }}
+        anchorOrigin={{ vertical: "top", horizontal: "center" }}
+        open={
+          hasError.filter((error) => error.reason === "Kein Auftrag").length >
+            0 &&
+          hasError.filter((error) => error.reason === "Kein Auftrag")[0].value
+        }
+        autoHideDuration={2000}
+        onClose={handleClose}
+        message="Kein Auftrag wurde gefunden!"
+      />
+      <Snackbar
+        sx={{ marginTop: "75px" }}
+        anchorOrigin={{ vertical: "top", horizontal: "center" }}
+        open={
+          hasError.filter((error) => error.reason === "MitID").length > 0 &&
+          hasError.filter((error) => error.reason === "MitID")[0].value
+        }
+        autoHideDuration={2000}
+        onClose={handleClose}
+        message="MitID muss 3 Nummer sein!"
+      />
+
       <Box
         sx={{
           display: "flex",
@@ -88,11 +116,30 @@ const Auftraege = () => {
         <form
           onSubmit={(e) => {
             e.preventDefault();
-            dispatch(getNewAuftraege(MitID));
+            if (/^\d{3}$/.test(MitID) === false) {
+              setHasError((prev) => {
+                return [...prev, { reason: "MitID", value: true }];
+              });
+              return;
+            }
             setIsEnter(true);
+            dispatch(getNewAuftraege(MitID)).then((res) => {
+              if (res.message) {
+                setIsEnter(false);
+                setHasError((prev) => {
+                  return [...prev, { reason: "Kein Auftrag", value: true }];
+                });
+              }
+            });
           }}
         >
           <TextField
+            error={MitID.length > 3}
+            helperText={
+              MitID.length > 3
+                ? "Mitarbeiter-ID muss 3 Zeichen lang sein!"
+                : "Bitte die Mit-ID eingeben"
+            }
             fullWidth
             required
             label="Mitarbeiter-ID"
@@ -102,7 +149,7 @@ const Auftraege = () => {
           />
         </form>
       </Box>
-      {auftraege.length > 0 && isEnter ? (
+      {auftraege.length > 0 ? (
         <>
           <Box
             display="flex"
@@ -152,7 +199,7 @@ const Auftraege = () => {
           </Box>
         </>
       ) : (
-        <Progress />
+        isEnter && <Progress />
       )}
 
       {/* Spare part request Dialog */}
