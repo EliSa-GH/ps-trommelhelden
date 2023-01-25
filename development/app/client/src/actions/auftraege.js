@@ -13,8 +13,10 @@ export const getNewAuftraege = (MitID) => async (dispatch) => {
   try {
     const { data } = await api.fetchNewAuftraege(MitID);
     dispatch({ type: "FETCH_NEW", payload: data });
+    return data;
   } catch (error) {
     console.log(error);
+    return error;
   }
 };
 

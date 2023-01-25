@@ -7,20 +7,25 @@ import {
   Box,
   Card,
   CardContent,
-  CardHeader,
   TextField,
   Typography,
-  Grid,
+  Snackbar,
 } from "@mui/material";
 import Progress from "../Progress/Progress";
 
 const Bericht = () => {
   const [etAnzahl, setEtAnzahl] = useState("");
+  const [hasError, setHasError] = useState([]);
   const dispatch = useDispatch();
-  const berichte = useSelector((state) => state.berichte);
 
+  const handleClose = () => {
+    setHasError([]);
+  };
+
+  const berichte = useSelector((state) => state.berichte);
   return (
     <Box>
+      <h1 style={{ margin: "10px 100px" }}> Bericht</h1>
       <Box
         sx={{
           display: "flex",
@@ -28,10 +33,47 @@ const Bericht = () => {
           marginTop: "20px",
         }}
       >
+        <Snackbar
+          sx={{ marginTop: "75px" }}
+          anchorOrigin={{ vertical: "top", horizontal: "center" }}
+          open={
+            hasError.filter((error) => error.reason === "keinErsatzteil")
+              .length > 0 &&
+            hasError.filter((error) => error.reason === "keinErsatzteil")[0]
+              .value
+          }
+          autoHideDuration={2000}
+          onClose={handleClose}
+          message={`Kein Ersatzteil wurde mehr als ${etAnzahl} mal bestellt!`}
+        />
+        <Snackbar
+          sx={{ marginTop: "75px" }}
+          anchorOrigin={{ vertical: "top", horizontal: "center" }}
+          open={
+            hasError.filter((error) => error.reason === "inValidInput").length >
+              0 &&
+            hasError.filter((error) => error.reason === "inValidInput")[0].value
+          }
+          autoHideDuration={2000}
+          onClose={handleClose}
+          message="Eingabe muss Nummer sein!"
+        />
         <form
           onSubmit={(e) => {
             e.preventDefault();
-            dispatch(getBerichte(etAnzahl));
+            if (/^\d+$/.test(etAnzahl) === false) {
+              setHasError((prev) => {
+                return [...prev, { reason: "inValidInput", value: true }];
+              });
+              return;
+            }
+            dispatch(getBerichte(etAnzahl)).then((res) => {
+              if (res.message && res.message.length > 0) {
+                setHasError((prev) => {
+                  return [...prev, { reason: "keinErsatzteil", value: true }];
+                });
+              }
+            });
             console.log(berichte);
           }}
         >

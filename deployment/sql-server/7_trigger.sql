@@ -26,3 +26,21 @@ begin
 	insert into mitarbeiter (mitid, mitname, mitvorname, mitgebdat, mitjob, mitstundensatz, miteinsatzort)
 	values(@t_mitid, @mitname, @mitvorname, @mitgebdat, @mitjob, @mitstundensatz, @miteinsatzort)
 end
+
+/* kurzer Alternativ */
+/* CREATE TRIGGER MitID_PK_Increment
+ON Mitarbeiter INSTEAD OF INSERT
+	AS
+	BEGIN
+		INSERT INTO Mitarbeiter 
+			(MitId, MitName, MitVorname, MitGebDat, MitJob, MitStundensatz, MitEinsatzort)
+		SELECT 
+			(SELECT max(MitID) FROM Mitarbeiter) + 1 ,
+			 i.MitName, 
+			 i.MitVorname, 
+			 i.MitGebDat, 
+			 i.MitJob, 
+			 i.MitStundensatz, 
+			 i.MitEinsatzort
+		FROM inserted i;
+END */
