@@ -11,11 +11,10 @@ export const getErsatzteil = async (req, res) => {
 
 export const deleteErsatzteil = async (req, res) => {
   try {
-    console.log(req.query);
     const ersatzteil = await Ersatzteil.findAll({
       where: { EtID: req.query.EtID },
     });
-    
+
     if (ersatzteil.length > 0) {
       Ersatzteil.destroy({ where: { EtID: req.query.EtID } });
     } else {
@@ -27,21 +26,19 @@ export const deleteErsatzteil = async (req, res) => {
 };
 
 export const createErsatzteil = async (req, res) => {
-  try{
-    console.log(req.body.params.details);
-     await Ersatzteil.create({
-      EtID:  req.body.params.details.EtID,
-      EtBezeichnung: req.body.params.details.EtBezeichnung, 
-      EtPreis : req.body.params.details.EtPreis,
-      EtAnzLager : req.body.params.details.EtAnzLager,
-      EtHersteller : req.body.params.details.EtHersteller,
+  try {
+    await Ersatzteil.create({
+      EtID: req.body.params.details.EtID,
+      EtBezeichnung: req.body.params.details.EtBezeichnung,
+      EtPreis: req.body.params.details.EtPreis,
+      EtAnzLager: req.body.params.details.EtAnzLager,
+      EtHersteller: req.body.params.details.EtHersteller,
     });
-    res.status(200).json({message: "Insert Successfully"});
-  } catch (error){
-    res.status(404).json({message: error.message});
+    res.status(200).json({ message: "Insert Successfully" });
+  } catch (error) {
+    res.status(404).json({ message: error.message });
   }
 };
-
 
 export const editErsatzteil = async (req, res) => {
   try {
@@ -51,8 +48,8 @@ export const editErsatzteil = async (req, res) => {
     });
 
     if (ersatzteil.length > 0) {
-      Ersatzteil.update(await
-        {
+      Ersatzteil.update(
+        await {
           EtID: selectedErsatzteil.EtID,
           EtBezeichnung: selectedErsatzteil.EtBezeichnung,
           EtPreis: selectedErsatzteil.EtPreis,

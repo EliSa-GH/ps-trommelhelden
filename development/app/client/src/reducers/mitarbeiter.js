@@ -10,8 +10,10 @@ export default (mitarbeiter = [], action) => {
       return [...mitarbeiter, action.payload];
     case "EDIT_MITARBEITER":
       return mitarbeiter.map((mitarbeiter) =>
-        mitarbeiter.MitID === action.payload.MitID ? action.payload : mitarbeiter
-        );
+        mitarbeiter.MitID === action.payload.MitID
+          ? action.payload
+          : mitarbeiter
+      );
     default:
       return mitarbeiter;
   }

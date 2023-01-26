@@ -10,13 +10,11 @@ export const getMitarbeiter = async (req, res) => {
 };
 
 export const deleteMitarbeiter = async (req, res) => {
-
   try {
-    console.log(req.query);
     const mitarbeiter = await Mitarbeiter.destroy({
       where: { MitID: req.query.MitID },
     });
-    
+
     if (mitarbeiter.length > 0) {
       Mitarbeiter.destroy({ where: { MitID: req.query.MitID } });
     } else {
@@ -29,21 +27,19 @@ export const deleteMitarbeiter = async (req, res) => {
 
 //TODO
 export const createMitarbeiter = async (req, res) => {
-  try{
-    console.log(req.body.params.mDetails);
-     await Mitarbeiter.create({
-      MitID:  req.body.params.mDetails.mID,
-      MitName: req.body.params.mDetails.mName, 
-      MitVorname : req.body.params.mDetails.mVorname,
-      MitGebDat : req.body.params.mDetails.mBirthday,
-      MitJob : req.body.params.mDetails.mJob,
-      MitStundensatz : req.body.params.mDetails.mSalary,
-      MitEinsatzort : req.body.params.mDetails.mPlace,
-    
+  try {
+    await Mitarbeiter.create({
+      MitID: req.body.params.mDetails.MitID,
+      MitName: req.body.params.mDetails.MitName,
+      MitVorname: req.body.params.mDetails.MitVorname,
+      MitGebDat: req.body.params.mDetails.MitGebDat,
+      MitJob: req.body.params.mDetails.MitJob,
+      MitStundensatz: req.body.params.mDetails.MitStundensatz,
+      MitEinsatzort: req.body.params.mDetails.MitEinsatzort,
     });
-    res.status(200).json({message: "Insert Employee Successfully"});
-  } catch (error){
-    res.status(404).json({message: error.message});
+    res.status(200).json({ message: "Insert Employee Successfully" });
+  } catch (error) {
+    res.status(404).json({ message: error.message });
   }
 };
 
@@ -55,8 +51,8 @@ export const editMitarbeiter = async (req, res) => {
     });
 
     if (mitarbeiter.length > 0) {
-      Mitarbeiter.update(await
-        {
+      Mitarbeiter.update(
+        await {
           MitID: selectedMitarbeiter.MitID,
           MitName: selectedMitarbeiter.MitName,
           MitVorname: selectedMitarbeiter.MitVorname,

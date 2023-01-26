@@ -74,7 +74,6 @@ const Bericht = () => {
                 });
               }
             });
-            console.log(berichte);
           }}
         >
           <TextField

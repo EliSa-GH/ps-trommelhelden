@@ -4,8 +4,10 @@ export const getAllAuftraege = () => async (dispatch) => {
   try {
     const { data } = await api.fetchAllAuftraege();
     dispatch({ type: "FETCH_ALL_AUFTRAG", payload: data });
+    return data;
   } catch (error) {
     console.log(error);
+    return error;
   }
 };
 
@@ -24,8 +26,10 @@ export const getErlAuftraege = () => async (dispatch) => {
   try {
     const { data } = await api.fetchErlAuftraege();
     dispatch({ type: "FETCH_ERL", payload: data });
+    return data;
   } catch (error) {
     console.log(error);
+    return error;
   }
 };
 
@@ -33,8 +37,10 @@ export const getOffenAuftraege = () => async (dispatch) => {
   try {
     const { data } = await api.fetchOffenAuftraege();
     dispatch({ type: "FETCH_OFFEN", payload: data });
+    return data;
   } catch (error) {
     console.log(error);
+    return error;
   }
 };
 
@@ -42,8 +48,10 @@ export const deleteAuftrag = (AufNr) => async (dispatch) => {
   try {
     await api.deleteAuftrag(AufNr);
     dispatch({ type: "DELETE_AUFTRAG", payload: AufNr });
+    return true;
   } catch (error) {
     console.log(error);
+    return error;
   }
 };
 
@@ -51,8 +59,10 @@ export const setAuftragMitarbeiter = (AufNr, MitID) => async (dispatch) => {
   try {
     await api.setAuftragMitarbeiter(AufNr, MitID);
     dispatch({ type: "SET_AUFTRAG_MITARBEITER", payload: { AufNr, MitID } });
+    return true;
   } catch (error) {
     console.log(error);
+    return error;
   }
 };
 
@@ -60,8 +70,10 @@ export const editAuftrag = (selectedAuftrag) => async (dispatch) => {
   try {
     await api.editAuftrag(selectedAuftrag);
     dispatch({ type: "EDIT_AUFTRAG", payload: selectedAuftrag });
+    return true;
   } catch (error) {
     console.log(error);
+    return error;
   }
 };
 
@@ -69,8 +81,10 @@ export const createAuftrag = (selectedAuftrag) => async (dispatch) => {
   try {
     await api.createAuftrag(selectedAuftrag);
     dispatch({ type: "CREATE_AUFTRAG", payload: selectedAuftrag });
+    return true;
   } catch (error) {
     console.log(error);
+    return error;
   }
 };
 
@@ -83,7 +97,9 @@ export const createAuftragWithoutTrigger =
         type: "CREATE_AUFTRAG_WITHOUT_TRIGGER",
         payload: selectedAuftrag,
       });
+      return true;
     } catch (error) {
       console.log(error);
+      return error;
     }
   };
