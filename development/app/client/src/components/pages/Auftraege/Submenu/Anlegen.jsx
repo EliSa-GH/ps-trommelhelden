@@ -44,19 +44,9 @@ const Anlegen = () => {
   const handleCreate = async () => {
     if (selectedAuftraege[0].KunNr !== "") {
       if (withTrigger) {
-        const start = new Date().getTime();
-
         dispatch(createAuftrag(selectedAuftraege[0]));
-
-        const end = new Date().getTime();
-        const time = end - start;
-        console.log(
-          "start: " + start + ", end: " + end + ", total time: " + time
-        );
         navigate(0);
       } else {
-        const start = new Date().getTime();
-
         dispatch(getAllAuftraege()).then(() => {
           return auftraege;
         });
@@ -65,12 +55,6 @@ const Anlegen = () => {
           (await auftraege[auftraege.length - 1].Aufnr) + 1;
         selectedAuftraege[0].Aufnr = newAufnr;
         dispatch(createAuftragWithoutTrigger(selectedAuftraege[0]));
-
-        const end = new Date().getTime();
-        const time = end - start;
-        console.log(
-          "start: " + start + ", end: " + end + ", total time: " + time
-        );
         navigate(0);
       }
     } else {

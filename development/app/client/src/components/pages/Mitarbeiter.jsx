@@ -38,13 +38,13 @@ const Mitarbeiter = () => {
   //START
 
   const [mDetails, setmDetails] = React.useState({
-    mID: "",
-    mName: "",
-    mVorname: "",
-    mBirthday: "",
-    mJob: "",
-    mSalary: "",
-    mPLace: "",
+    MitID: "",
+    MitName: "",
+    MitVorname: "",
+    MitGebDat: "",
+    MitJob: "",
+    MitStundensatz: "",
+    MitEinsatzort: "",
   });
 
   const handleChange = (e) => {
@@ -56,13 +56,11 @@ const Mitarbeiter = () => {
 
   const handleChangeEdit = (e) => {
     const { name, value } = e.target;
-    console.log(name, value);
     setSelectedMitarbeiter([{ ...selectedMitarbeiter[0], [name]: value }]);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(mDetails);
 
     if (mDetails.mBirthday !== "") {
       dispatch(createMitarbeiter(mDetails));
@@ -105,7 +103,6 @@ const Mitarbeiter = () => {
   const handleEdit = (e) => {
     e.preventDefault();
     dispatch(editMitarbeiter(selectedMitarbeiter[0]));
-    console.log(selectedMitarbeiter);
     handleClose(true);
     //navigate(0)
   };
@@ -164,7 +161,7 @@ const Mitarbeiter = () => {
                       autoFocus
                       type="number"
                       margin="dense"
-                      name="mID"
+                      name="MitID"
                       label="Mitarbeiternummer"
                       fullWidth
                       variant="standard"
@@ -175,7 +172,7 @@ const Mitarbeiter = () => {
                       autoFocus
                       type="text"
                       margin="dense"
-                      name="mName"
+                      name="MitName"
                       label="Name"
                       fullWidth
                       variant="standard"
@@ -185,7 +182,7 @@ const Mitarbeiter = () => {
                       autoFocus
                       type="text"
                       margin="dense"
-                      name="mVorname"
+                      name="MitVorname"
                       label="Vorname"
                       fullWidth
                       variant="standard"
@@ -195,7 +192,7 @@ const Mitarbeiter = () => {
                       autoFocus
                       type="date"
                       margin="dense"
-                      name="mBirthday"
+                      name="MitGebDat"
                       //label="Birthday"
                       fullWidth
                       variant="standard"
@@ -205,7 +202,7 @@ const Mitarbeiter = () => {
                       autoFocus
                       type="text"
                       margin="dense"
-                      name="mJob"
+                      name="MitJob"
                       label="Job"
                       fullWidth
                       variant="standard"
@@ -215,7 +212,7 @@ const Mitarbeiter = () => {
                       autoFocus
                       type="text"
                       margin="dense"
-                      name="mSalary"
+                      name="MitStundensatz"
                       label="Stundensatz"
                       fullWidth
                       variant="standard"
@@ -225,7 +222,7 @@ const Mitarbeiter = () => {
                       autoFocus
                       type="text"
                       margin="dense"
-                      name="mPlace"
+                      name="MitEinsatzort"
                       label="Einsatzort"
                       fullWidth
                       variant="standard"

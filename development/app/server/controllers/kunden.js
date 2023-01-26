@@ -11,11 +11,10 @@ export const getKunden = async (req, res) => {
 
 export const deleteKunde = async (req, res) => {
   try {
-    console.log(req.query);
     const kunden = await Kunde.findAll({
       where: { KunNr: req.query.KunNr },
     });
-    
+
     if (kunden.length > 0) {
       Kunde.destroy({ where: { KunNr: req.query.KunNr } });
     } else {
@@ -27,18 +26,17 @@ export const deleteKunde = async (req, res) => {
 };
 
 export const createKunde = async (req, res) => {
-  try{
-    console.log(req.body.params.details);
-     await Kunde.create({
-      KunNr:  req.body.params.details.kKunnr,
-      KunName: req.body.params.details.kName, 
-      KunOrt : req.body.params.details.kStreet,
-      KunPlz : req.body.params.details.kZipcode,
-      KunStrasse : req.body.params.details.kCity,
+  try {
+    await Kunde.create({
+      KunNr: req.body.params.details.KunNr,
+      KunName: req.body.params.details.KunName,
+      KunOrt: req.body.params.details.KunStrasse,
+      KunPlz: req.body.params.details.KunPlz,
+      KunStrasse: req.body.params.details.KunOrt,
     });
-    res.status(200).json({message: "Insert Successfully"});
-  } catch (error){
-    res.status(404).json({message: error.message});
+    res.status(200).json({ message: "Insert Successfully" });
+  } catch (error) {
+    res.status(404).json({ message: error.message });
   }
 };
 
@@ -50,8 +48,8 @@ export const editKunde = async (req, res) => {
     });
 
     if (kunde.length > 0) {
-      Kunde.update(await
-        {
+      Kunde.update(
+        await {
           KunNr: selectedKunde.KunNr,
           KunName: selectedKunde.KunName,
           KunOrt: selectedKunde.KunOrt,

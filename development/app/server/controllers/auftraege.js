@@ -83,7 +83,6 @@ export const setAuftragMitarbeiter = async (req, res) => {
     const auftrag = await Auftrag.findAll({
       where: { Aufnr: req.body.params.AufNr },
     });
-    console.log(auftrag);
     if (auftrag.length > 0) {
       Auftrag.update(
         { MitID: req.body.params.MitID },
@@ -106,7 +105,6 @@ export const editAuftrag = async (req, res) => {
       where: { Aufnr: selectedAuftrag[0].Aufnr },
     });
 
-    console.log(auftrag);
     if (auftrag.length > 0) {
       Auftrag.update(
         {

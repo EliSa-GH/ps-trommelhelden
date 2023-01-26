@@ -41,7 +41,6 @@ const Archiv = () => {
   };
 
   const handleOpenRequest = () => {
-    console.log(selectedAuftraege);
     if (selectedAuftraege[0].Ersatzteil === null) {
       setOpenRequest(true);
     } else {
