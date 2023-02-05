@@ -10,3 +10,12 @@ services:
           - ACCEPT_EULA=Y
         ports:
           - "1433:1433"
+    react:
+        build: ../../development/app/client
+        container_name: client_react
+        stdin_open: true
+        tty: true
+        environment:
+          NODE_PATH: src
+        ports:
+          - 3000:3000
