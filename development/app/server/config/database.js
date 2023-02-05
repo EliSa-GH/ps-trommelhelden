@@ -41,7 +41,7 @@ const db = new Sequelize("ii20s82591", "s82591", "s82591", {
 export default db; */
 
 const db = new Sequelize("trommelhelden", "sa", "Trommelhelden24!", {
-  host: "localhost",
+  host: "sql-server",
   port: 1433,
   dialect: "mssql",
   operatorAliases: false,

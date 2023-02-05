@@ -10,6 +10,9 @@ services:
           - ACCEPT_EULA=Y
         ports:
           - "1433:1433"
+        networks:
+          - my_network
+
     react:
         build: ../../development/app/client
         container_name: client_react
@@ -18,4 +21,20 @@ services:
         environment:
           NODE_PATH: src
         ports:
-          - 3000:3000
+          - 3000:3000  
+        networks:
+          - my_network  
+    node:
+        build: ../../development/app/server
+        container_name: node
+        environment:
+          DATABASE_HOST: sql-server
+        depends_on:
+          - sqldata
+        ports:
+          - 5000:5000
+        networks:
+          - my_network
+
+networks:
+  my_network:
