@@ -66,7 +66,7 @@ Außerdem ist React eine der am weitesten verbreiteten JavaScript-Bibliotheken. 
 
 *Systemeinrichtung*
 
-Die Software ist eine webbasierte Anwendung, die sich in einem öffentlichen Repository auf GitHub befindet (link:https://github.com/EliSa-GH/ps-trommelhelden[Link]). Die Anwendung besteht aus mehreren Ordnern, Frontend- und Backend-Komponenten.
+Die Software ist eine webbasierte Anwendung, die sich in einem privaten Repository auf GitHub befindet (link:https://github.com/EliSa-GH/ps-trommelhelden[Link]). Die Anwendung besteht aus mehreren Ordnern, Frontend- und Backend-Komponenten.
 
 Bevor mit der Installation fortgefahren wird, ist es empfehlenswert, einen Fork vom Repository zu erzeugen und im eigenen Account abzuspeichern. 
 
