@@ -56,7 +56,7 @@ const Kunden = () => {
     e.preventDefault();
     dispatch(createKunde(details));
     handleClose(true);
-    //navigate(0)
+    navigate(0)
   };
 
   const handleClickOpen = () => {
@@ -148,6 +148,7 @@ const Kunden = () => {
                       name="KunNr"
                       label="Kundennummer"
                       fullWidth
+                      disabled
                       variant="standard"
                       value={Table.KunNr}
                       onChange={handleChange}
@@ -167,7 +168,7 @@ const Kunden = () => {
                       type="text"
                       margin="dense"
                       name="KunStrasse"
-                      label="Street"
+                      label="Straße"
                       fullWidth
                       variant="standard"
                       onChange={handleChange}
@@ -177,7 +178,7 @@ const Kunden = () => {
                       type="number"
                       margin="dense"
                       name="KunPlz"
-                      label="Zip Code"
+                      label="Postleitzahl"
                       fullWidth
                       variant="standard"
                       onChange={handleChange}
@@ -187,7 +188,7 @@ const Kunden = () => {
                       type="text"
                       margin="dense"
                       name="KunOrt"
-                      label="City"
+                      label="Stadt"
                       fullWidth
                       variant="standard"
                       onChange={handleChange}

@@ -64,6 +64,7 @@ const Mitarbeiter = () => {
 
     if (mDetails.mBirthday !== "") {
       dispatch(createMitarbeiter(mDetails));
+      navigate(0);
     } else {
       alert("xxx");
     }
@@ -104,7 +105,7 @@ const Mitarbeiter = () => {
     e.preventDefault();
     dispatch(editMitarbeiter(selectedMitarbeiter[0]));
     handleClose(true);
-    //navigate(0)
+    navigate(0)
   };
 
   useEffect(() => {
@@ -164,6 +165,7 @@ const Mitarbeiter = () => {
                       name="MitID"
                       label="Mitarbeiternummer"
                       fullWidth
+                      disabled
                       variant="standard"
                       value={Table.MitID}
                       onChange={handleChange}

@@ -112,7 +112,7 @@ export const editAuftrag = async (req, res) => {
           KunNr: selectedAuftrag[0].KunNr,
           MitID: selectedAuftrag[0].MitID,
           AufDat: selectedAuftrag[0].AufDat,
-          ErlDat: selectedAuftrag[0].AufDat,
+          ErlDat: selectedAuftrag[0].ErlDat,
           Dauer: selectedAuftrag[0].Dauer,
           Anfahrt: selectedAuftrag[0].Anfahrt,
           Beschreibung: selectedAuftrag[0].Beschreibung,
