@@ -27,6 +27,6 @@ include::organisation.adoc[]
 
 include::funcktion_description.adoc[]
 
-== Ergebnisse
+== Ergebnisse und abschließendes Fazit
 
-== Fazit
+include::results.adoc[]

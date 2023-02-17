@@ -32,7 +32,11 @@ const ErsatzteilForm = ({ Aufnr, onClose }) => {
 
   const decrease = (index) => {
     const newErsatzteile = [...ersatzteile];
-    newErsatzteile[index].EtAnz--;
+    if(--newErsatzteile[index].EtAnz > 0) {
+      newErsatzteile[index].EtAnz--;
+    } else {
+      newErsatzteile[index].EtAnz = 1;
+    }
     setErsatzteile(newErsatzteile);
   };
 

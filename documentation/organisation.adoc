@@ -46,7 +46,10 @@ React ist kein Framework, sondern eine JavaScript-Bibliothek für die Erstellung
 Außerdem ist React eine der am weitesten verbreiteten JavaScript-Bibliotheken. Das Erlangen der Kenntnisse darin kann die Chancen im späteren Berufsleben erhöhen, wenn man sich für eine Karriere in der Webentwicklung entscheidet.
 
 ==== Deployment
-ToDo
+Um nach Fertigstellung der Software diese auch anderen Studierenden zur Verfügung stellen zu können, haben wir uns dazu entschieden die Applikation mit Hilfe von Docker auszuliefern. +
+Mittels Docker können Anwendungen schneller bereitgestellt werden. Die Applikation kann hierbei in einen oder mehreren isolierten "Containern" ausgeführt werden, wodurch eine (zeit-) aufwendige Installation benötigter Module vermieden werden kann. +
+Unser Projekt gliedert sich in drei verschiedene Container: +
+Einer beinhaltet den MS SQL Server mit samt dem datenbestand der Trommelheldendatenbank, einer den Client der App und einer den Server.
 
 === Entwicklungsprozess und zeitlicher Ablauf
 Schon zu Begin des Projektes war der grobe Umfang der Programmierarbeit bekannt, da Funktionalitäten wie das Neuanlegen, Bearbeiten und Löschen zu den Mindestanforderungen gehörten. Nach einer ersten Analyse und Erstellung von Use-Cases sowie den dazugehörigen Wireframes konnte mit dem eigentlichen Entwicklungsprozess begonnen werden. +
