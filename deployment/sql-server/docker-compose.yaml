@@ -2,7 +2,7 @@ version: "3.3"
 services:
     sqldata:
         container_name: sql-server
-        image: mcr.microsoft.com/mssql/server:2019-latest
+        image: mcr.microsoft.com/azure-sql-edge:latest
         build:
             dockerfile: Dockerfile
         environment:
@@ -35,6 +35,12 @@ services:
           - 5000:5000
         networks:
           - my_network
+        healthcheck:
+          test: ["CMD", "curl", "-f", "http://localhost"]
+          interval: 1m30s
+          timeout: 10s
+          retries: 3
+          start_period: 40s
 
 networks:
   my_network:
