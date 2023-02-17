@@ -49,7 +49,84 @@ Außerdem ist React eine der am weitesten verbreiteten JavaScript-Bibliotheken. 
 Um nach Fertigstellung der Software diese auch anderen Studierenden zur Verfügung stellen zu können, haben wir uns dazu entschieden die Applikation mit Hilfe von Docker auszuliefern. +
 Mittels Docker können Anwendungen schneller bereitgestellt werden. Die Applikation kann hierbei in einen oder mehreren isolierten "Containern" ausgeführt werden, wodurch eine (zeit-) aufwendige Installation benötigter Module vermieden werden kann. +
 Unser Projekt gliedert sich in drei verschiedene Container: +
-Einer beinhaltet den MS SQL Server mit samt dem datenbestand der Trommelheldendatenbank, einer den Client der App und einer den Server.
+Einer beinhaltet den MS SQL Server mit samt dem Datenbestand der Trommelheldendatenbank, einer den Client der App und einer den Server.
+
+*Systemvoraussetzungen*
+
+*Mindestanforderungen an Hardware*
+
+* Ein internetfähiges Gerät (Smartphone, Tablet, PC) für die Nutzung der Anwendung
+
+* PC/Server mit Docker und Git
+
+* Für Docker: link:https://docs.docker.com/desktop/windows/install/[Windows], link:https://docs.docker.com/desktop/linux/install/[Linux], link:https://docs.docker.com/desktop/mac/install/[Mac]
+
+* Microsoft SQL Server weist Kompatibilitätsprobleme unter Mac mit Apple-Chip auf
+
+*Softwareanforderungen*
+
+* Aktueller Webbrowser (Chrome Ver. 109.0.5414.119 oder höher, Safari Ver. 16.1 oder höher) mit HTML5- und Javascript Unterstützung
+* Docker Compose Ver. 3.3 oder höher
+
+*Systemeinrichtung*
+
+Die Software ist eine webbasierte Anwendung, die sich in einem privaten Repository auf GitHub befindet (link:https://github.com/EliSa-GH/ps-trommelhelden[Link]). Die Anwendung besteht aus mehreren Ordnern, Frontend- und Backend-Komponenten.
+
+Bevor mit der Installation fortgefahren wird, ist es empfehlenswert, einen Fork vom Repository zu erzeugen und im eigenen Account abzuspeichern. 
+
+Im Terminal:
+
+`$ git fork https://github.com/EliSa-GH/ps-trommelhelden.git`
+
+Um die Anwendung von GitHub auf Ihren eigenen PC/Server zu speichern, muss diese zuerst von GitHub geladen werden.
+
+`$ git clone https://github.com/EliSa-GH/ps-trommelhelden.git`
+
+Die Anwendung besteht aus zwei Backend-Komponenten: Webserver(Node.js Ver. 19.1) und MSSQL (SQL Server 2019) und einer Frontend-Konponente (React Ver. 11.10.5) die in einem Docker-Container gespeichert sind.
+
+Um die Software zu installieren, soll ein Docker Container ausgeführt werden. Dafür gibt es zwei Möglichkeiten:
+
+* Im Ordner "sql-server" unter "deployment" die Datei "docker-compose.yml" per Drag and Drop in den Docker Desktop schieben und anschließend auf "Start" drücken. -> Diese Vorgehensweise funktioniert nur unter Windows/Mac
+
+* Im Terminal den Ordner "sql-server" unter "deployment" wählen und im Anschluss mit dem Befehl "docker-compose up" die Software ausführen (Docker muss gestartet sein):
+
+
+1. Zum Ordner navigieren:
+
+ $ cd pfad/zum/Ordner/ps-trommelhelden
+
+2. In Unterordner wechseln:
+
+ $ cd deployment/sql-server/
+
+3. Server starten:
+
+ ** Für neuere Docker Versionen:
+
+ $ docker compose up
+
+ ** Für ältere Docker Versionen:
+
+ $ docker-compose up
+
+Die Anwendung ist out of the box einsatzbereit, das bedeutet es müssen keine weiteren Konfigurationen vorgenommen werden. 
+
+Um zu überprüfen, ob die Anwendung funktioniert, soll im Webbrowser in der Adresszeile "localhost:3000" eingegeben werden. Daraufhin wird die Webseite geöffnet.
+
+*Fehlerbehebung*
+
+Die meisten Fehler, die auftreten können, werden mit Docker zusammenhängen. 
+
+Die typischen Fehler und deren Behebung finden Sie unter folgendem Link:
+
+* link:https://docs.docker.com/desktop/windows/troubleshoot/[Docker Troubleshoot]
+
+*Weitere Dokumentationen*
+
+* link:https://docs.docker.com/desktop/[Docker]
+* link:https://reactjs.org/docs/getting-started.html[React]
+* link:https://nodejs.org/en/docs/[Node.js]
+* link:https://learn.microsoft.com/en-us/sql/?view=sql-server-ver16[Microsoft SQL]
 
 === Entwicklungsprozess und zeitlicher Ablauf
 Schon zu Begin des Projektes war der grobe Umfang der Programmierarbeit bekannt, da Funktionalitäten wie das Neuanlegen, Bearbeiten und Löschen zu den Mindestanforderungen gehörten. Nach einer ersten Analyse und Erstellung von Use-Cases sowie den dazugehörigen Wireframes konnte mit dem eigentlichen Entwicklungsprozess begonnen werden. +
