@@ -9,8 +9,8 @@ RUN npm install
 
 COPY . .
 
-EXPOSE 5000
+EXPOSE 3000
 
-ENV DATABASE_HOST=sqldata
+ENV DATABASE_HOST=sql-server
 
 CMD ["npm", "start"]

@@ -12,6 +12,6 @@ RUN npm install
 COPY . .
 COPY config/database.js ./config/
 
-ENV DATABASE_HOST=sqldata
+ENV DATABASE_HOST=sql-server
 
 CMD [ "node", "app.js" ]
