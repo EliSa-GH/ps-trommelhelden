@@ -2,7 +2,7 @@ version: "3.3"
 services:
     sqldata:
         container_name: sql-server
-        image: mcr.microsoft.com/azure-sql-edge:latest
+        image: mcr.microsoft.com/mssql/server:2019-latest
         build:
             dockerfile: Dockerfile
         environment:
