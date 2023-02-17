@@ -19,4 +19,7 @@ RUN ( /opt/mssql/bin/sqlservr & ) \
 	&& /opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P Trommelhelden24! -i 4_mitarbeiter.sql \
 	&& /opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P Trommelhelden24! -i 5_auftrag.sql \
 	&& /opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P Trommelhelden24! -i 6_montage.sql \
+	&& /opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P Trommelhelden24! -i 7_trigger.sql \
+	&& /opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P Trommelhelden24! -i 8_aufnr_trigger.sql \
+	&& /opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P Trommelhelden24! -i 9_kunnr_trigger.sql \
     && pkill sqlservr
