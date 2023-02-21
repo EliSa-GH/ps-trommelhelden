@@ -1,5 +1,37 @@
 === Ergebnisse
 
+Es wurden verschiedene Möglichkeiten implementiert, um neue Datensätze anzulegen. Diese Methoden beziehen sich auf verschiedene Entitäten in der Anwendung, wie z.B. Mitarbeiter, Kunden oder Jobs.
+
+Eine Möglichkeit besteht darin, die Nummer in das Eingabefeld einzugeben. Wenn der Benutzer die ID eingibt, werden die entsprechenden Datensätze in der Anwendung geladen und überprüft, ob die ID-Nummer bereits vergeben ist. Falls die ID bereits vergeben ist, wird dem Benutzer eine Fehlermeldung angezeigt und er muss eine andere ID eingeben. Wenn die ID verfügbar ist, wird der Datensatz angelegt.
+
+Alternativ kann die ID auch automatisch generiert werden, ohne dass der Benutzer sie eingeben muss. In diesem Fall wird ein Trigger in der Datenbank aktiviert, der eine neue ID für den Datensatz generiert. Diese Methode ist hilfreich, wenn der Benutzer keine spezifische ID auswählen möchte oder wenn die IDs automatisch vergeben werden sollen.
+
+.Ausführungszeiten mit und ohne Trigger
+image::images/results.JPG[Ausführungszeiten mit und ohne Trigger, align="center"]
+
+Um die Leistungsfähigkeit unserer Methoden zu überprüfen und zu vergleichen, welche Methode effizienter ist, wurden die Ausführungszeiten gemessen. Anschließend wurden die Ergebnisse in zwei Diagrammen dargestellt. Dabei wurde festgestellt, dass die Ausführungszeiten mit Trigger bei jeder Ausführung relativ gleichmäßig und niedrig ist, während die Ausführungszeit ohne Trigger sprunghaft und höher ist. 
+
+Es lässt sich vermuten, dass der inkonsistente Verlauf bei den Ladezeiten ohne Trigger auf die Menge der Datensätze, die geladen werden müssen oder auf die Prozesse im Hintergrund, die parallel ausgeführt werden, zurückzuführen ist.
+
+Im zweiten Diagramm wird ein Vergleich der durchschnittlichen Ausführungszeiten dargestellt. Die Ausführungszeiten mit Trigger sind im Durchschnitt um 6,7 ms geringer als ohne Trigger.
+
+
+=== Fazit
+
+Aufgrund der gemessenen Zeiten lässt sich das Ergebnis ziehen, dass eine datenbanknahe Implementation sinnvoll ist, und es sollte daher Trigger verwendet werden. Die automatische Vergabe von fortlaufenden IDs ist ebenfalls sinnvoll und trägt zur Konsistenz der Datenbank bei.
+
+Die Entscheidung, ob es ausreicht, Check-Klauseln auf der Datenbank zu haben oder ob die Eingabefelder der Benutzeroberfläche auch auf die Eingaben abgestimmt sein sollten, hängt von verschiedenen Faktoren ab. Es ist jedoch in der Regel eine gute Absicherung, Checks auch im UI einzubauen, um beispielsweise die Integrität von Datenbeständen zu wahren.
+
+Insgesamt aber sollten sowohl Checks auf der Datenbank als auch im UI implementiert werden, um Sicherheitslücken wie zum Beispiel die SQL-Injection vorzubeugen.
+
+---------
+
+
+
+
+
+
+
 Was haben wir alternativ implementiert ? -> Anlegen neuer Datensätze (Mitarbeiter, Kunden, Jobs) +
 
 * Eingabe ID in die Eingabemaske -> Laden der Datensätze in die Applikation und prüfen, ob die eingetragene Nummer verfügbar/ frei ist -> dann Datensatz anlegen
