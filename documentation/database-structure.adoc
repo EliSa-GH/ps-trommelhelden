@@ -6,7 +6,7 @@ Für einen neuen Datensatz in der Auftragstabelle, welcher eindeutig über eine 
 
 Wurde der Auftrag einem Mitarbeiter zugewiesen, wird die dazugehörige Mitarbeiter-ID dem Auftragsdatensatz hinzugefügt. Auch diese bezieht sich auf einen Datensatz in einer separaten Tabelle, welche alle eingestellten Mitarbeiter listet. Zusätzliche zum vollständigen Namen des Mitarbeitenden und des Geburtsdatums wird auch der konkrete Jobtitel (Meister, Monteur, Azubi..), der dazugehörige Stundenlohn und der Einsatzort gespeichert.
 
-Wurde der Auftrag beim Kunden abgeschlossen, wird der Datensatz in der Auftragstabelle ergänzt um das Erledigungsdatum, die Dauer des Auftrages in Stunden, die zurückgelegte Strecke für die eigentliche Anfahrt in Kilometer und ggf. eine Beschreibung der erbrachten Serviceleistung. Sollten bei dem Auftrag Ersatzteile verbaut worden sein, entsteht ein Eintrag in der Montage-Tabelle. Diese Listet zum jeweiligen Auftrag die Anzahl und die spezifische ID des genutzten Teils.
+Wurde der Auftrag beim Kunden abgeschlossen, wird der Datensatz in der Auftragstabelle ergänzt um das Erledigungsdatum, die Dauer des Auftrages in Stunden, die zurückgelegte Strecke für die eigentliche Anfahrt in Kilometer und ggf. eine Beschreibung der erbrachten Serviceleistung. Sollten bei dem Auftrag Ersatzteile verbaut worden sein, entsteht ein Eintrag in der Montage-Tabelle. Diese listet zum jeweiligen Auftrag die Anzahl und die spezifische ID des genutzten Teils.
 
 Zu der passenden ID enthält die Ersatzteil-Tabelle weitere Informationen. Dazu zählt die Bezeichnung des Bauteils, der Preis, die vorhandene Menge im Lager und der Hersteller.
 

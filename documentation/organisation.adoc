@@ -16,7 +16,7 @@ Für die erste Aufgabe, die grobe Analyse und Erstellung der Wireframes, habt si
 
 Sabine fand sich nach kurzer Zeit in der Rolle des Managements wieder. Regelmäßig motivierte sie das Team, koordinierte zusätzliche Treffen für ein gemeinsames Arbeiten und übernahm hauptsächlich das Reden während der wöchentlichen Meetings um den Stand des Projektes darzulegen.
 
-Da Di schon Erfahrungen im Umgang mit dem gewählten Framework hatte, war er der inoffizielle Hauptentwickler der Gruppe. Natürlich war jedes einzelne Mitglied an der Programmierung selbst beteiligt, doch Di war der erste Ansprechpartner, wenn es zu Fragen zu beispielsweise hartnäckigen fehlermeldungen kam.
+Da Di schon Erfahrungen im Umgang mit dem gewählten Framework hatte, war er der inoffizielle Hauptentwickler der Gruppe. Natürlich war jedes einzelne Mitglied an der Programmierung selbst beteiligt, doch Di war der erste Ansprechpartner, wenn es zu Fragen zu beispielsweise hartnäckigen ehlermeldungen kam.
 
 Die Rolle des Testers wurde ebenfalls jedem zu Teil. Nachdem eine neue Funktion implementiert und auf Github geladen wurde, wurde das Team meist direkt nachrichtlich verständigt und so zum ausgiebigen Testen aufgefordert. 
 
@@ -48,6 +48,7 @@ Außerdem ist React eine der am weitesten verbreiteten JavaScript-Bibliotheken. 
 ==== Deployment
 Um nach Fertigstellung der Software diese auch anderen Studierenden zur Verfügung stellen zu können, haben wir uns dazu entschieden die Applikation mit Hilfe von Docker auszuliefern. +
 Mittels Docker können Anwendungen schneller bereitgestellt werden. Die Applikation kann hierbei in einen oder mehreren isolierten "Containern" ausgeführt werden, wodurch eine (zeit-) aufwendige Installation benötigter Module vermieden werden kann. +
+
 Unser Projekt gliedert sich in drei verschiedene Container: +
 Einer beinhaltet den MS SQL Server mit samt dem Datenbestand der Trommelheldendatenbank, einer den Client der App und einer den Server.
 
@@ -135,4 +136,4 @@ Mittels einer iterative Entwicklung konnte ein regelmäßiger Fortschritt erziel
 
 === Probleme und Lösungen
 
-*Probleme mit JSON:* Am Anfang des Projekts entschied das Team, Python Flask zur Verwaltung von API-Anfragen aus der Frontend-Anwendung und SQLAlchemy als Werkzeug zum Abrufen von Daten aus dem SQL Server zu verwenden. Während des Projekts stellten sie jedoch fest, dass die Verwendung von Python-Dictionaries durch SQLAlchemy zur Speicherung von Daten für das Projekt ungeeignet war, da eine Serialisierung der Dictionary-Daten in JSON-Format erforderlich war. Darüber hinaus gab es Probleme bei der Serialisierung von Decimal- und Datetime-Typen. Außerdem hatten keine der Teammitglieder Erfahrung mit Python und Flask. Daher entschied das Team, zu einer vertrauteren Sprache für die Backend-Entwicklung zu wechseln, JavaScript. Sie untersuchten mehrere Backend-Frameworks und wählten schließlich Express aus, um die Backend-Seite zu handhaben. Nach dem Wechsel stellten sie keine strukturellen Probleme fest. 
+*Probleme mit JSON:* Am Anfang des Projekts entschied das Team, Python Flask zur Verwaltung von API-Anfragen aus der Frontend-Anwendung und SQLAlchemy als Werkzeug zum Abrufen von Daten aus dem SQL Server zu verwenden. Während des Projekts stellten sie jedoch fest, dass die Verwendung von Python-Dictionaries durch SQLAlchemy zur Speicherung von Daten für das Projekt ungeeignet war, da eine Serialisierung der Dictionary-Daten in JSON-Format erforderlich war. Darüber hinaus gab es Probleme bei der Serialisierung von Decimal- und Datetime-Typen. Daher entschied das Team, zu einer vertrauteren Sprache für die Backend-Entwicklung zu wechseln, JavaScript. Sie untersuchten mehrere Backend-Frameworks und wählten schließlich Express aus, um die Backend-Seite zu handhaben. Nach dem Wechsel stellten sie keine strukturellen Probleme fest. 

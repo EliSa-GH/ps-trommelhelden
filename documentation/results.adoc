@@ -18,46 +18,8 @@ Im zweiten Diagramm wird ein Vergleich der durchschnittlichen Ausführungszeiten
 
 === Fazit
 
-Aufgrund der gemessenen Zeiten lässt sich das Ergebnis ziehen, dass eine datenbanknahe Implementation sinnvoll ist, und es sollte daher Trigger verwendet werden. Die automatische Vergabe von fortlaufenden IDs ist ebenfalls sinnvoll und trägt zur Konsistenz der Datenbank bei.
+Aufgrund der gemessenen Zeiten lässt sich sagen, dass eine datenbanknahe Implementation von verschiedenen Funktionen sinnvoller ist, und vorhandene Mechanismen wie beispielsweise Trigger bevorzugt verwendet werden sollten. Eine automatische Vergabe von fortlaufenden IDs ist ebenfalls sinnvoll und trägt zur Konsistenz der Datenbank bei.
 
 Die Entscheidung, ob es ausreicht, Check-Klauseln auf der Datenbank zu haben oder ob die Eingabefelder der Benutzeroberfläche auch auf die Eingaben abgestimmt sein sollten, hängt von verschiedenen Faktoren ab. Es ist jedoch in der Regel eine gute Absicherung, Checks auch im UI einzubauen, um beispielsweise die Integrität von Datenbeständen zu wahren.
 
-Insgesamt aber sollten sowohl Checks auf der Datenbank als auch im UI implementiert werden, um Sicherheitslücken wie zum Beispiel die SQL-Injection vorzubeugen.
-
----------
-
-
-
-
-
-
-
-Was haben wir alternativ implementiert ? -> Anlegen neuer Datensätze (Mitarbeiter, Kunden, Jobs) +
-
-* Eingabe ID in die Eingabemaske -> Laden der Datensätze in die Applikation und prüfen, ob die eingetragene Nummer verfügbar/ frei ist -> dann Datensatz anlegen
-* ID wird nicht mit in die Eingabemaske eingetragen -> Trigger der Datenbank wird aktiv und generiert automatisch eine neue ID für den Datensatz 
-
-Ausführungszeiten wurden gemessen. +
-
-Bild:
-
-* Ausführungszeit mit Trigger relativ gleichmäßig und niedrig
-* Ausführungszeit ohne Trigger ungleichmäßig und höher
-** längere und kürzere Ausführungszeiten ergeben sich durch
-*** Menge der datensätze die geladen werden müssen
-*** Prozesse, die parallel ausgeführt werden müssen oder so +
-
-.Ausführungszeiten mit und ohne Trigger
-image::images/results.JPG[Ausführungszeiten mit und ohne Trigger, align="center"]
-
-Überleitung Fazit +
-
-Datenbank-nahe Implementation von Funktionen sind sinnvoller/ effizienter/..
-
-Gerade wenn solche Funktionen (automatische Generierung von IDs) vorhanden sind, solle man sie auch nutzen. +
-
-Generell sollte man die Applikation auf den Zweck abstimmen, bzw. auf die Gruppe, die sie nutzen.
-Dementsprechend muss man abwägen, wie man gewisse Funktionalitäten umsetzt. +
-Reicht es aus Check-Klauseln auf der DB zu haben, oder sollten die Eingabefelder der UI auch auf die Eingaben abgestimmt sein ?
-
-Checks im UI einzubauen ist zwar Zeitaufwändiger, aber meist eine gute Absicherung um beispielsweise die Integrität von datenbeständen zu wahren.
+Insgesamt aber sollten Checks sowohl auf der Datenbank als auch im UI implementiert werden, um Sicherheitslücken wie zum Beispiel die SQL-Injection vorzubeugen.
