@@ -1,32 +1,36 @@
-= Projektseminar =
-
-
-:doctype: book
+= I290 - Projektseminar - WiSe 22/23 =
+Author Name
+:authors: Quang Duy Pham, Thanh Binh Nguyen, Sabine Adam, Vitali Tichonow
 :toc:
 :toclevels: 3
 :toc-title: Inhaltsverzeichnis
 :figure-caption!:
 
+<<<
 == Aufgabenstellung und Ausgangssituation
 
 include::vision.adoc[]
 
 include::database-structure.adoc[]
 
+<<<
 == Anforderungen
 
 include::sys-wide-req.adoc[]
 
 include::use_cases.adoc[]
 
+<<<
 == Projektorganisation
 
 include::organisation.adoc[]
 
+<<<
 == Funktionsdokumentation
 
 include::funcktion_description.adoc[]
 
+<<<
 == Ergebnisse und abschließendes Fazit
 
 include::results.adoc[]
