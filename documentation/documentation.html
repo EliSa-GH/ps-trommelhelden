@@ -436,6 +436,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 #footer-text{color:rgba(0,0,0,.6);font-size:.9em}}
 @media amzn-kf8{#header,#content,#footnotes,#footer{padding:0}}
 </style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body class="article">
 <div id="header">
@@ -521,7 +522,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="sect2">
 <h3 id="_vision">Vision</h3>
 <div class="paragraph">
-<p>Ziel dieses Projektseminars ist es, Für die im Rahmen der Module Datenbanksysteme I und II verwendete Trommelhelden-Datenbank ein Web-Frontend zu entwickeln, welche grundlegenden Funktionen zur Datenverwaltung des fiktiven Waschmaschinen-Reparaturservices "Trommelhelden" beinhalten soll. Dies umfasst die Verwaltung von Auftragsdaten, Kundendaten, Mitarbeiterdaten und Daten der Ersatzteile, die während eines Auftrages zum Einsatz kommen.
+<p>Ziel dieses Projektseminars ist es, für die im Rahmen der Module Datenbanksysteme I und II verwendete Trommelhelden-Datenbank ein Web-Frontend zu entwickeln, welche grundlegenden Funktionen zur Datenverwaltung des fiktiven Waschmaschinen-Reparaturservices "Trommelhelden" beinhalten soll. Dies umfasst die Verwaltung von Auftragsdaten, Kundendaten, Mitarbeiterdaten und Daten der Ersatzteile, die während eines Auftrages zum Einsatz kommen.
 In Hinblick auf die Laufzeit sollen verschiedene Implementierungsalternativen aufgezeigt werden, um die Unverzichtbarkeit verschiedener Datenbankkenntnisse und -methoden praktisch zu vermitteln.</p>
 </div>
 </div>
@@ -531,7 +532,7 @@ In Hinblick auf die Laufzeit sollen verschiedene Implementierungsalternativen au
 <p>Generell arbeitet die Firma auf folgende Weise: Das Unternehmen nimmt von den Kunden Reparaturaufträge entgegen. Dabei werden die Daten des Kunden, das Auftragsdatum und ggf. eine Beschreibung des konkreten Problems erfasst. Anschließend wird der offene Auftrag einem Mitarbeiter zugeteilt, der nach der Bearbeitung das Erledigungsdatum, Anfahrtsdaten sowie Ersatzteile notiert, die bei der Reparatur zum Einsatz kamen.</p>
 </div>
 <div class="paragraph">
-<p>Für einen neuen Datensatz in der Auftragstabelle, welcher eindeutig über eine Auftrags-ID identifiziert werden kann, wird also neben der Problembeschreibung und des Auftragsdatum eine Kunden-ID benötigt. Diese verweist auf einen bereits existierenden Eintrag in der Kunden-Tabelle, welcher den Namen des Kunden sowie die Adresse, bestehend aus Straße, Postleitzahl und Wohnort, beinhaltet.</p>
+<p>Für einen neuen Datensatz in der Auftragstabelle, welcher eindeutig über eine Auftrags-ID identifiziert werden kann, wird also neben der Problembeschreibung und dem Auftragsdatum eine Kunden-ID benötigt. Diese verweist auf einen bereits existierenden Eintrag in der Kunden-Tabelle, welcher den Namen des Kunden sowie die Adresse, bestehend aus Straße, Postleitzahl und Wohnort, beinhaltet.</p>
 </div>
 <div class="paragraph">
 <p>Wurde der Auftrag einem Mitarbeiter zugewiesen, wird die dazugehörige Mitarbeiter-ID dem Auftragsdatensatz hinzugefügt. Auch diese bezieht sich auf einen Datensatz in einer separaten Tabelle, welche alle eingestellten Mitarbeiter listet. Zusätzliche zum vollständigen Namen des Mitarbeitenden und des Geburtsdatums wird auch der konkrete Jobtitel (Meister, Monteur, Azubi..), der dazugehörige Stundenlohn und der Einsatzort gespeichert.</p>
@@ -563,7 +564,7 @@ In Hinblick auf die Laufzeit sollen verschiedene Implementierungsalternativen au
 <ul>
 <li>
 <p><strong>Deployment</strong><br>
-Von Anfang an war geplant die fertiggestellte Applikation Studierenden zur Verfügung zu stellen, welche sich im Rahmen der Module Datenbanksysteme I und II ebenfalls mit der Trommelheldendatenbank beschäftigen. Hierfür bedarf es ein möglichst einfaches Verfahren, welches die komplexe Installation weiterer Hilfsmodule mit einschließt.</p>
+Von Anfang an war geplant, die fertiggestellte Applikation Studierenden zur Verfügung zu stellen, welche sich im Rahmen der Module Datenbanksysteme I und II ebenfalls mit der Trommelheldendatenbank beschäftigen. Hierfür bedarf es ein möglichst einfaches Verfahren, welches die komplexe Installation weiterer Hilfsmodule mit einschließt.</p>
 </li>
 <li>
 <p><strong>Datenbestand</strong><br>
@@ -571,11 +572,11 @@ Daten sollen zwar neu angelegt, verändert oder gelöscht werden können, doch s
 </li>
 <li>
 <p><strong>Implementierungsalternativen</strong><br>
-Die zeitliche Auswirkung von Abfragen innerhalb bzw. außerhalb der Datenbankschicht soll untersucht werden. Für eine geeignete Gegenüberstellung braucht es daher mindestens zwei sich unterschiedene Implementierungen ein und der selben Funktion.</p>
+Die zeitliche Auswirkung von Abfragen innerhalb bzw. außerhalb der Datenbankschicht soll untersucht werden. Für eine geeignete Gegenüberstellung braucht es daher mindestens zwei sich unterschiedene Implementierungen ein und derselben Funktion.</p>
 </li>
 <li>
 <p><strong>Laufzeitmessung</strong><br>
-Für die zu untersuchenden Implementierungsalternativen wird ein Messmethodik benötigt, welche die konkrete Laufzeit der Alternativen festhält und für die weitere Bearbeitung bereitstellt.</p>
+Für die zu untersuchenden Implementierungsalternativen wird eine Messmethodik benötigt, welche die konkrete Laufzeit der Alternativen festhält und für die weitere Bearbeitung bereitstellt.</p>
 </li>
 </ul>
 </div>
@@ -586,7 +587,7 @@ Für die zu untersuchenden Implementierungsalternativen wird ein Messmethodik be
 <ul>
 <li>
 <p><strong>Datenbank</strong><br>
-Die Verwendung einer bereits bestehenden Trommelheldendatenbank wird vorausgesetzt, daher kommt auch das bereits in den Modulen datenbanksysteme I und II verwendete relationale SQL Datenbankmanagementsystem von Microsoft zum Einsatz.</p>
+Die Verwendung einer bereits bestehenden Trommelheldendatenbank wird vorausgesetzt, daher kommt auch das bereits in den Modulen Datenbanksysteme I und II verwendete relationale SQL Datenbankmanagementsystem von Microsoft zum Einsatz.</p>
 </li>
 <li>
 <p><strong>Webframework</strong><br>
@@ -594,6 +595,7 @@ Für die Umsetzung des Frontends soll ein Javaskript-basiertes Webframework genu
 </li>
 </ul>
 </div>
+<div style="page-break-after: always;"></div>
 </div>
 </div>
 <div class="sect2">
@@ -629,7 +631,7 @@ Das System ermöglicht es Kunden neu anzulegen, zu suchen, zu bearbeiten oder zu
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>der Use-Case beginnt, wenn der Kundentab ausgewählt wurde wurde</p>
+<p>der Use-Case beginnt, wenn der Kundentab ausgewählt wurde</p>
 </li>
 <li>
 <p>dem System können verschiedene Suchkriterien übergeben werden</p>
@@ -667,7 +669,7 @@ Das System ermöglicht es Kunden neu anzulegen, zu suchen, zu bearbeiten oder zu
 <p>der Use-Case beginnt, wenn der Kundentab und die Lösch-Funktion eines Kunden ausgewählt wurde</p>
 </li>
 <li>
-<p>der Use-Case ist abgeschlossen, sobald dem system das Vorhaben bestätigt wurde</p>
+<p>der Use-Case ist abgeschlossen, sobald dem System das Vorhaben bestätigt wurde</p>
 </li>
 </ol>
 </div>
@@ -699,7 +701,7 @@ Das System ermöglicht es Mitarbeiter neu anzulegen, zu suchen, zu bearbeiten od
 <p>dem System wird mitgeteilt, dass ein neuer Mitarbeiter angelegt werden soll</p>
 </li>
 <li>
-<p>die Mitarbeiterdaten werden dem system übergeben</p>
+<p>die Mitarbeiterdaten werden dem System übergeben</p>
 </li>
 <li>
 <p>der Use-Case ist abgeschlossen, sobald die Eingaben gespeichert wurden</p>
@@ -731,7 +733,7 @@ Das System ermöglicht es Mitarbeiter neu anzulegen, zu suchen, zu bearbeiten od
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>der Use-Case beginnt, wenn die Bearbeitungsfunktion eines Mitarbeiter ausgewählt wurde</p>
+<p>der Use-Case beginnt, wenn die Bearbeitungsfunktion eines Mitarbeiters ausgewählt wurde</p>
 </li>
 <li>
 <p>die Mitarbeiterdaten können nun beliebig bearbeitet werden</p>
@@ -747,10 +749,10 @@ Das System ermöglicht es Mitarbeiter neu anzulegen, zu suchen, zu bearbeiten od
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>der Use-Case beginnt, wenn die Lösch-Funktion eines Mitarbeiter ausgewählt wurde</p>
+<p>der Use-Case beginnt, wenn die Lösch-Funktion eines Mitarbeiters ausgewählt wurde</p>
 </li>
 <li>
-<p>der Use-Case ist abgeschlossen, sobald dem system das Vorhaben bestätigt wurde</p>
+<p>der Use-Case ist abgeschlossen, sobald dem System das Vorhaben bestätigt wurde</p>
 </li>
 </ol>
 </div>
@@ -763,6 +765,7 @@ Das System ermöglicht es Mitarbeiter neu anzulegen, zu suchen, zu bearbeiten od
 </div>
 <div class="title">Mitarbeitertab-Wireframe</div>
 </div>
+<div style="page-break-after: always;"></div>
 </div>
 <div class="sect3">
 <h4 id="_use_case_03_verwaltung_von_aufträgen">Use-Case 03: Verwaltung von Aufträgen</h4>
@@ -832,21 +835,23 @@ Vorbedingung: der Auftraggeber ist Teil der Kundendatei<br></p>
 </li>
 </ol>
 </div>
+<div style="page-break-after: always;"></div>
 <div class="paragraph">
 <p><strong>Wireframes für den Auftragstab</strong></p>
 </div>
 <div class="imageblock text-center">
 <div class="content">
-<img src="wireframes/auftraege_unzugeordnet.png" alt="Neue Aufträge">
+<img src="wireframes/auftraege_unzugeordnet.png" alt="Neue Aufträge" width="500">
 </div>
 <div class="title">Auftrag annehmen / Neue Aufträge</div>
 </div>
 <div class="imageblock text-center">
 <div class="content">
-<img src="wireframes/offene_auftraege.png" alt="Offene Aufträge">
+<img src="wireframes/offene_auftraege.png" alt="Offene Aufträge" width="500">
 </div>
 <div class="title">Offene Aufträge</div>
 </div>
+<div style="page-break-after: always;"></div>
 </div>
 <div class="sect3">
 <h4 id="_weitere_bestandteile">Weitere Bestandteile</h4>
@@ -917,13 +922,13 @@ Unter diesem Tab haben die Mitarbeitenden die Möglichkeit, alle Ersatzteile ein
 <p>Für die erste Aufgabe, die grobe Analyse und Erstellung der Wireframes, habt sich das ganze Team zusammengefunden, sodass diese Rolle keiner einzelnen Person zugeschrieben werden kann.</p>
 </div>
 <div class="paragraph">
-<p>Sabine fand sich nach kurzer Zeit in der Rolle des Managements wieder. Regelmäßig motivierte sie das Team, koordinierte zusätzliche Treffen für ein gemeinsames Arbeiten und übernahm hauptsächlich das Reden während der wöchentlichen Meetings um den Stand des Projektes darzulegen.</p>
+<p>Sabine fand sich nach kurzer Zeit in der Rolle des Managements wieder. Regelmäßig motivierte sie das Team, koordinierte zusätzliche Treffen für ein gemeinsames Arbeiten und übernahm hauptsächlich das Reden während der wöchentlichen Meetings, um den Stand des Projektes darzulegen.</p>
 </div>
 <div class="paragraph">
-<p>Da Di schon Erfahrungen im Umgang mit dem gewählten Framework hatte, war er der inoffizielle Hauptentwickler der Gruppe. Natürlich war jedes einzelne Mitglied an der Programmierung selbst beteiligt, doch Di war der erste Ansprechpartner, wenn es zu Fragen zu beispielsweise hartnäckigen ehlermeldungen kam.</p>
+<p>Da Di schon Erfahrungen im Umgang mit dem gewählten Framework hatte, war er der inoffizielle Hauptentwickler der Gruppe. Natürlich war jedes einzelne Mitglied an der Programmierung selbst beteiligt, doch Di war der erste Ansprechpartner, wenn es zu Fragen zu beispielsweise hartnäckigen Fehlermeldungen kam.</p>
 </div>
 <div class="paragraph">
-<p>Die Rolle des Testers wurde ebenfalls jedem zu Teil. Nachdem eine neue Funktion implementiert und auf Github geladen wurde, wurde das Team meist direkt nachrichtlich verständigt und so zum ausgiebigen Testen aufgefordert.</p>
+<p>Die Rolle des Testers wurde ebenfalls jedem zu Teil. Nachdem eine neue Funktion implementiert und auf GitHub geladen wurde, wurde das Team meist direkt nachrichtlich verständigt und so zum ausgiebigen Testen aufgefordert.</p>
 </div>
 </div>
 </div>
@@ -932,7 +937,7 @@ Unter diesem Tab haben die Mitarbeitenden die Möglichkeit, alle Ersatzteile ein
 <div class="sect3">
 <h4 id="_kommunikation">Kommunikation</h4>
 <div class="paragraph">
-<p>Gleich zu Beginn des Projektes wurde ein Discord Server aufgesetzt, der wöchentlich für virtuelle Treffen genutzt werden sollte. Durch die Einrichtung verschiedener Kanäle auf die gezielt nur bestimmte Personen Zugriff hatten, konnte zwischen offiziellen Meetings zusammen mit Herrn Professor Thiele und Team-Meetings unterschieden werden.</p>
+<p>Gleich zu Beginn des Projektes wurde ein Discord Server aufgesetzt, der wöchentlich für virtuelle Treffen genutzt werden sollte. Durch die Einrichtung verschiedener Kanäle,auf die gezielt nur bestimmte Personen Zugriff hatten, konnte zwischen offiziellen Meetings zusammen mit Herrn Professor Thiele und Team-Meetings unterschieden werden.</p>
 </div>
 <div class="paragraph">
 <p>Des Weiteren wurde am Anfang der Gruppenarbeit eine WhatsApp-Gruppe eingerichtet, in der zumeist Termine für zusätzliche Meetings ausgemacht wurden. Kleinere Probleme oder Fragen konnten so textuell schnell geklärt werden.</p>
@@ -983,8 +988,8 @@ Codedokumentation</p></td>
 <div class="sect3">
 <h4 id="_deployment">Deployment</h4>
 <div class="paragraph">
-<p>Um nach Fertigstellung der Software diese auch anderen Studierenden zur Verfügung stellen zu können, haben wir uns dazu entschieden die Applikation mit Hilfe von Docker auszuliefern.<br>
-Mittels Docker können Anwendungen schneller bereitgestellt werden. Die Applikation kann hierbei in einen oder mehreren isolierten "Containern" ausgeführt werden, wodurch eine (zeit-) aufwendige Installation benötigter Module vermieden werden kann.<br></p>
+<p>Um nach Fertigstellung der Software diese auch anderen Studierenden zur Verfügung stellen zu können, haben wir uns dazu entschieden, die Applikation mit Hilfe von Docker auszuliefern.<br>
+Mittels Docker können Anwendungen schneller bereitgestellt werden. Die Applikation kann hierbei in einem oder mehreren isolierten "Containern" ausgeführt werden, wodurch eine (zeit-) aufwendige Installation benötigter Module vermieden werden kann.<br></p>
 </div>
 <div class="paragraph">
 <p>Unser Projekt gliedert sich in drei verschiedene Container:<br>
@@ -1047,7 +1052,7 @@ Einer beinhaltet den MS SQL Server mit samt dem Datenbestand der Trommelheldenda
 <p><code>$ git clone <a href="https://github.com/EliSa-GH/ps-trommelhelden.git" class="bare">https://github.com/EliSa-GH/ps-trommelhelden.git</a></code></p>
 </div>
 <div class="paragraph">
-<p>Die Anwendung besteht aus zwei Backend-Komponenten: Webserver(Node.js Ver. 19.1) und MSSQL (SQL Server 2019) und einer Frontend-Konponente (React Ver. 11.10.5) die in einem Docker-Container gespeichert sind.</p>
+<p>Die Anwendung besteht aus zwei Backend-Komponenten: Webserver(Node.js Ver. 19.1) und MSSQL (SQL Server 2019) und einer Frontend-Komponente (React Ver. 11.10.5), die in einem Docker-Container gespeichert sind.</p>
 </div>
 <div class="paragraph">
 <p>Um die Software zu installieren, soll ein Docker Container ausgeführt werden. Dafür gibt es zwei Möglichkeiten:</p>
@@ -1105,11 +1110,20 @@ Einer beinhaltet den MS SQL Server mit samt dem Datenbestand der Trommelheldenda
 </li>
 </ul>
 </div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
 <div class="paragraph">
-<p>Die Anwendung ist out of the box einsatzbereit, das bedeutet es müssen keine weiteren Konfigurationen vorgenommen werden.</p>
+<p>Bevor die Anwendung aufgerufen werden kann, muss sichergestellt werden, dass alle Docker-Container gestartet worden sind. Gegebenenfalls muss der "node" Container manuell gestartet werden, damit die Daten in der Applikation selbst zur Verfügung stehen.
+Erst anschließend kann im Webbrowser in der Adresszeile "localhost:3000" eingegeben werden. Daraufhin wird die Webseite geöffnet.</p>
 </div>
-<div class="paragraph">
-<p>Um zu überprüfen, ob die Anwendung funktioniert, soll im Webbrowser in der Adresszeile "localhost:3000" eingegeben werden. Daraufhin wird die Webseite geöffnet.</p>
+</td>
+</tr>
+</table>
 </div>
 <div class="paragraph">
 <p><strong>Fehlerbehebung</strong></p>
@@ -1151,8 +1165,8 @@ Einer beinhaltet den MS SQL Server mit samt dem Datenbestand der Trommelheldenda
 <div class="sect2">
 <h3 id="_entwicklungsprozess_und_zeitlicher_ablauf">Entwicklungsprozess und zeitlicher Ablauf</h3>
 <div class="paragraph">
-<p>Schon zu Begin des Projektes war der grobe Umfang der Programmierarbeit bekannt, da Funktionalitäten wie das Neuanlegen, Bearbeiten und Löschen zu den Mindestanforderungen gehörten. Nach einer ersten Analyse und Erstellung von Use-Cases sowie den dazugehörigen Wireframes konnte mit dem eigentlichen Entwicklungsprozess begonnen werden.<br>
-Mittels einer iterative Entwicklung konnte ein regelmäßiger Fortschritt erzielt werden, der in den wöchentlichen Meetings präsentiert und diskutiert werden konnte. Nach der Fertigstellung der Kunden-, Mitarbeiter- und Ersatzteilseite konnte der Auftrags-Tab weiter ausgebaut werden, welcher bei der Erstellung eines Auftrages die Möglichkeit bieten sollte, einen Trigger in die ID-Erzeugung mit einzubeziehen statt diese manuell zu vergeben. Das letzte Inkrement der Applikation bildete die Seite "Bericht", welche nach Eingabe einer natürlichen Zahl, Ersatzteile listet, welche mindestens so oft verwendet wurden, wie angegeben.</p>
+<p>Schon zu Beginn des Projektes war der grobe Umfang der Programmierarbeit bekannt, da Funktionalitäten wie das Neuanlegen, Bearbeiten und Löschen zu den Mindestanforderungen gehörten. Nach einer ersten Analyse und Erstellung von Use-Cases sowie den dazugehörigen Wireframes konnte mit dem eigentlichen Entwicklungsprozess begonnen werden.<br>
+Mittels einer iterativen Entwicklung konnte ein regelmäßiger Fortschritt erzielt werden, der in den wöchentlichen Meetings präsentiert und diskutiert werden konnte. Nach der Fertigstellung der Kunden-, Mitarbeiter- und Ersatzteilseite konnte der Auftrags-Tab weiter ausgebaut werden, welcher bei der Erstellung eines Auftrages die Möglichkeit bieten sollte, einen Trigger in die ID-Erzeugung mit einzubeziehen statt diese manuell zu vergeben. Das letzte Inkrement der Applikation bildete die Seite "Bericht", welche nach Eingabe einer natürlichen Zahl, Ersatzteile listet, welche mindestens so oft verwendet wurden, wie angegeben.</p>
 </div>
 </div>
 <div class="sect2">
@@ -1184,7 +1198,7 @@ Mittels einer iterative Entwicklung konnte ein regelmäßiger Fortschritt erziel
 <div class="ulist">
 <ul>
 <li>
-<p><em>Beispiel: Wenn die letzte Auftragsnummer 1000 ist, wird bei der Auswahl der Option "mit Trigger" automatisch eine neue AUftragsnummer erzeugt. Ohne spezifische Angabe wird die Nummer um eins erhöht und der neue Auftrag mit der Nummer 1001 erstellt.</em></p>
+<p><em>Beispiel: Wenn die letzte Auftragsnummer 1000 ist, wird bei der Auswahl der Option "mit Trigger" automatisch eine neue Auftragsnummer erzeugt. Ohne spezifische Angabe wird die Nummer um eins erhöht und der neue Auftrag mit der Nummer 1001 erstellt.</em></p>
 </li>
 </ul>
 </div>
@@ -1193,7 +1207,7 @@ Mittels einer iterative Entwicklung konnte ein regelmäßiger Fortschritt erziel
 <p>Der Kundenname ist ein erforderliches Feld, um den Auftrag zuordnen zu können. Sollte der Kundenname oder die Nummer nicht in der Datenbank vorhanden sein, wird eine Option zur Erstellung des Kunden angezeigt. Nach dem Klicken wird die Kundenseite geöffnet, um die Erstellung durchzuführen.</p>
 </li>
 <li>
-<p>Es gibt optional Felder wie Dauer, MitID, Anfahrt und Beschreibung die ausgefüllt werden können. Das Auftragsdatum wird automatisch mit dem aktuellen Datum gefüllt.</p>
+<p>Es gibt optional Felder wie Dauer, MitID, Anfahrt und Beschreibung, die ausgefüllt werden können. Das Auftragsdatum wird automatisch mit dem aktuellen Datum gefüllt.</p>
 </li>
 <li>
 <p><strong>ENTWICKLUNG:</strong> Entwicklungsdatei liegt in</p>
@@ -1218,7 +1232,7 @@ Mittels einer iterative Entwicklung konnte ein regelmäßiger Fortschritt erziel
 <div class="ulist">
 <ul>
 <li>
-<p>Erzeugt eine neuen Kundeninstanz in der Datenbank auf Grundlage des Namens, des Wohnortes, der Adresse und einer selbstgewählten Kundennummer.</p>
+<p>Erzeugt eine neue Kundeninstanz in der Datenbank auf Grundlage des Namens, des Wohnortes, der Adresse und einer selbstgewählten Kundennummer.</p>
 </li>
 <li>
 <p><strong>ENTWICKLUNG:</strong> Entwicklunsgdatei liegt in</p>
@@ -1230,7 +1244,7 @@ Mittels einer iterative Entwicklung konnte ein regelmäßiger Fortschritt erziel
 <div class="ulist">
 <ul>
 <li>
-<p>Funktion ist implementiert als DialogBox innerhalb eine Seite und wird als PopUp angezeigt.</p>
+<p>Funktion ist implementiert als DialogBox innerhalb einer Seite und wird als PopUp angezeigt.</p>
 </li>
 </ul>
 </div>
@@ -1258,7 +1272,7 @@ Mittels einer iterative Entwicklung konnte ein regelmäßiger Fortschritt erziel
 <div class="ulist">
 <ul>
 <li>
-<p>Funktion ist implementiert als DialogBox innerhalb eine Seite und wird als PopUp angezeigt.</p>
+<p>Funktion ist implementiert als DialogBox innerhalb einer Seite und wird als PopUp angezeigt.</p>
 </li>
 </ul>
 </div>
@@ -1283,7 +1297,7 @@ Mittels einer iterative Entwicklung konnte ein regelmäßiger Fortschritt erziel
 <div class="ulist">
 <ul>
 <li>
-<p>Funktion ist implementiert als DialogBox innerhalb eine Seite und wird als PopUp angezeigt.</p>
+<p>Funktion ist implementiert als DialogBox innerhalb einer Seite und wird als PopUp angezeigt.</p>
 </li>
 </ul>
 </div>
@@ -1321,13 +1335,13 @@ Mittels einer iterative Entwicklung konnte ein regelmäßiger Fortschritt erziel
 <p>Die Edit-Funktion ist eine wichtige Funktion, die es ermöglicht, bereits erstellte Datensätze zu bearbeiten bzw. anzupassen. Dies kann sehr nützlich sein, wenn es darum geht, Fehler in den Daten zu korrigieren oder aktualisierte Informationen hinzuzufügen. Mit der Edit-Funktion können auch bestimmte Teile eines Datensatzes geändert werden, ohne den gesamten Datensatz neu erstellen zu müssen. Dies kann Zeit und Ressourcen sparen und die Datenqualität verbessern.</p>
 </li>
 <li>
-<p>Gleichzeitig kann nur ein Eintrag bearbeitet werden, demzufolge bei der Auswahl mehrerer Einträge wird der Button ausgegraut. Das selbe passiert mit dem Button "Anlegen", falls ein zu bearbeitender Eintrag ausgewählt wird.</p>
+<p>Gleichzeitig kann nur ein Eintrag bearbeitet werden, demzufolge bei der Auswahl mehrerer Einträge wird der Button ausgegraut. Dasselbe passiert mit dem Button "Anlegen", falls ein zu bearbeitender Eintrag ausgewählt wird.</p>
 </li>
 <li>
 <p>Außerdem gibt es datenbankspezifische Abhängigkeiten, wodurch nicht jedes Feld bearbeitet werden kann, wie zum Beispiel die laufenden Nummern (MitID, EtID, KunNr, AufNr).</p>
 </li>
 <li>
-<p>Darüber hinaus darf bei den Kundendaten keine beliebige Postleitzahlt eingegeben werden - sie muss immer aus 5 Ziffern bestehen.</p>
+<p>Darüber hinaus darf bei den Kundendaten keine beliebige Postleitzahl eingegeben werden - sie muss immer aus 5 Ziffern bestehen.</p>
 </li>
 <li>
 <p>Diese Funktion ist an vier Stellen (Auftrag, Kunden,  Mitarbeiter, Ersatzteil) zu finden und wurde an allen vier Stellen analog implementiert. Durch die konsistente Implementierung wird die Pflege des Quellcodes minimiert.</p>
@@ -1386,7 +1400,7 @@ Mittels einer iterative Entwicklung konnte ein regelmäßiger Fortschritt erziel
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2023-03-01 00:12:15 +0100
+Last updated 2023-03-01 23:14:17 +0100
 </div>
 </div>
 </body>

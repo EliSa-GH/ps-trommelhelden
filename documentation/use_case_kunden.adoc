@@ -11,7 +11,7 @@ Das System ermöglicht es Kunden neu anzulegen, zu suchen, zu bearbeiten oder zu
 
 *Kunden suchen* +
 
-. der Use-Case beginnt, wenn der Kundentab ausgewählt wurde wurde
+. der Use-Case beginnt, wenn der Kundentab ausgewählt wurde
 . dem System können verschiedene Suchkriterien übergeben werden
 . anschließend wird die Suche gestartet
 . der Use-Case ist abgeschlossen, sobald die Suche beendet wurde
@@ -25,7 +25,7 @@ Das System ermöglicht es Kunden neu anzulegen, zu suchen, zu bearbeiten oder zu
 *Kunde löschen* +
 
 . der Use-Case beginnt, wenn der Kundentab und die Lösch-Funktion eines Kunden ausgewählt wurde
-. der Use-Case ist abgeschlossen, sobald dem system das Vorhaben bestätigt wurde
+. der Use-Case ist abgeschlossen, sobald dem System das Vorhaben bestätigt wurde
 
 *Wireframe für den Kundentab*
 

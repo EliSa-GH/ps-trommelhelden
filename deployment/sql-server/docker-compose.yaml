@@ -30,17 +30,17 @@ services:
         environment:
           DATABASE_HOST: sql-server
         depends_on:
+          - react
           - sqldata
         ports:
           - 5000:5000
         networks:
           - my_network
         healthcheck:
-          test: ["CMD", "curl", "-f", "http://localhost"]
-          interval: 1m30s
+          test: ["CMD", "powershell", "-command", "Test-SqlConnection", "-ServerName", "sqldata", "-DatabaseName", "master", "-ConnectionTimeout", "10"]
+          interval: 30s
           timeout: 10s
-          retries: 3
-          start_period: 40s
+          retries: 5
 
 networks:
   my_network:

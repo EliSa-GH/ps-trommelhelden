@@ -14,15 +14,15 @@ Eine klassische Rollenverteilung fand innerhalb des Projektseminars nicht konkre
 
 Für die erste Aufgabe, die grobe Analyse und Erstellung der Wireframes, habt sich das ganze Team zusammengefunden, sodass diese Rolle keiner einzelnen Person zugeschrieben werden kann.
 
-Sabine fand sich nach kurzer Zeit in der Rolle des Managements wieder. Regelmäßig motivierte sie das Team, koordinierte zusätzliche Treffen für ein gemeinsames Arbeiten und übernahm hauptsächlich das Reden während der wöchentlichen Meetings um den Stand des Projektes darzulegen.
+Sabine fand sich nach kurzer Zeit in der Rolle des Managements wieder. Regelmäßig motivierte sie das Team, koordinierte zusätzliche Treffen für ein gemeinsames Arbeiten und übernahm hauptsächlich das Reden während der wöchentlichen Meetings, um den Stand des Projektes darzulegen.
 
-Da Di schon Erfahrungen im Umgang mit dem gewählten Framework hatte, war er der inoffizielle Hauptentwickler der Gruppe. Natürlich war jedes einzelne Mitglied an der Programmierung selbst beteiligt, doch Di war der erste Ansprechpartner, wenn es zu Fragen zu beispielsweise hartnäckigen ehlermeldungen kam.
+Da Di schon Erfahrungen im Umgang mit dem gewählten Framework hatte, war er der inoffizielle Hauptentwickler der Gruppe. Natürlich war jedes einzelne Mitglied an der Programmierung selbst beteiligt, doch Di war der erste Ansprechpartner, wenn es zu Fragen zu beispielsweise hartnäckigen Fehlermeldungen kam.
 
-Die Rolle des Testers wurde ebenfalls jedem zu Teil. Nachdem eine neue Funktion implementiert und auf Github geladen wurde, wurde das Team meist direkt nachrichtlich verständigt und so zum ausgiebigen Testen aufgefordert. 
+Die Rolle des Testers wurde ebenfalls jedem zu Teil. Nachdem eine neue Funktion implementiert und auf GitHub geladen wurde, wurde das Team meist direkt nachrichtlich verständigt und so zum ausgiebigen Testen aufgefordert. 
 
 === Werkzeuge
 ==== Kommunikation
-Gleich zu Beginn des Projektes wurde ein Discord Server aufgesetzt, der wöchentlich für virtuelle Treffen genutzt werden sollte. Durch die Einrichtung verschiedener Kanäle auf die gezielt nur bestimmte Personen Zugriff hatten, konnte zwischen offiziellen Meetings zusammen mit Herrn Professor Thiele und Team-Meetings unterschieden werden.
+Gleich zu Beginn des Projektes wurde ein Discord Server aufgesetzt, der wöchentlich für virtuelle Treffen genutzt werden sollte. Durch die Einrichtung verschiedener Kanäle,auf die gezielt nur bestimmte Personen Zugriff hatten, konnte zwischen offiziellen Meetings zusammen mit Herrn Professor Thiele und Team-Meetings unterschieden werden.
 
 Des Weiteren wurde am Anfang der Gruppenarbeit eine WhatsApp-Gruppe eingerichtet, in der zumeist Termine für zusätzliche Meetings ausgemacht wurden. Kleinere Probleme oder Fragen konnten so textuell schnell geklärt werden.
 
@@ -46,8 +46,8 @@ React ist kein Framework, sondern eine JavaScript-Bibliothek für die Erstellung
 Außerdem ist React eine der am weitesten verbreiteten JavaScript-Bibliotheken. Das Erlangen der Kenntnisse darin kann die Chancen im späteren Berufsleben erhöhen, wenn man sich für eine Karriere in der Webentwicklung entscheidet.
 
 ==== Deployment
-Um nach Fertigstellung der Software diese auch anderen Studierenden zur Verfügung stellen zu können, haben wir uns dazu entschieden die Applikation mit Hilfe von Docker auszuliefern. +
-Mittels Docker können Anwendungen schneller bereitgestellt werden. Die Applikation kann hierbei in einen oder mehreren isolierten "Containern" ausgeführt werden, wodurch eine (zeit-) aufwendige Installation benötigter Module vermieden werden kann. +
+Um nach Fertigstellung der Software diese auch anderen Studierenden zur Verfügung stellen zu können, haben wir uns dazu entschieden, die Applikation mit Hilfe von Docker auszuliefern. +
+Mittels Docker können Anwendungen schneller bereitgestellt werden. Die Applikation kann hierbei in einem oder mehreren isolierten "Containern" ausgeführt werden, wodurch eine (zeit-) aufwendige Installation benötigter Module vermieden werden kann. +
 
 Unser Projekt gliedert sich in drei verschiedene Container: +
 Einer beinhaltet den MS SQL Server mit samt dem Datenbestand der Trommelheldendatenbank, einer den Client der App und einer den Server.
@@ -83,7 +83,7 @@ Um die Anwendung von GitHub auf Ihren eigenen PC/Server zu speichern, muss diese
 
 `$ git clone https://github.com/EliSa-GH/ps-trommelhelden.git`
 
-Die Anwendung besteht aus zwei Backend-Komponenten: Webserver(Node.js Ver. 19.1) und MSSQL (SQL Server 2019) und einer Frontend-Konponente (React Ver. 11.10.5) die in einem Docker-Container gespeichert sind.
+Die Anwendung besteht aus zwei Backend-Komponenten: Webserver(Node.js Ver. 19.1) und MSSQL (SQL Server 2019) und einer Frontend-Komponente (React Ver. 11.10.5), die in einem Docker-Container gespeichert sind.
 
 Um die Software zu installieren, soll ein Docker Container ausgeführt werden. Dafür gibt es zwei Möglichkeiten:
 
@@ -110,9 +110,11 @@ Um die Software zu installieren, soll ein Docker Container ausgeführt werden. D
 
  $ docker-compose up
 
-Die Anwendung ist out of the box einsatzbereit, das bedeutet es müssen keine weiteren Konfigurationen vorgenommen werden. 
-
-Um zu überprüfen, ob die Anwendung funktioniert, soll im Webbrowser in der Adresszeile "localhost:3000" eingegeben werden. Daraufhin wird die Webseite geöffnet.
+[IMPORTANT]
+====
+Bevor die Anwendung aufgerufen werden kann, muss sichergestellt werden, dass alle Docker-Container gestartet worden sind. Gegebenenfalls muss der "node" Container manuell gestartet werden, damit die Daten in der Applikation selbst zur Verfügung stehen.
+Erst anschließend kann im Webbrowser in der Adresszeile "localhost:3000" eingegeben werden. Daraufhin wird die Webseite geöffnet.
+====
 
 *Fehlerbehebung*
 
@@ -130,8 +132,8 @@ Die typischen Fehler und deren Behebung finden Sie unter folgendem Link:
 * link:https://learn.microsoft.com/en-us/sql/?view=sql-server-ver16[Microsoft SQL]
 
 === Entwicklungsprozess und zeitlicher Ablauf
-Schon zu Begin des Projektes war der grobe Umfang der Programmierarbeit bekannt, da Funktionalitäten wie das Neuanlegen, Bearbeiten und Löschen zu den Mindestanforderungen gehörten. Nach einer ersten Analyse und Erstellung von Use-Cases sowie den dazugehörigen Wireframes konnte mit dem eigentlichen Entwicklungsprozess begonnen werden. +
-Mittels einer iterative Entwicklung konnte ein regelmäßiger Fortschritt erzielt werden, der in den wöchentlichen Meetings präsentiert und diskutiert werden konnte. Nach der Fertigstellung der Kunden-, Mitarbeiter- und Ersatzteilseite konnte der Auftrags-Tab weiter ausgebaut werden, welcher bei der Erstellung eines Auftrages die Möglichkeit bieten sollte, einen Trigger in die ID-Erzeugung mit einzubeziehen statt diese manuell zu vergeben. Das letzte Inkrement der Applikation bildete die Seite "Bericht", welche nach Eingabe einer natürlichen Zahl, Ersatzteile listet, welche mindestens so oft verwendet wurden, wie angegeben.
+Schon zu Beginn des Projektes war der grobe Umfang der Programmierarbeit bekannt, da Funktionalitäten wie das Neuanlegen, Bearbeiten und Löschen zu den Mindestanforderungen gehörten. Nach einer ersten Analyse und Erstellung von Use-Cases sowie den dazugehörigen Wireframes konnte mit dem eigentlichen Entwicklungsprozess begonnen werden. +
+Mittels einer iterativen Entwicklung konnte ein regelmäßiger Fortschritt erzielt werden, der in den wöchentlichen Meetings präsentiert und diskutiert werden konnte. Nach der Fertigstellung der Kunden-, Mitarbeiter- und Ersatzteilseite konnte der Auftrags-Tab weiter ausgebaut werden, welcher bei der Erstellung eines Auftrages die Möglichkeit bieten sollte, einen Trigger in die ID-Erzeugung mit einzubeziehen statt diese manuell zu vergeben. Das letzte Inkrement der Applikation bildete die Seite "Bericht", welche nach Eingabe einer natürlichen Zahl, Ersatzteile listet, welche mindestens so oft verwendet wurden, wie angegeben.
 
 
 === Probleme und Lösungen
