@@ -7,9 +7,9 @@ Die Funktion "Create" oder "Anlegen" wird im Seiten Auftrag, Kunden, Mitarbeiter
 *Auftrag Anlegen* +
 
 * Die Erstellung einer neuen Auftragsinstanz erfolgt mit der Option, einen Trigger zu nutzen oder nicht. Wenn die Option "mit Trigger" gewählt wurde, wird ein Auftrag mit der nächstmöglichen Nummer erstellt. Dies basiert auf der letzten höchsten Auftragsnummer.
-** _Beispiel: Wenn die letzte Auftragsnummer 1000 ist, wird bei der Auswahl der Option "mit Trigger" automatisch eine neue AUftragsnummer erzeugt. Ohne spezifische Angabe wird die Nummer um eins erhöht und der neue Auftrag mit der Nummer 1001 erstellt._
+** _Beispiel: Wenn die letzte Auftragsnummer 1000 ist, wird bei der Auswahl der Option "mit Trigger" automatisch eine neue Auftragsnummer erzeugt. Ohne spezifische Angabe wird die Nummer um eins erhöht und der neue Auftrag mit der Nummer 1001 erstellt._
 * Der Kundenname ist ein erforderliches Feld, um den Auftrag zuordnen zu können. Sollte der Kundenname oder die Nummer nicht in der Datenbank vorhanden sein, wird eine Option zur Erstellung des Kunden angezeigt. Nach dem Klicken wird die Kundenseite geöffnet, um die Erstellung durchzuführen.
-* Es gibt optional Felder wie Dauer, MitID, Anfahrt und Beschreibung die ausgefüllt werden können. Das Auftragsdatum wird automatisch mit dem aktuellen Datum gefüllt.
+* Es gibt optional Felder wie Dauer, MitID, Anfahrt und Beschreibung, die ausgefüllt werden können. Das Auftragsdatum wird automatisch mit dem aktuellen Datum gefüllt.
 
 * *ENTWICKLUNG:* Entwicklungsdatei liegt in 
 
@@ -19,13 +19,13 @@ Die Funktion "Create" oder "Anlegen" wird im Seiten Auftrag, Kunden, Mitarbeiter
 
 *Kunden Anlegen* +
 
-* Erzeugt eine neuen Kundeninstanz in der Datenbank auf Grundlage des Namens, des Wohnortes, der Adresse und einer selbstgewählten Kundennummer.  
+* Erzeugt eine neue Kundeninstanz in der Datenbank auf Grundlage des Namens, des Wohnortes, der Adresse und einer selbstgewählten Kundennummer.  
 
 * *ENTWICKLUNG:* Entwicklunsgdatei liegt in 
 
     ~client/src/components/pages/Kunden.jsx
 
-** Funktion ist implementiert als DialogBox innerhalb eine Seite und wird als PopUp angezeigt.
+** Funktion ist implementiert als DialogBox innerhalb einer Seite und wird als PopUp angezeigt.
 
 *Mitarbeiter Anlegen* +
 
@@ -36,7 +36,7 @@ Die Funktion "Create" oder "Anlegen" wird im Seiten Auftrag, Kunden, Mitarbeiter
 
     ~client/src/components/pages/Mitarbeiter.jsx
 
-** Funktion ist implementiert als DialogBox innerhalb eine Seite und wird als PopUp angezeigt.
+** Funktion ist implementiert als DialogBox innerhalb einer Seite und wird als PopUp angezeigt.
 
 *Ersatzteil Anlegen* +
 
@@ -46,7 +46,7 @@ Die Funktion "Create" oder "Anlegen" wird im Seiten Auftrag, Kunden, Mitarbeiter
 
     ~client/src/components/pages/Ersatzteil.jsx
 
-** Funktion ist implementiert als DialogBox innerhalb eine Seite und wird als PopUp angezeigt.
+** Funktion ist implementiert als DialogBox innerhalb einer Seite und wird als PopUp angezeigt.
 
 ==== DELETE
 *Auftrag, Kunden, Mitarbeiter, Ersatzteil* +
@@ -60,10 +60,10 @@ Die Funktion "Create" oder "Anlegen" wird im Seiten Auftrag, Kunden, Mitarbeiter
 
 * Die Edit-Funktion ist eine wichtige Funktion, die es ermöglicht, bereits erstellte Datensätze zu bearbeiten bzw. anzupassen. Dies kann sehr nützlich sein, wenn es darum geht, Fehler in den Daten zu korrigieren oder aktualisierte Informationen hinzuzufügen. Mit der Edit-Funktion können auch bestimmte Teile eines Datensatzes geändert werden, ohne den gesamten Datensatz neu erstellen zu müssen. Dies kann Zeit und Ressourcen sparen und die Datenqualität verbessern. 
 
-* Gleichzeitig kann nur ein Eintrag bearbeitet werden, demzufolge bei der Auswahl mehrerer Einträge wird der Button ausgegraut. Das selbe passiert mit dem Button "Anlegen", falls ein zu bearbeitender Eintrag ausgewählt wird. 
+* Gleichzeitig kann nur ein Eintrag bearbeitet werden, demzufolge bei der Auswahl mehrerer Einträge wird der Button ausgegraut. Dasselbe passiert mit dem Button "Anlegen", falls ein zu bearbeitender Eintrag ausgewählt wird. 
 
 * Außerdem gibt es datenbankspezifische Abhängigkeiten, wodurch nicht jedes Feld bearbeitet werden kann, wie zum Beispiel die laufenden Nummern (MitID, EtID, KunNr, AufNr). 
 
-* Darüber hinaus darf bei den Kundendaten keine beliebige Postleitzahlt eingegeben werden - sie muss immer aus 5 Ziffern bestehen.
+* Darüber hinaus darf bei den Kundendaten keine beliebige Postleitzahl eingegeben werden - sie muss immer aus 5 Ziffern bestehen.
 
 * Diese Funktion ist an vier Stellen (Auftrag, Kunden,  Mitarbeiter, Ersatzteil) zu finden und wurde an allen vier Stellen analog implementiert. Durch die konsistente Implementierung wird die Pflege des Quellcodes minimiert. 

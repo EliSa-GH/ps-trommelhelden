@@ -4,8 +4,10 @@ include::use_case_kunden.adoc[]
 
 include::use_case_mitarbeiter.adoc[]
 
+<<<
 include::use_case_auftrag.adoc[]
 
+<<<
 ==== Weitere Bestandteile
 
 *Ersatzteile verwalten* +
